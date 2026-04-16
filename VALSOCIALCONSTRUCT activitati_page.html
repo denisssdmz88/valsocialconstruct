@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activități - VAL SOCIAL CONSTRUCT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .top-bar {
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffa500;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #ffa500;
+            padding: 20px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 25px 0;
+            display: block;
+        }
+
+        .nav-menu a:hover {
+            color: #ffa500;
+        }
+
+        .cta-button {
+            background: #ffa500;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #ff8c00;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            color: rgba(255,255,255,0.8);
+            margin-top: 10px;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        /* Project Section */
+        .project-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .project-intro h2 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .project-intro p {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .slideshows-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .slideshow-section {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .slideshow-title {
+            background: #f8f9fa;
+            text-align: center;
+            color: #1a1a1a;
+            font-size: 1.8em;
+            font-weight: 600;
+            padding: 20px;
+            border-bottom: 3px solid #ffa500;
+        }
+
+        .slideshow-container {
+            position: relative;
+            background: #000;
+        }
+
+        .slide {
+            display: none;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+
+        .dot.active {
+            background: #ffa500;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 165, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: white;
+            font-size: 2em;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .arrow:hover {
+            background: rgba(255, 165, 0, 1);
+        }
+
+        .arrow.prev {
+            left: 15px;
+        }
+
+        .arrow.next {
+            right: 15px;
+        }
+
+        /* Description Section */
+        .description-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 4px solid #ffa500;
+        }
+
+        .description-section h3 {
+            font-size: 2em;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .description-text {
+            width: 100%;
+            min-height: 180px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 1.1em;
+            font-family: inherit;
+            color: #333;
+            resize: vertical;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .description-text:focus {
+            border-color: #ffa500;
+            box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
+        }
+
+        .description-text::placeholder {
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #ffa500;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffa500;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .slideshows-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .slide img {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-intro h2 {
+                font-size: 2em;
+            }
+
+            .slideshow-title {
+                font-size: 1.5em;
+            }
+
+            .slide img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 (+40) 749 277 995</span>
+                <span>✉️ valsocialconstruct@gmail.com</span>
+                <span>📍 Nartești, Galați</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">VAL SOCIAL CONSTRUCT</div>
+            <ul class="nav-menu">
+                <li><a href="VALSOCIALCONSTRUCT_beta3.html">Acasă</a></li>
+                <li><a href="VALSOCIALCONSTRUCT_beta3.html">Despre Noi</a></li>
+                <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                <li><a href="#">Activități</a></li>
+                <li><a href="valsocial contact.html">Contact</a></li>
+            </ul>
+            <a href="#" class="cta-button">Contactați-ne</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Activități</h1>
+        <div class="breadcrumb">
+            <a href="VALSOCIALCONSTRUCT_beta3.html">Acasă</a> / Activități
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="container">
+        <div class="project-intro">
+            <h2>Proiecte Realizate</h2>
+            <p>Vizualizați transformările pe care le-am realizat prin lucrările noastre profesionale de pregătire a terenului. Fiecare proiect demonstrează angajamentul nostru față de calitate și excelență.</p>
+        </div>
+
+        <div class="slideshows-wrapper">
+            <!-- Înainte Slideshow -->
+            <div class="slideshow-section">
+                <h2 class="slideshow-title">Înainte</h2>
+                <div class="slideshow-container">
+                    <div class="slide active" data-slideshow="before">
+                        <img src="inainte-1.jpg" alt="Înainte - Imagine 1">
+                    </div>
+                    <div class="slide" data-slideshow="before">
+                        <img src="inainte-2.jpg" alt="Înainte - Imagine 2">
+                    </div>
+                    <div class="slide" data-slideshow="before">
+                        <img src="inainte-3.jpg" alt="Înainte - Imagine 3">
+                    </div>
+                    
+                    <button class="arrow prev" onclick="changeSlide('before', -1)">‹</button>
+                    <button class="arrow next" onclick="changeSlide('before', 1)">›</button>
+                    
+                    <div class="slide-controls">
+                        <span class="dot active" onclick="currentSlide('before', 0)"></span>
+                        <span class="dot" onclick="currentSlide('before', 1)"></span>
+                        <span class="dot" onclick="currentSlide('before', 2)"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- După Slideshow -->
+            <div class="slideshow-section">
+                <h2 class="slideshow-title">După</h2>
+                <div class="slideshow-container">
+                    <div class="slide active" data-slideshow="after">
+                        <img src="dupa-1.jpg" alt="După - Imagine 1">
+                    </div>
+                    <div class="slide" data-slideshow="after">
+                        <img src="dupa-2.jpg" alt="După - Imagine 2">
+                    </div>
+                    <div class="slide" data-slideshow="after">
+                        <img src="dupa-3.jpg" alt="După - Imagine 3">
+                    </div>
+                    
+                    <button class="arrow prev" onclick="changeSlide('after', -1)">‹</button>
+                    <button class="arrow next" onclick="changeSlide('after', 1)">›</button>
+                    
+                    <div class="slide-controls">
+                        <span class="dot active" onclick="currentSlide('after', 0)"></span>
+                        <span class="dot" onclick="currentSlide('after', 1)"></span>
+                        <span class="dot" onclick="currentSlide('after', 2)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="description-section">
+            <h3>Descrierea Proiectului</h3>
+            <textarea class="description-text" placeholder="Descrieți lucrările efectuate, tehnicile utilizate și rezultatele obținute..."></textarea>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VAL SOCIAL CONSTRUCT</h3>
+                <p>Companie din Galați specializată în lucrări de pregătire a terenului, oferind servicii profesionale cu echipamente moderne pentru proiecte rezidențiale, comerciale și industriale.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Info</h3>
+                <ul>
+                    <li><a href="#">Despre Noi</a></li>
+                    <li><a href="#">Noutăți</a></li>
+                    <li><a href="#">Servicii</a></li>
+                    <li><a href="#">Cariere</a></li>
+                    <li><a href="#">Proiecte</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Luni-Vineri: 8:00 - 18:00</li>
+                    <li>Str. 1 Decembrie 1918, Nr. 54</li>
+                    <li>Nartești, Galați</li>
+                    <li>(+40) 749 277 995</li>
+                    <li>valsocialconstruct@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© VAL SOCIAL CONSTRUCT SRL, Toate Drepturile Rezervate</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentIndexBefore = 0;
+        let currentIndexAfter = 0;
+
+        function showSlide(slideshow, index) {
+            const container = document.querySelector(`[data-slideshow="${slideshow}"]`).closest('.slideshow-container');
+            const slides = container.querySelectorAll(`[data-slideshow="${slideshow}"]`);
+            const dots = container.querySelectorAll('.dot');
+            
+            if (slideshow === 'before') {
+                if (index >= slides.length) currentIndexBefore = 0;
+                if (index < 0) currentIndexBefore = slides.length - 1;
+            } else {
+                if (index >= slides.length) currentIndexAfter = 0;
+                if (index < 0) currentIndexAfter = slides.length - 1;
+            }
+
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+            });
+            
+            dots.forEach((dot) => {
+                dot.classList.remove('active');
+            });
+
+            const currentIdx = slideshow === 'before' ? currentIndexBefore : currentIndexAfter;
+            slides[currentIdx].classList.add('active');
+            dots[currentIdx].classList.add('active');
+        }
+
+        function changeSlide(slideshow, direction) {
+            if (slideshow === 'before') {
+                currentIndexBefore += direction;
+                showSlide('before', currentIndexBefore);
+            } else {
+                currentIndexAfter += direction;
+                showSlide('after', currentIndexAfter);
+            }
+        }
+
+        function currentSlide(slideshow, index) {
+            if (slideshow === 'before') {
+                currentIndexBefore = index;
+                showSlide('before', currentIndexBefore);
+            } else {
+                currentIndexAfter = index;
+                showSlide('after', currentIndexAfter);
+            }
+        }
+    </script>
+</body>
+</html>

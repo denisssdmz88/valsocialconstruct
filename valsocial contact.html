@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - VAL SOCIAL CONSTRUCT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .top-bar {
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffa500;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #ffa500;
+            padding: 20px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 25px 0;
+            display: block;
+        }
+
+        .nav-menu a:hover {
+            color: #ffa500;
+        }
+
+        .cta-button {
+            background: #ffa500;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #ff8c00;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            color: rgba(255,255,255,0.8);
+            margin-top: 10px;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form-wrapper h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ffa500;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: #ffa500;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #ff8c00;
+        }
+
+        /* Contact Info Cards */
+        .contact-info-wrapper h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #1a1a1a;
+        }
+
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #ffa500;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-card h3 {
+            color: #ffa500;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .contact-card p {
+            color: #666;
+            font-size: 1.05em;
+        }
+
+        .contact-card a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-card a:hover {
+            color: #ffa500;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: #f8f9fa;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        /* Social Media Section */
+        .social-media-section {
+            text-align: center;
+        }
+
+        .social-media-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .social-media-section p {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+
+        .social-icons-large {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-large {
+            width: 80px;
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid #e0e0e0;
+        }
+
+        .social-icon-large:hover {
+            background: #ffa500;
+            border-color: #ffa500;
+            transform: translateY(-5px);
+        }
+
+        .social-icon-large svg {
+            width: 35px;
+            height: 35px;
+            fill: #333;
+            transition: fill 0.3s;
+        }
+
+        .social-icon-large:hover svg {
+            fill: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #ffa500;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffa500;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 (+40) 749 277 995</span>
+                <span>✉️ valsocialconstruct@gmail.com</span>
+                <span>📍 Nartești, Galați</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">VAL SOCIAL CONSTRUCT</div>
+            <ul class="nav-menu">
+                <li><a href="VALSOCIALCONSTRUCT_beta3.html">Acasă</a></li>
+                <li><a href="VALSOCIALCONSTRUCT_beta3.html">Despre Noi</a></li>
+                <li><a href=""VALSOCIALCONSTRUCT servicii_page.html>Servicii</a></li>
+                <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <a href="#contact-form" class="cta-button">Contactați-ne</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Contact</h1>
+        <div class="breadcrumb">
+            <a href="VALSOCIALCONSTRUCT_beta3.html">Acasă</a> / Contact
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section container" id="contact-form">
+        <div class="contact-form-wrapper">
+            <h2>Trimiteți-ne un mesaj</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nume Complet *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subiect *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Selectați un subiect</option>
+                        <option value="excavari">Excavări și Nivelări</option>
+                        <option value="drenaj">Lucrări de Drenaj</option>
+                        <option value="curatare">Curățare Teren</option>
+                        <option value="oferta">Solicitare Ofertă</option>
+                        <option value="altele">Altele</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mesaj *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Trimite Mesajul</button>
+            </form>
+        </div>
+
+        <div class="contact-info-wrapper">
+            <h2>Informații de contact</h2>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <h3>📍 Adresă sediu</h3>
+                    <p>Str. 1 Decembrie 1918, Nr. 54</p>
+                    <p>Nartești, Galați</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>📞 Telefon</h3>
+                    <p><a href="tel:+40749277995">(+40) 749 277 995</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>✉️ E-mail</h3>
+                    <p><a href="mailto:valsocialconstruct@gmail.com">valsocialconstruct@gmail.com</a></p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>⏰ Program</h3>
+                    <p>Luni - Vineri: 8:00 - 18:00</p>
+                    <p style="margin-top: 5px;">Sâmbătă - Duminică: Închis</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>👤 Manager</h3>
+                    <p>Valerica Chetrone</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #1a1a1a;">Locația Sediului</h2>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.5!2d27.98!3d45.43!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDI1JzQ4LjAiTiAyN8KwNTgnNDguMCJF!5e0!3m2!1sro!2sro!4v1234567890!5m2!1sro!2sro"
+                    width="100%" 
+                    height="450" 
+                    style="border:0; border-radius: 10px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media-section container">
+        <h2>Urmăriți-ne pe Social Media</h2>
+        <p>Rămâneți la curent cu ultimele noastre proiecte și noutăți</p>
+        
+        <div class="social-icons-large">
+            <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank" class="social-icon-large">
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank" class="social-icon-large">
+                <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/valsocialconstruct" target="_blank" class="social-icon-large">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VAL SOCIAL CONSTRUCT</h3>
+                <p>Companie din Galați specializată în lucrări de pregătire a terenului, oferind servicii profesionale cu echipamente moderne pentru proiecte rezidențiale, comerciale și industriale.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Info</h3>
+                <ul>
+                    <li><a href="#">Despre Noi</a></li>
+                    <li><a href="#">Noutăți</a></li>
+                    <li><a href="#">Servicii</a></li>
+                    <li><a href="#">Cariere</a></li>
+                    <li><a href="#">Proiecte</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Luni-Vineri: 8:00 - 18:00</li>
+                    <li>Str. 1 Decembrie 1918, Nr. 54</li>
+                    <li>Nartești, Galați</li>
+                    <li>(+40) 749 277 995</li>
+                    <li>valsocialconstruct@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© VAL SOCIAL CONSTRUCT SRL, Toate Drepturile Rezervate</p>
+        </div>
+    </footer>
+</body>
+</html>
