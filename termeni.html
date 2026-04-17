@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termeni și Condiții - VAL SOCIAL CONSTRUCT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .top-bar {
+            background: #1a1a1a;
+            color: white;
+            padding: 10px 0;
+            font-size: 0.9em;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ffa500;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #ffa500;
+            padding: 20px 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 25px 0;
+            display: block;
+        }
+
+        .nav-menu a:hover {
+            color: #ffa500;
+        }
+
+        .cta-button {
+            background: #ffa500;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #ff8c00;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            color: rgba(255,255,255,0.8);
+            margin-top: 10px;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            padding: 80px 20px;
+        }
+
+        .terms-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .last-updated {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-left: 4px solid #ffa500;
+            margin-bottom: 40px;
+            color: #666;
+        }
+
+        .terms-content h2 {
+            color: #1a1a1a;
+            font-size: 2em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffa500;
+        }
+
+        .terms-content h3 {
+            color: #333;
+            font-size: 1.4em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .terms-content p {
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .terms-content ul {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+
+        .terms-content li {
+            color: #666;
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .important-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffa500;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .important-note p {
+            color: #856404;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #ffa500;
+            margin-bottom: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffa500;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .terms-content h2 {
+                font-size: 1.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 (+40) 749 277 995</span>
+                <span>✉️ valsocialconstruct@gmail.com</span>
+                <span>📍 Nartești, Galați</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">VAL SOCIAL CONSTRUCT</div>
+            <ul class="nav-menu">
+                <li><a href=""index.html"">Acasă</a></li>
+                <li><a href=""index.html"">Despre Noi</a></li>
+                <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
+                <li><a href="valsocial contact.html">Contact</a></li>
+		<li><a href="termeni.html.html">Termeni și condiții</a></li>	
+            </ul>
+            <a href="valsocial contact.html" class="cta-button">Contactați-ne</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Termeni și Condiții</h1>
+        <div class="breadcrumb">
+            <a href="VALSOCIALCONSTRUCT_beta3.html">Acasă</a> / Termeni și Condiții
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="terms-content">
+            <div class="last-updated">
+                <strong>Ultima actualizare:</strong> 18 Aprilie 2026
+            </div>
+
+            <h2>1. Introducere</h2>
+            <p>
+                Bine ați venit pe website-ul VAL SOCIAL CONSTRUCT SRL. Prin accesarea și utilizarea acestui website, acceptați să respectați și să fiți obligat de următorii termeni și condiții. Vă rugăm să citiți cu atenție acești termeni înainte de a utiliza serviciile noastre.
+            </p>
+
+            <h2>2. Despre Companie</h2>
+            <p>
+                VAL SOCIAL CONSTRUCT SRL este o companie înregistrată în România, cu sediul în Str. 1 Decembrie 1918, Nr. 54, Nartești, Galați. Compania noastră este specializată în lucrări profesionale de pregătire a terenului pentru proiecte rezidențiale, comerciale și industriale.
+            </p>
+
+            <h2>3. Servicii Oferite</h2>
+            <p>VAL SOCIAL CONSTRUCT oferă următoarele categorii de servicii:</p>
+            <ul>
+                <li>Excavări și nivelări de teren</li>
+                <li>Lucrări de drenaj și canalizare</li>
+                <li>Curățarea și pregătirea amplasamentelor</li>
+                <li>Săparea șanțurilor</li>
+                <li>Pregătirea șantierelor de construcție</li>
+                <li>Amenajări terenuri agricole și forestiere</li>
+            </ul>
+
+            <h2>4. Solicitare Ofertă și Contract</h2>
+            <h3>4.1 Procesul de Ofertare</h3>
+            <p>
+                Toate serviciile oferite de VAL SOCIAL CONSTRUCT sunt disponibile pe bază de ofertă personalizată. Clienții pot solicita o ofertă prin:
+            </p>
+            <ul>
+                <li>Completarea formularului de contact de pe website</li>
+                <li>Apel telefonic la (+40) 749 277 995</li>
+                <li>Email la valsocialconstruct@gmail.com</li>
+            </ul>
+
+            <h3>4.2 Acceptarea Ofertei</h3>
+            <p>
+                Ofertele sunt valabile pentru o perioadă de 30 de zile de la data emiterii, cu excepția cazului în care se specifică altfel. Contractul devine obligatoriu doar după semnarea acestuia de către ambele părți.
+            </p>
+
+            <h2>5. Prețuri și Plăți</h2>
+            <h3>5.1 Stabilirea Prețurilor</h3>
+            <p>
+                Prețurile pentru serviciile noastre sunt stabilite individual pentru fiecare proiect, în funcție de:
+            </p>
+            <ul>
+                <li>Complexitatea lucrării</li>
+                <li>Suprafața terenului</li>
+                <li>Accesibilitatea locației</li>
+                <li>Tipul de sol și condiții specifice</li>
+                <li>Durata estimată a proiectului</li>
+            </ul>
+
+            <h3>5.2 Modalități de Plată</h3>
+            <p>
+                Plățile se pot efectua prin:
+            </p>
+            <ul>
+                <li>Transfer bancar</li>
+                <li>Numerar (conform legislației în vigoare)</li>
+                <li>Alte metode convenite în contract</li>
+            </ul>
+
+            <h3>5.3 Termene de Plată</h3>
+            <p>
+                Termenele de plată vor fi specificate în contractul individual și pot include:
+            </p>
+            <ul>
+                <li>Avans la semnarea contractului</li>
+                <li>Plăți intermediare pe parcursul execuției</li>
+                <li>Plata finală la finalizarea lucrărilor</li>
+            </ul>
+
+            <h2>6. Executarea Lucrărilor</h2>
+            <h3>6.1 Programarea Lucrărilor</h3>
+            <p>
+                Programul de lucru va fi stabilit de comun acord cu clientul și specificat în contract. VAL SOCIAL CONSTRUCT își rezervă dreptul de a ajusta programul în cazul condițiilor meteorologice nefavorabile sau al altor circumstanțe de forță majoră.
+            </p>
+
+            <h3>6.2 Acces la Șantier</h3>
+            <p>
+                Clientul se obligă să asigure accesul liber la șantier pentru echipamente și personal în perioada convențională de execuție a lucrărilor.
+            </p>
+
+            <h3>6.3 Responsabilități</h3>
+            <p>
+                VAL SOCIAL CONSTRUCT se angajează să:
+            </p>
+            <ul>
+                <li>Execute lucrările conform standardelor profesionale</li>
+                <li>Respecte normele de siguranță în muncă</li>
+                <li>Utilizeze echipamente certificate și în stare bună de funcționare</li>
+                <li>Minimize impactul asupra proprietăților adiacente</li>
+            </ul>
+
+            <h2>7. Garanții și Reclamații</h2>
+            <h3>7.1 Garanția Lucrărilor</h3>
+            <p>
+                Garanția pentru lucrările executate va fi specificată în contractul individual și poate varia în funcție de tipul serviciului prestat.
+            </p>
+
+            <h3>7.2 Procedura de Reclamație</h3>
+            <p>
+                Orice reclamație trebuie notificată în scris în termen de 7 zile de la finalizarea lucrărilor. VAL SOCIAL CONSTRUCT se angajează să investigheze și să răspundă la reclamații în termen de 14 zile lucrătoare.
+            </p>
+
+            <h2>8. Anulare și Modificări</h2>
+            <h3>8.1 Anularea de către Client</h3>
+            <p>
+                Clientul poate anula contractul cu minimum 48 de ore înainte de data programată pentru începerea lucrărilor. Anulările făcute cu mai puțin de 48 de ore vor atrage o taxă de 25% din valoarea contractului.
+            </p>
+
+            <h3>8.2 Anularea de către VAL SOCIAL CONSTRUCT</h3>
+            <p>
+                VAL SOCIAL CONSTRUCT își rezervă dreptul de a anula contractul în cazul:
+            </p>
+            <ul>
+                <li>Neplății avansului în termenul convenit</li>
+                <li>Imposibilității accesului la șantier</li>
+                <li>Condițiilor de forță majoră</li>
+                <li>Nerespectării termenilor contractuali de către client</li>
+            </ul>
+
+            <h2>9. Confidențialitate și Protecția Datelor</h2>
+            <p>
+                VAL SOCIAL CONSTRUCT respectă confidențialitatea datelor personale ale clienților și se conformează Regulamentului General privind Protecția Datelor (GDPR). Informațiile personale colectate sunt utilizate exclusiv pentru:
+            </p>
+            <ul>
+                <li>Procesarea cererilor de ofertă</li>
+                <li>Executarea contractelor</li>
+                <li>Comunicarea cu clienții</li>
+                <li>Îmbunătățirea serviciilor oferite</li>
+            </ul>
+
+            <h2>10. Limitarea Răspunderii</h2>
+            <p>
+                VAL SOCIAL CONSTRUCT nu își asumă răspunderea pentru:
+            </p>
+            <ul>
+                <li>Utilități subterane nemarcate sau nedeclarate</li>
+                <li>Condiții ale solului sau subsolului necunoscute la momentul ofertării</li>
+                <li>Întârzieri cauzate de forță majoră</li>
+                <li>Daune provocate de terțe părți</li>
+            </ul>
+
+            <div class="important-note">
+                <p>
+                    <strong>Notă Importantă:</strong> Clientul este responsabil pentru obținerea tuturor autorizațiilor și permiselor necesare înainte de începerea lucrărilor.
+                </p>
+            </div>
+
+            <h2>11. Utilizarea Website-ului</h2>
+            <h3>11.1 Proprietate Intelectuală</h3>
+            <p>
+                Tot conținutul prezent pe acest website, incluzând texte, imagini, logo-uri și design, este proprietatea VAL SOCIAL CONSTRUCT sau a furnizorilor săi de conținut și este protejat de legile privind drepturile de autor.
+            </p>
+
+            <h3>11.2 Utilizare Acceptabilă</h3>
+            <p>
+                Utilizatorii website-ului se angajează să nu:
+            </p>
+            <ul>
+                <li>Copieze sau redistribuie conținutul fără autorizație</li>
+                <li>Utilizeze website-ul în scopuri ilegale</li>
+                <li>Încerce să compromită securitatea website-ului</li>
+                <li>Trimită spam sau conținut malițios</li>
+            </ul>
+
+            <h2>12. Modificări ale Termenilor și Condițiilor</h2>
+            <p>
+                VAL SOCIAL CONSTRUCT își rezervă dreptul de a modifica acești termeni și condiții în orice moment. Modificările vor fi publicate pe această pagină, iar data ultimei actualizări va fi modificată corespunzător. Utilizarea continuă a website-ului după publicarea modificărilor constituie acceptarea noilor termeni.
+            </p>
+
+            <h2>13. Legea Aplicabilă și Jurisdicție</h2>
+            <p>
+                Acești termeni și condiții sunt guvernați de legile României. Orice dispută rezultată din sau în legătură cu acești termeni va fi soluționată de instanțele competente din România.
+            </p>
+
+            <h2>14. Contact</h2>
+            <p>
+                Pentru întrebări sau clarificări privind acești termeni și condiții, vă rugăm să ne contactați:
+            </p>
+            <ul>
+                <li><strong>Email:</strong> valsocialconstruct@gmail.com</li>
+                <li><strong>Telefon:</strong> (+40) 749 277 995</li>
+                <li><strong>Adresă:</strong> Str. 1 Decembrie 1918, Nr. 54, Nartești, Galați</li>
+                <li><strong>Program:</strong> Luni - Vineri, 8:00 - 18:00</li>
+            </ul>
+
+            <div class="important-note" style="margin-top: 40px;">
+                <p>
+                    Prin utilizarea serviciilor VAL SOCIAL CONSTRUCT și a acestui website, confirmați că ați citit, înțeles și acceptat acești termeni și condiții.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VAL SOCIAL CONSTRUCT</h3>
+                <p>Companie din Galați specializată în lucrări de pregătire a terenului, oferind servicii profesionale cu echipamente moderne pentru proiecte rezidențiale, comerciale și industriale.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Info</h3>
+                <ul>
+                    <li><a href="index.html">Despre Noi</a></li>
+                    <li><a href="index.html">Noutăți</a></li>
+                    <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                    <li><a href="termeni.html">Termeni și condiții</a></li>
+                    <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Proiecte</a></li>
+                    <li><a href="valsocial contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li>Luni-Vineri: 8:00 - 18:00</li>
+                    <li>Str. 1 Decembrie 1918, Nr. 54</li>
+                    <li>Nartești, Galați</li>
+                    <li>(+40) 749 277 995</li>
+                    <li>valsocialconstruct@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© VAL SOCIAL CONSTRUCT SRL, Toate Drepturile Rezervate | <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none;">Termeni și Condiții</a></p>
+        </div>
+    </footer>
+</body>
+</html>
