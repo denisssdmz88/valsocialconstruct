@@ -14,64 +14,61 @@
         .top-bar .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .contact-info { display: flex; gap: 20px; flex-wrap: wrap; }
         .social-links { display: flex; gap: 15px; }
-        .social-links a { color: white; text-decoration: none; transition: color 0.3s; }
+        .social-links a { color: white; text-decoration: none; transition: 0.3s; }
         .social-links a:hover { color: #ffa500; }
 
         /* Navigation */
         nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; list-style: none; gap: 30px; }
-        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; padding: 25px 0; display: block; }
+        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
+        .nav-menu { display: flex; list-style: none; gap: 20px; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
-        .cta-nav { background: #ffa500; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background 0.3s; }
+        .cta-nav { background: #ffa500; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .cta-nav:hover { background: #ff8c00; }
 
-        /* 1. HERO OPTIMIZAT */
+        /* 1. HERO */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('CAT.png'); 
             background-size: cover; background-position: center; 
-            color: white; padding: 120px 20px; text-align: center; 
+            color: white; padding: 100px 20px; text-align: center; 
         }
-        .hero h1 { font-size: 3em; margin-bottom: 15px; text-transform: uppercase; }
-        .hero p { font-size: 1.4em; margin-bottom: 30px; color: #ffa500; font-weight: 600; }
-        .btn-main { background: #ffa500; color: white; padding: 15px 40px; border-radius: 5px; text-decoration: none; font-size: 1.3em; font-weight: 700; display: inline-block; transition: 0.3s; }
+        .hero h1 { font-size: 2.8em; margin-bottom: 15px; text-transform: uppercase; }
+        .hero p { font-size: 1.3em; margin-bottom: 30px; color: #ffa500; font-weight: 600; }
+        .btn-main { background: #ffa500; color: white; padding: 15px 35px; border-radius: 5px; text-decoration: none; font-size: 1.2em; font-weight: 700; display: inline-block; transition: 0.3s; }
         .btn-main:hover { background: #ff8c00; transform: scale(1.05); }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 80px 0; }
-        .section-title { text-align: center; font-size: 2.5em; margin-bottom: 40px; color: #1a1a1a; }
+        section { padding: 60px 0; }
+        .section-title { text-align: center; font-size: 2.2em; margin-bottom: 40px; color: #1a1a1a; }
 
-        /* 2. SERVICII CU ICONIȚE */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .service-card { text-align: center; padding: 40px; background: #f9f9f9; border-radius: 10px; transition: 0.3s; border-bottom: 4px solid #eee; }
-        .service-card:hover { border-bottom: 4px solid #ffa500; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .service-icon { font-size: 3em; margin-bottom: 20px; display: block; }
+        /* 2. SERVICII */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .service-card { text-align: center; padding: 30px; background: #f9f9f9; border-radius: 10px; border-bottom: 4px solid #eee; }
+        .service-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
 
         /* 3. DE CE NOI */
         .why-us { background: #1a1a1a; color: white; }
         .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .why-item { padding: 20px; border-left: 3px solid #ffa500; }
-        .why-item h4 { color: #ffa500; font-size: 1.2em; margin-bottom: 10px; }
+        .why-item h4 { color: #ffa500; margin-bottom: 10px; }
 
         /* 4. GALERIE */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; }
 
         /* 5. CUM LUCRĂM */
-        .steps { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 40px; }
-        .step { flex: 1; min-width: 200px; text-align: center; position: relative; }
-        .step-num { width: 50px; height: 50px; background: #ffa500; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-weight: 700; font-size: 1.5em; }
+        .steps { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+        .step { flex: 1; min-width: 200px; text-align: center; }
+        .step-num { width: 45px; height: 45px; background: #ffa500; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-weight: 700; }
 
         /* 7. CTA FINAL */
-        .cta-final { background: #ffa500; color: white; text-align: center; padding: 100px 20px; }
-        .cta-final h2 { font-size: 3em; margin-bottom: 20px; }
-        .phone-big { font-size: 3.5em; display: block; color: white; text-decoration: none; font-weight: 800; margin-top: 20px; }
+        .cta-final { background: #ffa500; color: white; text-align: center; padding: 80px 20px; }
+        .phone-big { font-size: 2.5em; display: block; color: white; text-decoration: none; font-weight: 800; margin-top: 20px; }
 
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
+        @media (max-width: 1024px) {
+            .nav-menu { display: none; } /* Pentru mobil e nevoie de meniu hamburger, dar pentru moment am lasat varianta curata */
             .hero h1 { font-size: 2em; }
-            .phone-big { font-size: 2em; }
         }
     </style>
 </head>
@@ -82,12 +79,10 @@
             <div class="contact-info">
                 <span>📞 (+40) 749 277 995</span>
                 <span>✉️ valsocialconstruct@gmail.com</span>
-                <span>📍 Nărtești, Galați</span>
             </div>
             <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">TikTok</a>
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
             </div>
         </div>
     </div>
@@ -97,8 +92,11 @@
             <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
             <ul class="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
+                <li><a href="index.html">Despre Noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
+                <li><a href="termeni.html">Termeni</a></li>
             </ul>
             <a href="tel:+40749277995" class="cta-nav">Sună Acum</a>
         </div>
@@ -106,7 +104,7 @@
 
     <section class="hero">
         <div class="container">
-            <h1>Buldoexcavator disponibil în Tecuci și împrejurimi</h1>
+            <h1>Buldoexcavator disponibil în Galați & Tecuci</h1>
             <p>Săpături, nivelări și lucrări pregătitoare – disponibil imediat</p>
             <a href="tel:+40749277995" class="btn-main">📞 Sună acum: 0749 277 995</a>
         </div>
@@ -115,22 +113,10 @@
     <section class="container">
         <h2 class="section-title">Serviciile noastre</h2>
         <div class="services-grid">
-            <div class="service-card">
-                <span class="service-icon">🏗️</span>
-                <h3>Săpături fundații</h3>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">🚜</span>
-                <h3>Nivelări teren</h3>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">💧</span>
-                <h3>Săpături utilități</h3>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">🚧</span>
-                <h3>Pregătire construcții</h3>
-            </div>
+            <div class="service-card"><span class="service-icon">🏗️</span><h3>Săpături fundații</h3></div>
+            <div class="service-card"><span class="service-icon">🚜</span><h3>Nivelări teren</h3></div>
+            <div class="service-card"><span class="service-icon">💧</span><h3>Săpături utilități</h3></div>
+            <div class="service-card"><span class="service-icon">🚧</span><h3>Pregătire construcții</h3></div>
         </div>
     </section>
 
@@ -138,22 +124,10 @@
         <div class="container">
             <h2 class="section-title" style="color:white">De ce să ne alegi</h2>
             <div class="why-grid">
-                <div class="why-item">
-                    <h4>Intervenim rapid</h4>
-                    <p>Chiar și a doua zi de la confirmare.</p>
-                </div>
-                <div class="why-item">
-                    <h4>Utilaj performant</h4>
-                    <p>CAT 428 echipat pentru orice provocare.</p>
-                </div>
-                <div class="why-item">
-                    <h4>Seriozitate</h4>
-                    <p>Respectăm termenele și calitatea lucrării.</p>
-                </div>
-                <div class="why-item">
-                    <h4>Prețuri corecte</h4>
-                    <p>Oferte avantajoase pentru proiecte noi.</p>
-                </div>
+                <div class="why-item"><h4>Intervenim rapid</h4><p>Chiar și a doua zi de la confirmare.</p></div>
+                <div class="why-item"><h4>Utilaj performant</h4><p>CAT 428 echipat profesional.</p></div>
+                <div class="why-item"><h4>Seriozitate</h4><p>Respectăm termenele stabilite.</p></div>
+                <div class="why-item"><h4>Prețuri corecte</h4><p>Oferte corecte per lucrare.</p></div>
             </div>
         </div>
     </section>
@@ -161,41 +135,19 @@
     <section class="container">
         <h2 class="section-title">Lucrări realizate</h2>
         <div class="gallery-grid">
-            <img src="CAT.png" alt="Buldoexcavator in lucru">
-            <img src="CAT.png" alt="Santier pregatit">
-            <img src="CAT.png" alt="Nivelare teren">
+            <img src="CAT.png" alt="Buldoexcavator">
+            <img src="CAT.png" alt="Lucrare teren">
+            <img src="CAT.png" alt="Utilaj">
         </div>
     </section>
 
-    <section class="container" style="background: #fdfdfd;">
+    <section class="container">
         <h2 class="section-title">Cum colaborăm</h2>
         <div class="steps">
-            <div class="step">
-                <div class="step-num">1</div>
-                <h3>Ne suni</h3>
-                <p>Discutăm detaliile lucrării tale.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <h3>Stabilim planul</h3>
-                <p>Evaluăm rapid durata și costul.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <h3>Venim la locație</h3>
-                <p>Intervenim rapid în Galați și împrejurimi.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">4</div>
-                <h3>Executăm lucrarea</h3>
-                <p>Livrăm rezultate de înaltă precizie.</p>
-            </div>
+            <div class="step"><div class="step-num">1</div><h3>Ne suni</h3><p>Discutăm lucrarea.</p></div>
+            <div class="step"><div class="step-num">2</div><h3>Planificăm</h3><p>Stabilim ziua și costul.</p></div>
+            <div class="step"><div class="step-num">3</div><h3>Executăm</h3><p>Venim rapid la locație.</p></div>
         </div>
-    </section>
-
-    <section class="container" style="text-align: center; border-top: 1px solid #eee;">
-        <h2 class="section-title">Prețuri</h2>
-        <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto;">Oferim prețuri corecte în funcție de complexitatea lucrării. Pentru colaborări noi, în această perioadă avem oferte avantajoase.</p>
     </section>
 
     <section class="cta-final">
@@ -206,7 +158,7 @@
     </section>
 
     <footer>
-        <div class="container footer-bottom">
+        <div class="container" style="text-align: center; padding: 40px 0; color: #777; border-top: 1px solid #eee;">
             <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
         </div>
     </footer>
