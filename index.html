@@ -13,9 +13,12 @@
             <div class="contact-info">
                 <span>📞 (+40) 749 277 995</span>
                 <span>✉️ valsocialconstruct@gmail.com</span>
+                <span>📍 Nărtești, Galați</span>
             </div>
             <div class="social-links">
-                <a href="#">Facebook</a> | <a href="#">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">FB</a>
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank">IG</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct" target="_blank">TK</a>
             </div>
         </div>
     </div>
@@ -23,46 +26,100 @@
     <nav>
         <div class="container">
             <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
-            
             <ul class="nav-menu" id="nav-links">
                 <li><a href="index.html">Acasă</a></li>
-                <li><a href="servicii.html">Servicii</a></li>
-                <li><a href="activitati.html">Activități</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="contact.html" class="cta-button">Cere Ofertă</a></li>
+                <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
+                <li><a href="valsocial contact.html">Contact</a></li>
+                <li><a href="termeni.html">Termeni</a></li>
             </ul>
-
             <div class="menu-toggle" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
     <section class="hero">
-        <h1>Construim Fundația Viitorului</h1>
-        <p>Servicii profesionale de excavare și pregătire teren.</p>
+        <div class="container">
+            <h1>Despre Noi</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Acasă</a> / Identitate și Viziune
+            </div>
+        </div>
     </section>
 
-    <section class="about-section">
-        <div class="about-text">
-            <h2>Cine Suntem</h2>
-            <p>VAL SOCIAL CONSTRUCT SRL este o companie dedicată calității în construcții, specializată în pregătirea terenului și infrastructură.</p>
-            <p>Echipa noastră folosește tehnologie CAT pentru a asigura precizie în fiecare metru cub excavat.</p>
+    <section class="container">
+        <div class="intro-flex">
+            <div class="intro-text">
+                <span class="subtitle">SC VAL SOCIAL CONSTRUCT SRL</span>
+                <h2>Expertiză în Pregătirea Terenului</h2>
+                <p>VAL SOCIAL CONSTRUCT, înființată în 2025 în Galați, s-a născut din dorința de a oferi soluții tehnice de înaltă precizie pentru infrastructura locală și regională.</p>
+                <div class="spec-grid">
+                    <div class="spec-item"><strong>Utilaj</strong><span>CAT 428</span></div>
+                    <div class="spec-item"><strong>Locație</strong><span>Galați, RO</span></div>
+                </div>
+            </div>
+            <div class="intro-image">
+                <img src="CAT.png" alt="Echipament VAL SOCIAL CONSTRUCT">
+            </div>
         </div>
-        <div class="about-image">
-            <img src="utilaj.jpg" alt="Excavator în lucru">
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <span class="subtitle" style="text-align: center;">Competențe Autorizate</span>
+            <h2 style="text-align: center; margin-bottom: 40px;">Expertiză CAEN</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>Pregătirea terenului</h3>
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p>CAEN 4312</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Construcții drumuri</h3>
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p>CAEN 4211</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Demolări construcții</h3>
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p>CAEN 4311</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="mission-box">
+            <span class="subtitle">Misiunea Noastră</span>
+            <h2>Obiectivul VAL SOCIAL CONSTRUCT</h2>
+            <p>Misiunea noastră este să oferim servicii profesionale de pregătire a terenului, contribuind activ la dezvoltarea proiectelor rezidențiale și industriale cu eficiență și siguranță.</p>
         </div>
     </section>
 
     <a href="tel:+40749277995" class="mobile-call-btn">📞 Sună Acum</a>
 
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>VAL SOCIAL CONSTRUCT</h3>
+                <p>Specialiști în infrastructură cu utilaje Caterpillar.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📞 (+40) 749 277 995</p>
+                <p>📍 Nărtești, România</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 VAL SOCIAL CONSTRUCT SRL.</p>
+        </div>
+    </footer>
+
     <script>
         const menu = document.querySelector('#mobile-menu');
         const menuLinks = document.querySelector('#nav-links');
-
-        menu.addEventListener('click', function() {
+        menu.addEventListener('click', () => {
             menu.classList.toggle('is-active');
             menuLinks.classList.toggle('active');
         });
