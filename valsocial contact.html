@@ -20,9 +20,9 @@
         /* Navigation */
         nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; list-style: none; gap: 30px; }
-        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; }
+        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
+        .nav-menu { display: flex; list-style: none; gap: 20px; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
 
         /* Hero Section */
@@ -31,16 +31,16 @@
             background-size: cover; 
             background-position: center; 
             color: white; 
-            padding: 100px 20px; 
+            padding: 80px 20px; 
             text-align: center; 
         }
-        .hero h1 { font-size: 3.5em; margin-bottom: 10px; }
-        .breadcrumb { font-size: 1.1em; color: #ffa500; }
-        .breadcrumb a { color: white; text-decoration: none; }
+        .hero h1 { font-size: 3em; margin-bottom: 10px; text-transform: uppercase; }
+        .breadcrumb { font-size: 1.1em; color: rgba(255,255,255,0.9); }
+        .breadcrumb a { color: #ffa500; text-decoration: none; font-weight: 600; }
 
         /* Contact Section */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .contact-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; padding: 80px 0; }
+        .contact-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; padding: 60px 0; }
 
         /* Form */
         .contact-form-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 5px solid #ffa500; }
@@ -65,11 +65,11 @@
         .contact-card p, .contact-card a { color: #333; font-weight: 600; text-decoration: none; font-size: 1.1em; }
 
         /* Map */
-        .map-section { padding-bottom: 80px; }
+        .map-section { padding-bottom: 60px; }
         .map-container { height: 450px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
 
         /* Social */
-        .social-cta { background: #1a1a1a; color: white; text-align: center; padding: 60px 20px; border-radius: 15px; margin-bottom: 80px; }
+        .social-cta { background: #1a1a1a; color: white; text-align: center; padding: 60px 20px; border-radius: 15px; margin-bottom: 60px; }
         .social-cta h2 { font-size: 2.2em; margin-bottom: 30px; }
         .social-icons-large { display: flex; justify-content: center; gap: 25px; }
         .social-btn { 
@@ -80,18 +80,19 @@
         .social-btn:hover { background: #ffa500; transform: scale(1.1); }
 
         /* Footer */
-        footer { background: #1a1a1a; color: white; padding: 80px 20px 20px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto; }
-        .footer-section h3 { color: #ffa500; margin-bottom: 25px; }
+        footer { background: #1a1a1a; color: white; padding: 60px 20px 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer-section h3 { color: #ffa500; margin-bottom: 20px; }
         .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #ccc; text-decoration: none; font-size: 0.9em; transition: 0.3s; }
         .footer-links a:hover { color: #ffa500; }
-        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; color: #777; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; color: #666; font-size: 0.8em; }
 
         @media (max-width: 968px) {
             .contact-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5em; }
+            .hero h1 { font-size: 2.2em; }
+            .nav-menu { display: none; }
         }
     </style>
 </head>
@@ -126,9 +127,11 @@
     </nav>
 
     <section class="hero">
-        <h1>Contactează-ne</h1>
-        <div class="breadcrumb">
-            <a href="index.html">Acasă</a> / Contact
+        <div class="container">
+            <h1>Contactează-ne</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Acasă</a> / Contact
+            </div>
         </div>
     </section>
 
@@ -196,7 +199,7 @@
         <section class="map-section">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22234.34145293282!2d27.4654316!3d45.8454316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b68630325f6907%3A0x6305a6669911e38c!2zTsSDcnRlyJl0aSA4MDczNTE!5e0!3m2!1sro!2sro!4v1715432000000!5m2!1sro!2sro" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11124.966453624896!2d27.4258!3d45.854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b680c656d059e7%3A0xe54e2079f82662c!2zTsSDcnRlyJl0aQ!5e0!3m2!1sro!2sro!4v1715000000000" 
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
@@ -204,13 +207,13 @@
         <section class="social-cta">
             <h2>Ne găsești și pe rețelele sociale</h2>
             <div class="social-icons-large">
-                <a href="https://www.tiktok.com/@valsocialconstruct" target="_blank" class="social-btn">
+                <a href="https://www.tiktok.com/@valsocialconstruct" target="_blank" class="social-btn" title="TikTok">
                     <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                 </a>
-                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank" class="social-btn">
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank" class="social-btn" title="Facebook">
                     <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                 </a>
-                <a href="https://www.instagram.com/valsocialconstruct" target="_blank" class="social-btn">
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank" class="social-btn" title="Instagram">
                     <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                 </a>
             </div>
@@ -224,11 +227,20 @@
                 <p>Profesioniști în pregătirea terenului pentru orice tip de construcție în județul Galați.</p>
             </div>
             <div class="footer-section">
-                <h3>Info</h3>
+                <h3>Link-uri Utile</h3>
                 <ul class="footer-links">
                     <li><a href="index.html">Despre Noi</a></li>
                     <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
-                    <li><a href="termeni.html">Termeni și condiții</a></li>
+                    <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
+                    <li><a href="termeni.html">Termeni</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Social Media</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a></li>
                 </ul>
             </div>
             <div class="footer-section">
