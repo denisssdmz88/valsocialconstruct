@@ -6,6 +6,7 @@
     <title>Contact - VAL SOCIAL CONSTRUCT</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
+        /* Păstrăm stilul tău original intact */
         * {
             margin: 0;
             padding: 0;
@@ -393,7 +394,6 @@
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
     <div class="top-bar">
         <div class="container">
             <div class="contact-info">
@@ -409,7 +409,6 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav>
         <div class="container">
             <div class="logo">VAL SOCIAL CONSTRUCT</div>
@@ -419,13 +418,12 @@
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
-				<li><a href="termeni.html">Termeni și condiții</a></li>
+                <li><a href="termeni.html">Termeni și condiții</a></li>
             </ul>
             <a href="#contact-form" class="cta-button">Contactați-ne</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Contact</h1>
         <div class="breadcrumb">
@@ -433,29 +431,29 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact-section container" id="contact-form">
         <div class="contact-form-wrapper">
             <h2>Trimiteți-ne un mesaj</h2>
-            <form>
+            
+            <form action="https://formspree.io/f/xzdyellb" method="POST">
                 <div class="form-group">
                     <label for="name">Nume Complet *</label>
-                    <input type="text" id="name" name="name" required>
+                    <input type="text" id="name" name="nume" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">E-mail *</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="_replyto" required>
                 </div>
 
                 <div class="form-group">
                     <label for="phone">Telefon</label>
-                    <input type="tel" id="phone" name="phone">
+                    <input type="tel" id="phone" name="telefon">
                 </div>
 
                 <div class="form-group">
                     <label for="subject">Subiect *</label>
-                    <select id="subject" name="subject" required>
+                    <select id="subject" name="subiect" required>
                         <option value="">Selectați un subiect</option>
                         <option value="excavari">Excavări și Nivelări</option>
                         <option value="drenaj">Lucrări de Drenaj</option>
@@ -467,8 +465,10 @@
 
                 <div class="form-group">
                     <label for="message">Mesaj *</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <textarea id="message" name="mesaj" required></textarea>
                 </div>
+
+                <input type="text" name="_gotcha" style="display:none" />
 
                 <button type="submit" class="submit-btn">Trimite Mesajul</button>
             </form>
@@ -501,19 +501,18 @@
 
                 <div class="contact-card">
                     <h3>👤 Manager</h3>
-                    <p></p>
+                    <p>Valerică Achim</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
     <section class="map-section">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 30px; color: #1a1a1a;">Locația Sediului</h2>
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15675.053680138446!2d27.38631591206868!3d46.01150904399028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b5d28034d75505%3A0x43f913590eceb245!2zODA3MTU4IE7Eg3J0ZciZdGk!5e0!3m2!1sen!2sro!4v1776348535697!5m2!1sen!2sro"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2753.829443657375!2d27.4646!3d46.3532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDIxJzExLjUiTiAyN8KwMjcnNTIuNiJF!5e0!3m2!1sen!2sro!4v1713330000000!5m2!1sen!2sro"
                     width="100%" 
                     height="450" 
                     style="border:0; border-radius: 10px;" 
@@ -525,7 +524,6 @@
         </div>
     </section>
 
-    <!-- Social Media Section -->
     <section class="social-media-section container">
         <h2>Urmăriți-ne pe Social Media</h2>
         <p>Rămâneți la curent cu ultimele noastre proiecte și noutăți</p>
@@ -543,7 +541,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
