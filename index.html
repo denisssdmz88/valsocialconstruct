@@ -1,255 +1,425 @@
 <!DOCTYPE html>
+
 <html lang="ro">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Despre Noi - VAL SOCIAL CONSTRUCT</title>
+
     <link rel="icon" type="image/png" href="favicon.png">
+
     <style>
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fff; overflow-x: hidden; }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
+
+
 
         /* Top Bar */
+
         .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
+
         .top-bar .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+
         .contact-info { display: flex; gap: 20px; flex-wrap: wrap; }
+
         .social-links { display: flex; gap: 15px; }
+
         .social-links a { color: white; text-decoration: none; transition: color 0.3s; }
+
         .social-links a:hover { color: #ffa500; }
 
+
+
         /* Navigation */
+
         nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+
         .logo { font-size: 1.8em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        
-        /* Meniu Desktop */
+
         .nav-menu { display: flex; list-style: none; gap: 30px; }
+
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; padding: 25px 0; display: block; }
+
         .nav-menu a:hover { color: #ffa500; }
+
         .cta-nav { background: #ffa500; color: white; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background 0.3s; }
+
         .cta-nav:hover { background: #ff8c00; }
 
-        /* Hamburger Menu (Ascuns pe desktop) */
-        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1100; }
-        .menu-toggle span { width: 30px; height: 3px; background: #333; transition: 0.3s; }
 
-        /* Hero Section */
+
+        /* Hero Section - Noul stil unitar */
+
         .hero { 
+
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('CAT.png'); 
-            background-size: cover; background-position: center; 
-            color: white; padding: 120px 20px; text-align: center; 
+
+            background-size: cover; 
+
+            background-position: center; 
+
+            color: white; 
+
+            padding: 120px 20px; 
+
+            text-align: center; 
+
         }
+
         .hero h1 { font-size: 3.5em; margin-bottom: 10px; }
+
         .breadcrumb { font-size: 1.1em; color: rgba(255,255,255,0.9); }
+
         .breadcrumb a { color: #ffa500; text-decoration: none; font-weight: 600; }
 
+
+
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
         section { padding: 80px 0; }
 
+
+
         /* Intro Section */
+
         .intro-flex { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
-        .intro-text, .intro-image { flex: 1; min-width: 300px; }
+
+        .intro-text { flex: 1; min-width: 300px; }
+
+        .intro-image { flex: 1; min-width: 300px; }
+
         .intro-image img { width: 100%; border-radius: 10px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
         .subtitle { color: #ffa500; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
+
         h2 { font-size: 2.5em; color: #1a1a1a; margin-bottom: 25px; }
+
         .intro-text p { margin-bottom: 20px; color: #555; font-size: 1.1em; }
 
-        /* Stats Section */
+
+
+        /* Stats/Expertiza Section */
+
         .stats-section { background: #f9f9f9; }
+
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+
         .stat-item { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
         .stat-item h3 { font-size: 1.1em; margin-bottom: 15px; height: 2.5em; display: flex; align-items: center; }
+
         .progress-bar { background: #eee; height: 8px; border-radius: 4px; margin-bottom: 10px; overflow: hidden; }
+
         .progress-fill { background: #ffa500; height: 100%; width: 100%; }
 
-        /* Equipment Specs */
+        .stat-item p { font-weight: 700; color: #888; }
+
+
+
+        /* Equipment Specs - Grid-ul din pagina de servicii */
+
         .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 25px; }
+
         .spec-item { background: #f5f5f5; padding: 15px; border-radius: 8px; border-left: 4px solid #ffa500; }
+
         .spec-item strong { display: block; color: #ffa500; font-size: 0.8em; text-transform: uppercase; }
 
+        .spec-item span { font-size: 1em; font-weight: 600; color: #333; }
+
+
+
         /* Mission Section */
+
         .mission-box { background: #1a1a1a; color: white; padding: 60px; border-radius: 15px; position: relative; margin-top: 50px; }
 
+        .mission-box::after { content: "👷"; position: absolute; top: -30px; right: 50px; font-size: 4em; }
+
+
+
         /* Footer */
+
         footer { background: #1a1a1a; color: white; padding: 80px 20px 20px; margin-top: 80px; }
+
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto; }
+
         .footer-section h3 { color: #ffa500; margin-bottom: 25px; }
+
         .footer-links { list-style: none; }
+
         .footer-links li { margin-bottom: 12px; }
+
         .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; }
+
+        .footer-links a:hover { color: #ffa500; }
+
         .footer-bottom { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; color: #777; }
 
-        /* BUTON APEL MOBIL */
-        .mobile-call-btn { display: none; position: fixed; bottom: 20px; right: 20px; background: #28a745; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 2000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-        /* --- COMPATIBILITATE TELEFON --- */
-        @media (max-width: 968px) {
-            .menu-toggle { display: flex; } /* Apare hamburgerul */
-            
-            .nav-menu {
-                position: absolute; top: 100%; left: -100%; width: 100%; background: white;
-                flex-direction: column; gap: 0; transition: 0.4s; box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-            }
-            .nav-menu.active { left: 0; }
-            .nav-menu a { padding: 20px; border-bottom: 1px solid #eee; }
-            .cta-nav { margin: 20px; text-align: center; }
 
-            .hero h1 { font-size: 2.2em; }
-            .hero { padding: 80px 20px; }
-            
-            .intro-flex { flex-direction: column; text-align: center; }
-            .intro-text, .intro-image { min-width: 100%; }
-            
-            .mission-box { padding: 30px; }
-            .mission-box::after { display: none; }
+        @media (max-width: 768px) {
 
-            .mobile-call-btn { display: block; } /* Buton de sunat doar pe mobil */
-            
-            /* Animație Hamburger */
-            #mobile-menu.is-active span:nth-child(2) { opacity: 0; }
-            #mobile-menu.is-active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            #mobile-menu.is-active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .nav-menu { display: none; }
+
+            .hero h1 { font-size: 2.5em; }
+
+            .intro-flex { flex-direction: column; }
+
         }
+
     </style>
+
 </head>
+
 <body>
+
     <div class="top-bar">
+
         <div class="container">
+
             <div class="contact-info">
+
                 <span>📞 (+40) 749 277 995</span>
+
                 <span>✉️ valsocialconstruct@gmail.com</span>
+
                 <span>📍 Nărtești, Galați</span>
+
             </div>
+
             <div class="social-links">
+
                 <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
+
                 <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
+
                 <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
+
             </div>
+
         </div>
+
     </div>
 
+
+
     <nav>
+
         <div class="container">
+
             <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
-            
-            <ul class="nav-menu" id="nav-menu">
+
+            <ul class="nav-menu">
+
                 <li><a href="index.html">Acasă</a></li>
+
                 <li><a href="index.html">Despre Noi</a></li>
+
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
+
                 <li><a href="valsocial contact.html">Contact</a></li>
+
                 <li><a href="termeni.html">Termeni</a></li>
+
             </ul>
 
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span><span></span><span></span>
-            </div>
-
             <a href="valsocial contact.html" class="cta-nav">Contactați-ne</a>
+
         </div>
+
     </nav>
 
+
+
     <section class="hero">
+
         <div class="container">
+
             <h1>Despre Noi</h1>
+
             <div class="breadcrumb">
+
                 <a href="index.html">Acasă</a> / Identitate și Viziune
+
             </div>
+
         </div>
+
     </section>
 
+
+
     <section class="container">
+
         <div class="intro-flex">
+
             <div class="intro-text">
+
                 <span class="subtitle">SC VAL SOCIAL CONSTRUCT SRL</span>
+
                 <h2>Expertiză în Pregătirea Terenului</h2>
+
                 <p>VAL SOCIAL CONSTRUCT, înființată în 2025 în Galați, s-a născut din dorința de a oferi soluții tehnice de înaltă precizie pentru infrastructura locală și regională.</p>
+
                 <p>Ne concentrăm pe furnizarea de servicii superioare, utilizând utilaje de ultimă generație și respectând cele mai stricte norme de siguranță în construcții.</p>
+
                 <div class="spec-grid">
+
                     <div class="spec-item"><strong>Utilaj</strong><span>CAT 428</span></div>
+
                     <div class="spec-item"><strong>Locație</strong><span>Galați, RO</span></div>
+
                 </div>
+
             </div>
+
             <div class="intro-image">
+
                 <img src="CAT.png" alt="Echipament VAL SOCIAL CONSTRUCT">
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section class="stats-section">
+
         <div class="container">
+
             <span class="subtitle" style="text-align: center; display: block;">Competențe Autorizate</span>
+
             <h2 style="text-align: center; margin-bottom: 50px;">Expertiză și Autorizații CAEN</h2>
+
             <div class="stats-grid">
+
                 <div class="stat-item">
+
                     <h3>Pregătirea terenului</h3>
+
                     <div class="progress-bar"><div class="progress-fill"></div></div>
+
                     <p>CAEN 4312</p>
+
                 </div>
+
                 <div class="stat-item">
+
                     <h3>Construcții drumuri</h3>
+
                     <div class="progress-bar"><div class="progress-fill"></div></div>
+
                     <p>CAEN 4211</p>
+
                 </div>
+
                 <div class="stat-item">
+
                     <h3>Demolări construcții</h3>
+
                     <div class="progress-bar"><div class="progress-fill"></div></div>
+
                     <p>CAEN 4311</p>
+
                 </div>
+
                 <div class="stat-item">
+
                     <h3>Lucrări speciale</h3>
+
                     <div class="progress-bar"><div class="progress-fill"></div></div>
+
                     <p>CAEN 4342</p>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
+
+
 
     <section class="container">
+
         <div class="mission-box">
+
             <span class="subtitle" style="color: #ffa500;">Misiunea Noastră</span>
+
             <h2 style="color: white;">Obiectivul VAL SOCIAL CONSTRUCT</h2>
+
             <p style="font-size: 1.2em; opacity: 0.9;">Misiunea noastră este să oferim servicii profesionale de pregătire a terenului, contribuind activ la dezvoltarea proiectelor rezidențiale și industriale. Ne angajăm să oferim fiecărui client soluția optimă, bazată pe eficiență, siguranță și profesionalism.</p>
+
         </div>
+
     </section>
 
-    <a href="tel:+40749277995" class="mobile-call-btn">📞 Sună Acum</a>
+
 
     <footer>
+
         <div class="footer-grid">
+
             <div class="footer-section">
+
                 <h3>VAL SOCIAL CONSTRUCT</h3>
+
                 <p>Specialiști în infrastructură și pregătirea terenului, oferind execuție de calitate cu utilaje Caterpillar.</p>
+
             </div>
+
             <div class="footer-section">
+
                 <h3>Info</h3>
+
                 <ul class="footer-links">
+
                     <li><a href="index.html">Acasă</a></li>
+
                     <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+
                     <li><a href="termeni.html">Termeni și condiții</a></li>
+
                     <li><a href="valsocial contact.html">Contact</a></li>
+
                 </ul>
+
             </div>
+
             <div class="footer-section">
+
                 <h3>Contact</h3>
+
                 <p>📞 (+40) 749 277 995</p>
+
                 <p>✉️ valsocialconstruct@gmail.com</p>
+
                 <p>📍 Nărtești, România</p>
+
             </div>
+
         </div>
+
         <div class="footer-bottom">
+
             <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
+
         </div>
+
     </footer>
 
-    <script>
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navMenu = document.getElementById('nav-menu');
-
-        mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('is-active');
-            navMenu.classList.toggle('active');
-        });
-    </script>
 </body>
-</html>
+
+</html> i
