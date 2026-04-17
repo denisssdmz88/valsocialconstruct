@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Termeni și Condiții - VAL SOCIAL CONSTRUCT</title>
     <style>
+        /* Reset de bază */
         * {
             margin: 0;
             padding: 0;
@@ -15,6 +16,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #ffffff;
         }
 
         /* Top Bar */
@@ -38,7 +40,6 @@
         .contact-info {
             display: flex;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
         .social-links {
@@ -124,28 +125,17 @@
 
         .hero h1 {
             font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .breadcrumb {
-            color: rgba(255,255,255,0.8);
-            margin-top: 10px;
-        }
-
-        .breadcrumb a {
-            color: white;
-            text-decoration: none;
+            margin-bottom: 10px;
         }
 
         /* Main Content */
+        .content-section {
+            padding: 60px 20px;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .content-section {
-            padding: 60px 20px;
         }
 
         .terms-content {
@@ -161,7 +151,7 @@
             color: #666;
         }
 
-        .terms-content h2 {
+        h2 {
             color: #1a1a1a;
             font-size: 1.8em;
             margin-top: 40px;
@@ -170,36 +160,20 @@
             border-bottom: 2px solid #ffa500;
         }
 
-        .terms-content h3 {
-            color: #333;
-            font-size: 1.3em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-
-        .terms-content p, .terms-content li {
-            color: #555;
-            font-size: 1.05em;
+        p {
+            margin-bottom: 20px;
             line-height: 1.8;
-            margin-bottom: 15px;
+            color: #555;
         }
 
-        .terms-content ul {
-            margin: 20px 0;
+        ul {
+            margin-bottom: 20px;
             padding-left: 40px;
         }
 
-        .important-note {
-            background: #fff3cd;
-            border-left: 4px solid #ffa500;
-            padding: 20px;
-            margin: 30px 0;
-        }
-
-        .important-note p {
-            color: #856404;
-            margin: 0;
-            font-weight: 500;
+        li {
+            margin-bottom: 10px;
+            color: #555;
         }
 
         /* Footer */
@@ -207,6 +181,7 @@
             background: #1a1a1a;
             color: white;
             padding: 60px 20px 20px;
+            margin-top: 40px;
         }
 
         .footer-content {
@@ -215,7 +190,6 @@
             gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
-            padding-bottom: 40px;
         }
 
         .footer-section h3 {
@@ -223,26 +197,45 @@
             margin-bottom: 20px;
         }
 
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: #ffa500;
-        }
-
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.
+            margin-top: 40px;
+            color: #888;
+        }
+
+        /* Mobile */
+        @media (max-width: 968px) {
+            .nav-menu { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 (+40) 749 277 995</span>
+                <span>✉️ valsocialconstruct@gmail.com</span>
+            </div>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <div class="logo">VAL SOCIAL CONSTRUCT</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
+                <li><a href="valsocial contact.html">Contact</a></li>
+                <li><a href="termeni.html" class="active">Termeni</a></li>
+            </ul>
+            <a href="valsocial contact.html" class="cta-button">Contactați-ne</a>
+        </div>
+    </nav
