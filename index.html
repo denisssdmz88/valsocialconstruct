@@ -27,7 +27,7 @@
         .cta-nav { background: #ffa500; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .cta-nav:hover { background: #ff8c00; }
 
-        /* 1. HERO */
+        /* HERO */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('CAT.png'); 
             background-size: cover; background-position: center; 
@@ -42,37 +42,74 @@
         section { padding: 60px 0; }
         .section-title { text-align: center; font-size: 2.2em; margin-bottom: 40px; color: #1a1a1a; }
 
-        /* 2. SERVICII */
+        /* SERVICII */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
         .service-card { text-align: center; padding: 30px; background: #f9f9f9; border-radius: 10px; border-bottom: 4px solid #eee; }
         .service-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
 
-        /* 3. DE CE NOI */
+        /* DE CE NOI */
         .why-us { background: #1a1a1a; color: white; }
         .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
         .why-item { padding: 20px; border-left: 3px solid #ffa500; }
         .why-item h4 { color: #ffa500; margin-bottom: 10px; }
 
-        /* 4. GALERIE */
+        /* GALERIE */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .gallery-item { background: #fff; border-radius: 8px; overflow: hidden; }
 
-        /* 5. CUM LUCRĂM */
+        /* CUM LUCRĂM */
         .steps { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
         .step { flex: 1; min-width: 200px; text-align: center; }
         .step-num { width: 45px; height: 45px; background: #ffa500; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-weight: 700; }
 
-        /* 7. CTA FINAL */
+        /* CTA FINAL */
         .cta-final { background: #ffa500; color: white; text-align: center; padding: 80px 20px; }
         .phone-big { font-size: 2.5em; display: block; color: white; text-decoration: none; font-weight: 800; margin-top: 20px; }
+        
+        /* BUTON WHATSAPP FINAL */
+        .btn-whatsapp-final { 
+            background: #25d366; color: white; padding: 12px 30px; border-radius: 50px; 
+            text-decoration: none; font-weight: 700; display: inline-block; margin-top: 25px; 
+            font-size: 1.1em; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .btn-whatsapp-final:hover { background: #128c7e; transform: translateY(-3px); }
+
+        /* BUTON PLUTITOR WHATSAPP (STICKY) */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover { background-color: #128c7e; transform: scale(1.1); }
 
         @media (max-width: 1024px) {
             .nav-menu { display: none; }
             .hero h1 { font-size: 2em; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/40749277995" class="whatsapp-float" target="_blank" title="Scrie-ne pe WhatsApp">
+        <svg viewBox="0 0 32 32" style="width: 32px; height: 32px; fill: white;">
+            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.48 2.01 7.788l-2.01 7.212 7.379-1.936c2.204 1.18 4.73 1.85 7.421 1.85 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.394 0-4.634-0.603-6.59-1.657l-0.473-0.254-4.381 1.149 1.192-4.275-0.279-0.443c-1.155-1.838-1.821-4.019-1.821-6.353 0-6.617 5.383-12 12-12s12 5.383 12 12-5.383 12-12 12zM22.617 19.333c-0.363-0.182-2.149-1.060-2.483-1.181s-0.576-0.182-0.819 0.182c-0.243 0.364-0.941 1.181-1.153 1.424s-0.425 0.273-0.789 0.091c-0.364-0.182-1.535-0.566-2.925-1.805-1.082-0.965-1.812-2.156-2.024-2.52s-0.023-0.561 0.159-0.741c0.163-0.162 0.364-0.425 0.546-0.637s0.243-0.364 0.364-0.607-0.061-0.455-0.152-0.637c-0.091-0.182-0.819-1.972-1.123-2.7s-0.593-0.617-0.819-0.627c-0.211-0.009-0.455-0.011-0.7-0.011s-0.637 0.091-0.971 0.455c-0.334 0.364-1.275 1.244-1.275 3.033s1.305 3.52 1.487 3.763c0.182 0.243 2.568 3.921 6.221 5.5s4.321 2.056 5.839 1.912c1.518-0.144 2.149-0.879 2.451-1.729s0.304-1.578 0.212-1.729c-0.091-0.152-0.334-0.243-0.698-0.425z"></path>
+        </svg>
+    </a>
 
     <div class="top-bar">
         <div class="container">
@@ -136,28 +173,21 @@
     <section class="container">
         <h2 class="section-title">Lucrări executate</h2>
         <div class="gallery-grid">
-            
             <div class="gallery-item">
                 <video width="100%" height="300" controls muted autoplay loop style="border-radius: 8px; object-fit: cover;">
                     <source src="video1.mp4" type="video/mp4">
                     Browserul tău nu suportă formatul video.
                 </video>
-                <p style="text-align:center; font-size: 0.9em; color: #666; margin-top: 5px;"></p>
             </div>
-
             <div class="gallery-item">
                 <video width="100%" height="300" controls muted autoplay loop style="border-radius: 8px; object-fit: cover;">
                     <source src="video2.mp4" type="video/mp4">
                     Browserul tău nu suportă formatul video.
                 </video>
-                <p style="text-align:center; font-size: 0.9em; color: #666; margin-top: 5px;"></p>
             </div>
-
             <div class="gallery-item">
                 <img src="poza1.jpeg" alt="Buldoexcavator finalizat" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
-                <p style="text-align:center; font-size: 0.9em; color: #666; margin-top: 5px;"></p>
             </div>
-
         </div>
     </section>
 
@@ -174,6 +204,8 @@
         <div class="container">
             <h2>Ai o lucrare? Sună acum și discutăm!</h2>
             <a href="tel:+40749277995" class="phone-big">0749 277 995</a>
+            <br>
+            <a href="https://wa.me/40749277995" class="btn-whatsapp-final" target="_blank">Scrie-ne pe WhatsApp</a>
         </div>
     </section>
 
