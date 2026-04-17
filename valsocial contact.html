@@ -11,7 +11,6 @@
 
         /* ELIMINARE BIFE LISTE */
         ul, li { list-style: none !important; }
-        li::before { content: none !important; }
 
         /* Top Bar */
         .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
@@ -25,9 +24,13 @@
         nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; list-style: none; gap: 20px; }
+        .nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; }
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
+        
+        /* Buton Suna Acum in Navigatie */
+        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; font-weight: 600 !important; transition: 0.3s; }
+        .cta-nav:hover { background: #e69500; transform: translateY(-2px); }
 
         /* Hero Section */
         .hero { 
@@ -77,6 +80,7 @@
             margin-top: 10px;
             font-size: 0.9em !important;
             transition: 0.3s;
+            text-decoration: none;
         }
         .whatsapp-btn-inline:hover { background: #128c7e; transform: scale(1.05); }
 
@@ -93,15 +97,27 @@
         }
         .whatsapp-float:hover { background-color: #128c7e; transform: scale(1.1); }
 
-        /* FOOTER ACTUALIZAT (Lizibilitate Maximă) */
-        footer { background: #1a1a1a !important; color: #ffffff !important; padding: 70px 20px 20px; }
+        /* FOOTER */
+        footer { background: #1a1a1a !important; color: #ffffff !important; padding: 70px 20px 20px; margin-top: 80px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
         .footer-section h3 { color: #ffa500 !important; margin-bottom: 20px; font-size: 1.2em; text-transform: uppercase; }
         .footer-section p { color: #e0e0e0 !important; line-height: 1.8; font-size: 0.95em; }
         .footer-links li { margin-bottom: 12px; }
         .footer-links a { color: #ffffff !important; text-decoration: none; transition: 0.3s; font-size: 0.95em; }
         .footer-links a:hover { color: #ffa500 !important; padding-left: 5px; }
-        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; color: #bbbbbb !important; font-size: 0.85em; }
+        
+        .footer-bottom { 
+            text-align: center; 
+            margin-top: 50px; 
+            padding-top: 25px; 
+            border-top: 1px solid #333; 
+        }
+        .footer-bottom p {
+            color: #ffffff !important; /* TEXT ALB */
+            text-align: center !important; /* CENTRAT */
+            font-size: 0.9em;
+            margin: 0 auto;
+        }
 
         @media (max-width: 968px) {
             .contact-grid { grid-template-columns: 1fr; }
@@ -136,11 +152,11 @@
             <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
             <ul class="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
-                <li><a href="index.html">Despre Noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                 <li><a href="valsocial contact.html" style="color: #ffa500;">Contact</a></li>
                 <li><a href="termeni.html">Termeni</a></li>
+                <li><a href="tel:+40749277995" class="cta-nav">Sună Acum</a></li>
             </ul>
         </div>
     </nav>
@@ -219,7 +235,7 @@
         <section class="map-section">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22168.065430951174!2d27.382564328250076!3d46.01102905553267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b5d28034d75505%3A0x43f913590eceb245!2zODA3MTU4IE7Eg3J0ZciZdGk!5e0!3m2!1sen!2sro!4v1776436196005!5m2!1sen!2sro" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2777.636655160912!2d27.424361076615555!3d45.87856620627582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b435f2129e925b%3A0x6a0f7e4e04975f8f!2sStrada%201%20Decembrie%201918%2C%20N%C4%83rte%C8%99ti%20807153!5e0!3m2!1sro!2sro!4v1713364500000!5m2!1sro!2sro" 
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </section>
@@ -234,7 +250,7 @@
             <div class="footer-section">
                 <h3>Link-uri Utile</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Despre Noi</a></li>
+                    <li><a href="index.html">Acasă</a></li>
                     <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                     <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                     <li><a href="termeni.html">Termeni</a></li>
