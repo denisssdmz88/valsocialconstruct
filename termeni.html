@@ -10,9 +10,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
 
-        /* ELIMINARE BIFE ȘI STILIZARE LISTE (Global) */
-        ul, li { list-style: none !important; list-style-type: none !important; }
-        li::before { content: none !important; display: none !important; }
+        /* ELIMINARE BIFE ȘI STILIZARE LISTE */
+        ul, li { list-style: none !important; }
 
         /* TOP BAR */
         .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
@@ -26,7 +25,7 @@
         nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.6em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; list-style: none; gap: 25px; padding: 0; }
+        .nav-menu { display: flex; gap: 25px; }
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; }
         .nav-menu a:hover { color: #ffa500; }
 
@@ -57,12 +56,12 @@
         .last-updated { color: #888; font-style: italic; margin-bottom: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; font-size: 0.95em; }
         
         h2 { color: #1a1a1a; margin: 45px 0 20px; font-size: 1.7em; display: flex; align-items: center; }
-        h2::before { content: ""; width: 5px; height: 28px; background: #ffa500; margin-right: 15px; border-radius: 3px; display: block !important; }
+        h2::before { content: ""; width: 5px; height: 28px; background: #ffa500; margin-right: 15px; border-radius: 3px; display: inline-block; }
         
         p { margin-bottom: 20px; text-align: justify; color: #444; font-size: 1.05em; }
         
         .terms-list li { margin-bottom: 12px; color: #444; position: relative; padding-left: 20px; }
-        .terms-list li::before { content: "•" !important; position: absolute; left: 0; color: #ffa500; display: block !important; font-weight: bold; }
+        .terms-list li::before { content: "•"; position: absolute; left: 0; color: #ffa500; font-weight: bold; }
 
         .important-box { 
             background: #fff9eb; 
@@ -75,7 +74,7 @@
         .important-box strong { color: #856404; display: block; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
         .important-box p { color: #856404; margin-bottom: 0; font-weight: 500; text-align: left; }
 
-        /* FOOTER - LIZIBILITATE MAXIMĂ */
+        /* FOOTER */
         footer { 
             background: #1a1a1a !important; 
             color: #ffffff !important; 
@@ -96,16 +95,14 @@
             line-height: 1.8;
             font-size: 0.95em;
         }
-
-        .footer-links { list-style: none !important; padding: 0 !important; }
-        .footer-links li { margin-bottom: 12px; padding-left: 0 !important; }
-        .footer-links li::before { content: none !important; }
         
         .footer-links a { 
             color: #ffffff !important; 
             text-decoration: none; 
             transition: 0.3s; 
             font-size: 0.95em; 
+            display: inline-block;
+            margin-bottom: 12px;
         }
         .footer-links a:hover { color: #ffa500 !important; padding-left: 5px; }
 
@@ -167,27 +164,30 @@
             <p class="last-updated">Ultima actualizare: 17 Aprilie 2026</p>
 
             <h2>1. Acceptarea Termenilor</h2>
-            <p>Accesarea și utilizarea acestui site web implică acceptarea deplină a prezentelor termeni și condiții.</p>
+            <p>Prin accesarea și utilizarea acestui site web, sunteți de acord să respectați și să fiți legat de următorii termeni și condiții de utilizare. Dacă nu sunteți de acord cu orice parte a acestor termeni, vă rugăm să nu utilizați serviciile noastre online.</p>
 
             <h2>2. Servicii Profesionale</h2>
-            <p>VAL SOCIAL CONSTRUCT SRL prestează servicii de excavare, nivelare și pregătire a terenului conform devizelor acceptate.</p>
+            <p>VAL SOCIAL CONSTRUCT SRL prestează servicii de excavare, terasamente și construcții drumuri conform standardelor tehnice în vigoare. Orice ofertă furnizată prin intermediul site-ului sau telefonic are caracter informativ până la semnarea unui contract sau a unei comenzi ferme.</p>
 
             <h2>3. Proprietate Intelectuală</h2>
-            <p>Întreg conținutul acestui site este proprietatea VAL SOCIAL CONSTRUCT SRL și este protejat de legea drepturilor de autor.</p>
+            <p>Întreg conținutul prezentat pe acest site (texte, imagini, logo-uri, elemente grafice) este proprietatea exclusivă a VAL SOCIAL CONSTRUCT SRL. Copierea sau reproducerea acestora fără acord scris este strict interzisă.</p>
 
             <h2>4. Responsabilitățile Beneficiarului</h2>
             <div class="important-box">
                 <strong>⚠️ AVIZE ȘI AUTORIZAȚII</strong>
-                <p>Este responsabilitatea exclusivă a beneficiarului să asigure toate autorizațiile necesare și marcarea utilităților înainte de începerea lucrărilor.</p>
+                <p>Este responsabilitatea exclusivă a beneficiarului (clientului) să asigure toate autorizațiile de construcție necesare și să informeze echipa noastră cu privire la existența rețelelor de utilități subterane (apă, gaz, electricitate, fibră optică) înainte de începerea oricărei săpături.</p>
             </div>
             <ul class="terms-list">
-                <li>Asigurarea accesului pentru utilaje de mare tonaj.</li>
-                <li>Informarea corectă asupra rețelelor subterane.</li>
-                <li>Recepția lucrărilor la finalizarea etapelor.</li>
+                <li>Asigurarea unui acces facil și sigur pentru utilajele de mare tonaj.</li>
+                <li>Prezența unui delegat la fața locului pentru indicarea limitelor de proprietate.</li>
+                <li>Recepția lucrărilor la finalizarea etapelor stabilite.</li>
             </ul>
 
-            <h2>5. Confidențialitatea Datelor</h2>
-            <p>Datele dumneavoastră sunt procesate în siguranță, exclusiv pentru scopuri comerciale legate de solicitările transmise.</p>
+            <h2>5. Limitarea Răspunderii</h2>
+            <p>VAL SOCIAL CONSTRUCT SRL nu poate fi considerată responsabilă pentru daunele cauzate utilităților subterane care nu au fost marcate sau comunicate de către beneficiar înainte de execuție.</p>
+
+            <h2>6. Confidențialitatea Datelor (GDPR)</h2>
+            <p>Datele colectate prin formularele de contact sau telefonic (nume, telefon, locație proiect) sunt utilizate strict pentru comunicarea comercială cu dumneavoastră și nu vor fi înstrăinate către terți.</p>
         </article>
     </div>
 
@@ -195,16 +195,16 @@
         <div class="footer-grid">
             <div class="footer-section">
                 <h3>VAL SOCIAL CONSTRUCT</h3>
-                <p>Profesionalism și eficiență în lucrări de infrastructură și pregătirea terenului în județul Galați.</p>
+                <p>Profesionalism și eficiență în lucrări de infrastructură și pregătirea terenului în județul Galați și împrejurimi.</p>
             </div>
             <div class="footer-section">
                 <h3>Navigare</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Acasă</a></li>
-                    <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
-                    <li><a href="valsocial contact.html">Contact</a></li>
-                    <li><a href="termeni.html">Termeni și Condiții</a></li>
-                </ul>
+                <div class="footer-links">
+                    <a href="index.html">Acasă</a><br>
+                    <a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a><br>
+                    <a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a><br>
+                    <a href="valsocial contact.html">Contact</a>
+                </div>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
