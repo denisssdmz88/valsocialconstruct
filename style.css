@@ -1,6 +1,6 @@
 <head>
 <style>
-        * {
+       * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -112,7 +112,7 @@ nav .container {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #444; /* Fundal închis pentru contrast cu textul alb */
     color: white;
     padding: 100px 20px;
     text-align: center;
@@ -121,16 +121,6 @@ nav .container {
 .hero h1 {
     font-size: 3em;
     margin-bottom: 20px;
-}
-
-.breadcrumb {
-    color: rgba(255,255,255,0.8);
-    margin-top: 10px;
-}
-
-.breadcrumb a {
-    color: white;
-    text-decoration: none;
 }
 
 /* Main Layout Container */
@@ -142,104 +132,6 @@ nav .container {
 
 section {
     padding: 80px 20px;
-}
-
-/* Intro Section */
-.intro-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.intro-content h2 {
-    font-size: 2.5em;
-    color: #1a1a1a;
-    margin-bottom: 20px;
-}
-
-.intro-content .subtitle {
-    color: #ffa500;
-    font-size: 1.2em;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.intro-content p {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: #666;
-    margin-bottom: 30px;
-}
-
-.btn-primary {
-    background: #ffa500;
-    color: white;
-    padding: 15px 35px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.3s;
-}
-
-.btn-primary:hover {
-    background: #ff8c00;
-}
-
-.intro-image {
-    width: 100%;
-    height: 400px;
-    background: #f0f0f0;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.intro-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Stats Section */
-.stats-section {
-    background: #f8f9fa;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-top: 40px;
-}
-
-.stat-item h3 {
-    font-size: 1.3em;
-    margin-bottom: 15px;
-    color: #1a1a1a;
-}
-
-.progress-bar {
-    background: #e0e0e0;
-    height: 8px;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-top: 10px;
-}
-
-.progress-fill {
-    background: #ffa500;
-    height: 100%;
-    width: 100%;
-    transition: width 1s ease;
-}
-
-.stat-item p {
-    color: #666;
-    margin-top: 10px;
 }
 
 /* Services & Equipment Section */
@@ -257,57 +149,32 @@ section {
     margin-bottom: 50px;
 }
 
-.services-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    margin-top: 40px;
-}
-
-.services-list ul {
-    list-style: none;
-}
-
-.services-list li {
-    padding: 12px 0;
-    padding-left: 30px;
-    position: relative;
-    color: #666;
-    font-size: 1.05em;
-}
-
-.services-list li:before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #ffa500;
-    font-weight: bold;
-}
-
-/* Corectare Afișare Utilaje */
+/* GRID-UL PENTRU UTILAJE */
 .equipment-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    /* Am crescut lățimea minimă a cardului la 450px pentru a acomoda poza mai înaltă */
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 40px;
+    justify-content: center;
 }
 
 .equipment-card {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
 }
 
 .equipment-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    transform: translateY(-10px);
 }
 
+/* ZONA IMAGINII - MODIFICATĂ */
 .equipment-image {
     width: 100%;
-    height: 240px; /* Înălțime fixă pentru poze */
+    height: 450px; /* Am mărit de la 240px la 450px pentru a vedea mai mult din utilaj */
     background: #f8f8f8;
     overflow: hidden;
 }
@@ -315,68 +182,28 @@ section {
 .equipment-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Poza umple spațiul fără să fie turtită */
+    object-fit: cover; /* Asigură decuparea fără deformare */
     display: block;
 }
 
+/* ZONA DE TEXT */
 .equipment-info {
-    padding: 25px;
+    padding: 30px;
 }
 
 .equipment-info h3 {
     color: #1a1a1a;
-    font-size: 1.3em;
-    margin-bottom: 12px;
-    border-bottom: 2px solid #ffa500;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    border-bottom: 3px solid #ffa500;
     display: inline-block;
     padding-bottom: 5px;
 }
 
 .equipment-info p {
-    color: #666;
-    font-size: 0.95em;
+    color: #555;
+    font-size: 1.05em;
     line-height: 1.6;
-}
-
-/* Testimonial Section */
-.testimonial-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-}
-
-.testimonial-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.testimonial-image {
-    width: 100px;
-    height: 100px;
-    background: white;
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-}
-
-.testimonial-text {
-    font-size: 1.2em;
-    line-height: 1.8;
-    font-style: italic;
-    margin: 30px 0;
-}
-
-.testimonial-author {
-    font-size: 1.1em;
-    font-weight: 600;
-}
-
-.testimonial-role {
-    color: rgba(255,255,255,0.8);
-    margin-top: 5px;
 }
 
 /* Footer */
@@ -386,38 +213,6 @@ footer {
     padding: 60px 20px 20px;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-bottom: 40px;
-}
-
-.footer-section h3 {
-    color: #ffa500;
-    margin-bottom: 20px;
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section li {
-    margin-bottom: 10px;
-}
-
-.footer-section a {
-    color: rgba(255,255,255,0.8);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-section a:hover {
-    color: #ffa500;
-}
-
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
@@ -425,23 +220,18 @@ footer {
     color: rgba(255,255,255,0.6);
 }
 
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 968px) {
-    .intro-section,
-    .services-content {
-        grid-template-columns: 1fr;
-    }
-
     .nav-menu {
         display: none;
     }
-
-    .hero h1 {
-        font-size: 2em;
+    
+    .equipment-grid {
+        grid-template-columns: 1fr; /* Pe mobil cardul ocupă toată lățimea */
     }
 
-    .intro-content h2 {
-        font-size: 2em;
+    .equipment-image {
+        height: 300px; /* Reducem puțin înălțimea pe ecrane mici ca să nu ocupe tot ecranul */
     }
 }
     </style>
