@@ -6,390 +6,92 @@
     <title>Contact - VAL SOCIAL CONSTRUCT</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        /* Păstrăm stilul tău original intact */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        /* Header */
-        .top-bar {
-            background: #1a1a1a;
-            color: white;
-            padding: 10px 0;
-            font-size: 0.9em;
-        }
-
-        .top-bar .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .contact-info {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #ffa500;
-        }
+        /* Top Bar */
+        .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
+        .top-bar .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .contact-info { display: flex; gap: 20px; flex-wrap: wrap; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { color: white; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { color: #ffa500; }
 
         /* Navigation */
-        nav {
-            background: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #ffa500;
-            padding: 20px 0;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-            padding: 25px 0;
-            display: block;
-        }
-
-        .nav-menu a:hover {
-            color: #ffa500;
-        }
-
-        .cta-button {
-            background: #ffa500;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background: #ff8c00;
-        }
+        nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
+        .nav-menu { display: flex; list-style: none; gap: 30px; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; }
+        .nav-menu a:hover { color: #ffa500; }
 
         /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('CAT.png'); 
+            background-size: cover; 
+            background-position: center; 
+            color: white; 
+            padding: 100px 20px; 
+            text-align: center; 
         }
-
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .breadcrumb {
-            color: rgba(255,255,255,0.8);
-            margin-top: 10px;
-        }
-
-        .breadcrumb a {
-            color: white;
-            text-decoration: none;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 20px;
-        }
+        .hero h1 { font-size: 3.5em; margin-bottom: 10px; }
+        .breadcrumb { font-size: 1.1em; color: #ffa500; }
+        .breadcrumb a { color: white; text-decoration: none; }
 
         /* Contact Section */
-        .contact-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .contact-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; padding: 80px 0; }
 
-        .contact-form-wrapper h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            color: #1a1a1a;
+        /* Form */
+        .contact-form-card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 5px solid #ffa500; }
+        .contact-form-card h2 { margin-bottom: 25px; font-size: 2em; color: #1a1a1a; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; }
+        .form-group input, .form-group select, .form-group textarea { 
+            width: 100%; padding: 12px 15px; border: 2px solid #eee; border-radius: 6px; font-size: 1em; transition: 0.3s; font-family: inherit;
         }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #ffa500; outline: none; box-shadow: 0 0 8px rgba(255,165,0,0.1); }
+        .submit-btn { 
+            background: #ffa500; color: white; padding: 15px 30px; border: none; border-radius: 6px; 
+            font-size: 1.1em; font-weight: 700; cursor: pointer; width: 100%; transition: 0.3s; 
+        }
+        .submit-btn:hover { background: #e69500; transform: translateY(-2px); }
 
-        .form-group {
-            margin-bottom: 25px;
-        }
+        /* Info Cards */
+        .info-title { font-size: 1.8em; margin-bottom: 25px; color: #1a1a1a; }
+        .contact-card { background: #f9f9f9; padding: 25px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #ffa500; transition: 0.3s; }
+        .contact-card:hover { transform: translateX(10px); background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .contact-card h3 { color: #ffa500; font-size: 1.1em; text-transform: uppercase; margin-bottom: 8px; }
+        .contact-card p, .contact-card a { color: #333; font-weight: 600; text-decoration: none; font-size: 1.1em; }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
-        }
+        /* Map */
+        .map-section { padding-bottom: 80px; }
+        .map-container { height: 450px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
 
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 5px;
-            font-size: 1em;
-            font-family: inherit;
-            transition: border-color 0.3s;
+        /* Social */
+        .social-cta { background: #1a1a1a; color: white; text-align: center; padding: 60px 20px; border-radius: 15px; margin-bottom: 80px; }
+        .social-cta h2 { font-size: 2.2em; margin-bottom: 30px; }
+        .social-icons-large { display: flex; justify-content: center; gap: 25px; }
+        .social-btn { 
+            width: 70px; height: 70px; background: rgba(255,255,255,0.1); border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; transition: 0.3s;
         }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #ffa500;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-btn {
-            background: #ffa500;
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background: #ff8c00;
-        }
-
-        /* Contact Info Cards */
-        .contact-info-wrapper h2 {
-            font-size: 2em;
-            margin-bottom: 30px;
-            color: #1a1a1a;
-        }
-
-        .contact-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .contact-card {
-            background: #f8f9fa;
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid #ffa500;
-            transition: transform 0.3s;
-        }
-
-        .contact-card:hover {
-            transform: translateX(5px);
-        }
-
-        .contact-card h3 {
-            color: #ffa500;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
-        .contact-card p {
-            color: #666;
-            font-size: 1.05em;
-        }
-
-        .contact-card a {
-            color: #333;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-card a:hover {
-            color: #ffa500;
-        }
-
-        /* Map Section */
-        .map-section {
-            background: #f8f9fa;
-        }
-
-        .map-container {
-            width: 100%;
-            height: 450px;
-            background: #e0e0e0;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 1.2em;
-        }
-
-        /* Social Media Section */
-        .social-media-section {
-            text-align: center;
-        }
-
-        .social-media-section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .social-media-section p {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 40px;
-        }
-
-        .social-icons-large {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .social-icon-large {
-            width: 80px;
-            height: 80px;
-            background: #f8f9fa;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: 2px solid #e0e0e0;
-        }
-
-        .social-icon-large:hover {
-            background: #ffa500;
-            border-color: #ffa500;
-            transform: translateY(-5px);
-        }
-
-        .social-icon-large svg {
-            width: 35px;
-            height: 35px;
-            fill: #333;
-            transition: fill 0.3s;
-        }
-
-        .social-icon-large:hover svg {
-            fill: white;
-        }
+        .social-btn svg { width: 30px; height: 30px; fill: white; }
+        .social-btn:hover { background: #ffa500; transform: scale(1.1); }
 
         /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 60px 20px 20px;
-        }
+        footer { background: #1a1a1a; color: white; padding: 80px 20px 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto; }
+        .footer-section h3 { color: #ffa500; margin-bottom: 25px; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: #ffa500; }
+        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; color: #777; }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            color: #ffa500;
-            margin-bottom: 20px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section li {
-            margin-bottom: 10px;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: #ffa500;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.6);
-        }
-
-        /* Responsive */
         @media (max-width: 968px) {
-            .contact-section {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-menu {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2em;
-            }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5em; }
         }
     </style>
 </head>
@@ -399,7 +101,7 @@
             <div class="contact-info">
                 <span>📞 (+40) 749 277 995</span>
                 <span>✉️ valsocialconstruct@gmail.com</span>
-                <span>📍 Nartești, Galați</span>
+                <span>📍 Nărtești, Galați</span>
             </div>
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
@@ -411,164 +113,131 @@
 
     <nav>
         <div class="container">
-            <div class="logo">VAL SOCIAL CONSTRUCT</div>
+            <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
             <ul class="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
                 <li><a href="index.html">Despre Noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
-                <li><a href="termeni.html">Termeni și condiții</a></li>
+                <li><a href="termeni.html">Termeni</a></li>
             </ul>
-            <a href="#contact-form" class="cta-button">Contactați-ne</a>
         </div>
     </nav>
 
     <section class="hero">
-        <h1>Contact</h1>
+        <h1>Contactează-ne</h1>
         <div class="breadcrumb">
             <a href="index.html">Acasă</a> / Contact
         </div>
     </section>
 
-    <section class="contact-section container" id="contact-form">
-        <div class="contact-form-wrapper">
-            <h2>Trimiteți-ne un mesaj</h2>
-            
-            <form action="https://formspree.io/f/xzdyellb" method="POST">
-                <div class="form-group">
-                    <label for="name">Nume Complet *</label>
-                    <input type="text" id="name" name="nume" required>
-                </div>
+    <div class="container">
+        <section class="contact-grid">
+            <div class="contact-form-card">
+                <h2>Trimite un mesaj</h2>
+                <form action="https://formspree.io/f/xzdyellb" method="POST">
+                    <div class="form-group">
+                        <label>Nume Complet *</label>
+                        <input type="text" name="nume" placeholder="Ex: Popescu Ion" required>
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail *</label>
+                        <input type="email" name="email" placeholder="nume@exemplu.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="tel" name="telefon" placeholder="07xx xxx xxx">
+                    </div>
+                    <div class="form-group">
+                        <label>Serviciu interesat</label>
+                        <select name="serviciu">
+                            <option value="excavari">Excavări și Nivelări</option>
+                            <option value="drenaj">Lucrări de Drenaj</option>
+                            <option value="curatare">Curățare Teren</option>
+                            <option value="oferta">Solicitare Ofertă Generală</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mesaj *</label>
+                        <textarea name="mesaj" rows="5" placeholder="Detaliați proiectul dumneavoastră..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">TRIMITE MESAJUL</button>
+                </form>
+            </div>
 
-                <div class="form-group">
-                    <label for="email">E-mail *</label>
-                    <input type="email" id="email" name="_replyto" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Telefon</label>
-                    <input type="tel" id="phone" name="telefon">
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Subiect *</label>
-                    <select id="subject" name="subiect" required>
-                        <option value="">Selectați un subiect</option>
-                        <option value="excavari">Excavări și Nivelări</option>
-                        <option value="drenaj">Lucrări de Drenaj</option>
-                        <option value="curatare">Curățare Teren</option>
-                        <option value="oferta">Solicitare Ofertă</option>
-                        <option value="altele">Altele</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Mesaj *</label>
-                    <textarea id="message" name="mesaj" required></textarea>
-                </div>
-
-                <input type="text" name="_gotcha" style="display:none" />
-
-                <button type="submit" class="submit-btn">Trimite Mesajul</button>
-            </form>
-        </div>
-
-        <div class="contact-info-wrapper">
-            <h2>Informații de contact</h2>
-            <div class="contact-cards">
+            <div class="contact-info-column">
+                <h2 class="info-title">Detalii de Contact</h2>
+                
                 <div class="contact-card">
-                    <h3>📍 Adresă sediu</h3>
-                    <p>Str. 1 Decembrie 1918, Nr. 54</p>
-                    <p>Nartești, Galați</p>
+                    <h3>📍 Adresă</h3>
+                    <p>Str. 1 Decembrie 1918, Nr. 54<br>Nărtești, Galați</p>
                 </div>
 
                 <div class="contact-card">
-                    <h3>📞 Telefon</h3>
+                    <h3>📞 Telefon Direct</h3>
                     <p><a href="tel:+40749277995">(+40) 749 277 995</a></p>
                 </div>
 
                 <div class="contact-card">
-                    <h3>✉️ E-mail</h3>
+                    <h3>✉️ E-mail Proiecte</h3>
                     <p><a href="mailto:valsocialconstruct@gmail.com">valsocialconstruct@gmail.com</a></p>
                 </div>
 
                 <div class="contact-card">
-                    <h3>⏰ Program</h3>
-                    <p>Luni - Vineri: 8:00 - 18:00</p>
-                    <p style="margin-top: 5px;">Sâmbătă - Duminică: Închis</p>
+                    <h3>⏰ Program Lucru</h3>
+                    <p>Luni - Vineri: 08:00 - 18:00</p>
+                    <p style="color: #777; font-size: 0.9em; margin-top: 5px;">Sâmbătă: Doar programări confirmate</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="map-section">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 30px; color: #1a1a1a;">Locația Sediului</h2>
+        <section class="map-section">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4937.337721755565!2d27.392167174513187!3d46.0114523251649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b5d28034d75505%3A0x43f913590eceb245!2zODA3MTU4IE7Eg3J0ZciZdGk!5e0!3m2!1sen!2sro!4v1776411550300!5m2!1sen!2sro""
-                    width="100%" 
-                    height="450" 
-                    style="border:0; border-radius: 10px;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22234.34145293282!2d27.4654316!3d45.8454316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b68630325f6907%3A0x6305a6669911e38c!2zTsSDcnRlyJl0aSA4MDczNTE!5e0!3m2!1sro!2sro!4v1715432000000!5m2!1sro!2sro" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="social-media-section container">
-        <h2>Urmăriți-ne pe Social Media</h2>
-        <p>Rămâneți la curent cu ultimele noastre proiecte și noutăți</p>
-        
-        <div class="social-icons-large">
-            <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank" class="social-icon-large">
-                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-            </a>
-            <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank" class="social-icon-large">
-                <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/valsocialconstruct" target="_blank" class="social-icon-large">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-        </div>
-    </section>
+        <section class="social-cta">
+            <h2>Ne găsești și pe rețelele sociale</h2>
+            <div class="social-icons-large">
+                <a href="https://www.tiktok.com/@valsocialconstruct" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank" class="social-btn">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <div class="footer-content">
+        <div class="footer-grid">
             <div class="footer-section">
                 <h3>VAL SOCIAL CONSTRUCT</h3>
-                <p>Companie din Galați specializată în lucrări de pregătire a terenului, oferind servicii profesionale cu echipamente moderne pentru proiecte rezidențiale, comerciale și industriale.</p>
+                <p>Profesioniști în pregătirea terenului pentru orice tip de construcție în județul Galați.</p>
             </div>
-
             <div class="footer-section">
                 <h3>Info</h3>
-                <ul>
+                <ul class="footer-links">
                     <li><a href="index.html">Despre Noi</a></li>
-                    <li><a href="index.html">Noutăți</a></li>
                     <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
-                    <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                     <li><a href="termeni.html">Termeni și condiții</a></li>
-                    <li><a href="valsocial contact.html">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-section">
                 <h3>Contact</h3>
-                <ul>
-                    <li>Luni-Vineri: 8:00 - 18:00</li>
-                    <li>Str. 1 Decembrie 1918, Nr. 54</li>
-                    <li>Nartești, Galați</li>
-                    <li>(+40) 749 277 995</li>
-                    <li>valsocialconstruct@gmail.com</li>
-                </ul>
+                <p>📞 (+40) 749 277 995</p>
+                <p>✉️ valsocialconstruct@gmail.com</p>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>© VAL SOCIAL CONSTRUCT SRL, Toate Drepturile Rezervate</p>
+            <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
         </div>
     </footer>
 </body>
