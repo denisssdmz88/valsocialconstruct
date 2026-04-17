@@ -55,7 +55,7 @@
 
         /* 4. GALERIE */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .gallery-grid img { width: 100%; height: 250px; object-fit: cover; border-radius: 5px; }
+        .gallery-item { background: #fff; border-radius: 8px; overflow: hidden; }
 
         /* 5. CUM LUCRĂM */
         .steps { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
@@ -67,7 +67,7 @@
         .phone-big { font-size: 2.5em; display: block; color: white; text-decoration: none; font-weight: 800; margin-top: 20px; }
 
         @media (max-width: 1024px) {
-            .nav-menu { display: none; } /* Pentru mobil e nevoie de meniu hamburger, dar pentru moment am lasat varianta curata */
+            .nav-menu { display: none; }
             .hero h1 { font-size: 2em; }
         }
     </style>
@@ -83,6 +83,7 @@
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
             </div>
         </div>
     </div>
@@ -96,7 +97,7 @@
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
-                <li><a href="termeni.html">Termeni</a></li>
+                <li><a href="termeni.html">GDPR</a></li>
             </ul>
             <a href="tel:+40749277995" class="cta-nav">Sună Acum</a>
         </div>
@@ -137,7 +138,7 @@
         <div class="gallery-grid">
             
             <div class="gallery-item">
-                <video width="100%" height="300" controls muted autoplay loop style="border-radius: 8px; object-fit: cover; shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <video width="100%" height="300" controls muted autoplay loop style="border-radius: 8px; object-fit: cover;">
                     <source src="video1.mp4" type="video/mp4">
                     Browserul tău nu suportă formatul video.
                 </video>
@@ -145,7 +146,7 @@
             </div>
 
             <div class="gallery-item">
-                <video width="100%" height="300" controls muted autoplay loop style="border-radius: 8px; object-fit: cover; shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <video width="100%" height="300" controls muted autoplay loop style="border-radius: 8px; object-fit: cover;">
                     <source src="video2.mp4" type="video/mp4">
                     Browserul tău nu suportă formatul video.
                 </video>
@@ -179,6 +180,10 @@
     <footer>
         <div class="container" style="text-align: center; padding: 40px 0; color: #777; border-top: 1px solid #eee;">
             <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
+            <p style="font-size: 0.8em; margin-top: 10px;">
+                <a href="termeni.html" style="color: #777; text-decoration: none;">GDPR</a> | 
+                <a href="termeni.html" style="color: #777; text-decoration: none;">Termeni și Condiții</a>
+            </p>
         </div>
     </footer>
 
