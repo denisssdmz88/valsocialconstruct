@@ -9,6 +9,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
 
+        /* ELIMINARE BIFE LISTE */
+        ul, li { list-style: none !important; }
+        li::before { content: none !important; }
+
         /* Top Bar */
         .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
         .top-bar .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
@@ -63,40 +67,55 @@
         .contact-card:hover { transform: translateX(10px); background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .contact-card h3 { color: #ffa500; font-size: 1.1em; text-transform: uppercase; margin-bottom: 8px; }
         .contact-card p, .contact-card a { color: #333; font-weight: 600; text-decoration: none; font-size: 1.1em; }
+        
+        .whatsapp-btn-inline {
+            display: inline-block;
+            background: #25d366;
+            color: white !important;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 0.9em !important;
+            transition: 0.3s;
+        }
+        .whatsapp-btn-inline:hover { background: #128c7e; transform: scale(1.05); }
 
         /* Map */
         .map-section { padding-bottom: 60px; }
         .map-container { height: 450px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #eee; }
 
-        /* Social */
-        .social-cta { background: #1a1a1a; color: white; text-align: center; padding: 60px 20px; border-radius: 15px; margin-bottom: 60px; }
-        .social-cta h2 { font-size: 2.2em; margin-bottom: 30px; }
-        .social-icons-large { display: flex; justify-content: center; gap: 25px; }
-        .social-btn { 
-            width: 70px; height: 70px; background: rgba(255,255,255,0.1); border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; transition: 0.3s;
+        /* WHATSAPP FLOAT */
+        .whatsapp-float {
+            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+            background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
+            font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 10000;
+            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s;
         }
-        .social-btn svg { width: 30px; height: 30px; fill: white; }
-        .social-btn:hover { background: #ffa500; transform: scale(1.1); }
+        .whatsapp-float:hover { background-color: #128c7e; transform: scale(1.1); }
 
-        /* Footer */
-        footer { background: #1a1a1a; color: white; padding: 60px 20px 20px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .footer-section h3 { color: #ffa500; margin-bottom: 20px; }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #ccc; text-decoration: none; font-size: 0.9em; transition: 0.3s; }
-        .footer-links a:hover { color: #ffa500; }
-        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; color: #666; font-size: 0.8em; }
+        /* FOOTER ACTUALIZAT (Lizibilitate Maximă) */
+        footer { background: #1a1a1a !important; color: #ffffff !important; padding: 70px 20px 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer-section h3 { color: #ffa500 !important; margin-bottom: 20px; font-size: 1.2em; text-transform: uppercase; }
+        .footer-section p { color: #e0e0e0 !important; line-height: 1.8; font-size: 0.95em; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ffffff !important; text-decoration: none; transition: 0.3s; font-size: 0.95em; }
+        .footer-links a:hover { color: #ffa500 !important; padding-left: 5px; }
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; color: #bbbbbb !important; font-size: 0.85em; }
 
         @media (max-width: 968px) {
             .contact-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.2em; }
             .nav-menu { display: none; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
 <body>
+    <a href="https://wa.me/40749277995" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 32 32" style="width: 32px; height: 32px; fill: white;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.48 2.01 7.788l-2.01 7.212 7.379-1.936c2.204 1.18 4.73 1.85 7.421 1.85 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.394 0-4.634-0.603-6.59-1.657l-0.473-0.254-4.381 1.149 1.192-4.275-0.279-0.443c-1.155-1.838-1.821-4.019-1.821-6.353 0-6.617 5.383-12 12-12s12 5.383 12 12-5.383 12-12 12zM22.617 19.333c-0.363-0.182-2.149-1.060-2.483-1.181s-0.576-0.182-0.819 0.182c-0.243 0.364-0.941 1.181-1.153 1.424s-0.425 0.273-0.789 0.091c-0.364-0.182-1.535-0.566-2.925-1.805-1.082-0.965-1.812-2.156-2.024-2.52s-0.023-0.561 0.159-0.741c0.163-0.162 0.364-0.425 0.546-0.637s0.243-0.364 0.364-0.607-0.061-0.455-0.152-0.637c-0.091-0.182-0.819-1.972-1.123-2.7s-0.593-0.617-0.819-0.627c-0.211-0.009-0.455-0.011-0.7-0.011s-0.637 0.091-0.971 0.455c-0.334 0.364-1.275 1.244-1.275 3.033s1.305 3.52 1.487 3.763c0.182 0.243 2.568 3.921 6.221 5.5s4.321 2.056 5.839 1.912c1.518-0.144 2.149-0.879 2.451-1.729s0.304-1.578 0.212-1.729c-0.091-0.152-0.334-0.243-0.698-0.425z"></path></svg>
+    </a>
+
     <div class="top-bar">
         <div class="container">
             <div class="contact-info">
@@ -120,7 +139,7 @@
                 <li><a href="index.html">Despre Noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
-                <li><a href="valsocial contact.html">Contact</a></li>
+                <li><a href="valsocial contact.html" style="color: #ffa500;">Contact</a></li>
                 <li><a href="termeni.html">Termeni</a></li>
             </ul>
         </div>
@@ -181,6 +200,7 @@
                 <div class="contact-card">
                     <h3>📞 Telefon Direct</h3>
                     <p><a href="tel:+40749277995">(+40) 749 277 995</a></p>
+                    <a href="https://wa.me/40749277995" class="whatsapp-btn-inline" target="_blank">WhatsApp Chat</a>
                 </div>
 
                 <div class="contact-card">
@@ -199,23 +219,8 @@
         <section class="map-section">
             <div class="map-container">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11124.966453624896!2d27.4258!3d45.854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b680c656d059e7%3A0xe54e2079f82662c!2zTsSDcnRlyJl0aQ!5e0!3m2!1sro!2sro!4v1715000000000" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2794.7554!2d27.3524!3d45.8562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDUxJzIyLjMiTiAyN8KwMjEnMDguNiJF!5e0!3m2!1sro!2sro!4v1713360000000!5m2!1sro!2sro" 
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </section>
-
-        <section class="social-cta">
-            <h2>Ne găsești și pe rețelele sociale</h2>
-            <div class="social-icons-large">
-                <a href="https://www.tiktok.com/@valsocialconstruct" target="_blank" class="social-btn" title="TikTok">
-                    <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                </a>
-                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank" class="social-btn" title="Facebook">
-                    <svg viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/valsocialconstruct" target="_blank" class="social-btn" title="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
             </div>
         </section>
     </div>
