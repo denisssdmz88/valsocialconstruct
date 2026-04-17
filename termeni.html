@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fcfcfc; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
 
         /* Top Bar */
         .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
@@ -20,56 +20,70 @@
         /* Navigation */
         nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.8em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; list-style: none; gap: 30px; }
+        .logo { font-size: 1.6em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
+        .nav-menu { display: flex; list-style: none; gap: 25px; }
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; }
         .nav-menu a:hover { color: #ffa500; }
 
         /* Hero Section */
         .hero { 
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('CAT.png'); 
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('CAT.png'); 
             background-size: cover; 
             background-position: center; 
             color: white; 
-            padding: 80px 20px; 
+            padding: 70px 20px; 
             text-align: center; 
         }
-        .hero h1 { font-size: 3em; margin-bottom: 10px; }
+        .hero h1 { font-size: 2.8em; margin-bottom: 10px; text-transform: uppercase; }
         .breadcrumb { font-size: 1.1em; color: #ffa500; }
         .breadcrumb a { color: white; text-decoration: none; }
 
         /* Content Section */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .terms-wrapper { max-width: 900px; margin: 60px auto; background: white; padding: 50px; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); }
+        .terms-wrapper { 
+            max-width: 900px; 
+            margin: 50px auto; 
+            background: white; 
+            padding: 50px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05); 
+        }
         
-        .last-updated { color: #888; font-style: italic; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .last-updated { color: #888; font-style: italic; margin-bottom: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 15px; font-size: 0.95em; }
         
-        h2 { color: #1a1a1a; margin: 40px 0 20px; font-size: 1.8em; display: flex; align-items: center; }
-        h2::before { content: ""; width: 4px; height: 25px; background: #ffa500; margin-right: 15px; border-radius: 2px; }
+        h2 { color: #1a1a1a; margin: 45px 0 20px; font-size: 1.7em; display: flex; align-items: center; }
+        h2::before { content: ""; width: 5px; height: 28px; background: #ffa500; margin-right: 15px; border-radius: 3px; }
         
-        h3 { color: #333; margin: 25px 0 15px; font-size: 1.3em; }
+        p { margin-bottom: 20px; text-align: justify; color: #444; font-size: 1.05em; }
         
-        p { margin-bottom: 20px; text-align: justify; color: #555; }
-        
-        ul { margin-bottom: 25px; padding-left: 25px; }
-        li { margin-bottom: 10px; color: #555; }
+        ul { margin-bottom: 25px; padding-left: 20px; list-style-type: none; }
+        li { margin-bottom: 12px; color: #444; position: relative; padding-left: 25px; }
+        li::before { content: "✓"; position: absolute; left: 0; color: #ffa500; font-weight: bold; }
 
-        .important-box { background: #fffcf0; border: 1px solid #ffeeba; padding: 25px; border-radius: 8px; margin: 30px 0; position: relative; }
+        .important-box { 
+            background: #fff9eb; 
+            border: 1px solid #ffeeba; 
+            padding: 30px; 
+            border-radius: 10px; 
+            margin: 35px 0; 
+            border-left: 5px solid #ffa500;
+        }
         .important-box strong { color: #856404; display: block; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
-        .important-box p { color: #856404; margin-bottom: 0; font-weight: 500; }
+        .important-box p { color: #856404; margin-bottom: 0; font-weight: 500; text-align: left; }
 
         /* Footer */
-        footer { background: #1a1a1a; color: white; padding: 80px 20px 20px; margin-top: 80px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; max-width: 1200px; margin: 0 auto; }
-        .footer-section h3 { color: #ffa500; margin-bottom: 25px; }
+        footer { background: #1a1a1a; color: white; padding: 70px 20px 20px; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .footer-section h3 { color: #ffa500; margin-bottom: 20px; font-size: 1.2em; }
         .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        .footer-links li { margin-bottom: 12px; padding-left: 0; }
+        .footer-links li::before { content: none; }
+        .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; font-size: 0.95em; }
         .footer-links a:hover { color: #ffa500; }
-        .footer-bottom { text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid #333; color: #777; }
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; color: #777; font-size: 0.9em; }
 
         @media (max-width: 768px) {
-            .terms-wrapper { padding: 25px; margin: 30px 10px; }
+            .terms-wrapper { padding: 30px 20px; margin: 30px 10px; }
             .hero h1 { font-size: 2.2em; }
             .nav-menu { display: none; }
         }
@@ -81,7 +95,6 @@
             <div class="contact-info">
                 <span>📞 (+40) 749 277 995</span>
                 <span>✉️ valsocialconstruct@gmail.com</span>
-                <span>📍 Nărtești, Galați</span>
             </div>
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
@@ -105,9 +118,11 @@
     </nav>
 
     <section class="hero">
-        <h1>Termeni și Condiții</h1>
-        <div class="breadcrumb">
-            <a href="index.html">Acasă</a> / Legal
+        <div class="container">
+            <h1>Termeni și Condiții</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Acasă</a> / Legal
+            </div>
         </div>
     </section>
 
@@ -116,36 +131,36 @@
             <p class="last-updated">Ultima actualizare: 17 Aprilie 2026</p>
 
             <h2>1. Acceptarea Termenilor</h2>
-            <p>Prin accesarea acestui site web, sunteți de acord să respectați acești termeni și condiții de utilizare, toate legile și reglementările aplicabile și sunteți responsabil pentru respectarea oricăror legi locale aplicabile.</p>
+            <p>Accesarea și utilizarea acestui site web implică acceptarea deplină a prezentelor termeni și condiții. Dacă nu sunteți de acord cu oricare dintre regulile stabilite, vă rugăm să încetați utilizarea site-ului.</p>
 
-            <h2>2. Descrierea Serviciilor</h2>
-            <p>VAL SOCIAL CONSTRUCT SRL oferă servicii profesionale de pregătire a terenului, incluzând dar fără a se limita la: excavări, nivelări, drenaje, curățare amplasamente și săpături mecanizate. Detaliile specifice ale fiecărei lucrări sunt stabilite prin deviz și contract individual.</p>
+            <h2>2. Servicii Profesionale</h2>
+            <p>VAL SOCIAL CONSTRUCT SRL prestează servicii de excavare, nivelare și pregătire a terenului. Toate ofertele prezentate pe site au caracter informativ până la semnarea unui contract ferm sau a unui deviz de execuție.</p>
 
-            <h2>3. Drepturi de Proprietate Intelectuală</h2>
-            <p>Conținutul acestui site (texte, imagini, logo-uri, elemente grafice) aparține VAL SOCIAL CONSTRUCT SRL și este protejat de legislația privind drepturile de autor. Utilizarea acestora fără acord scris este strict interzisă.</p>
+            <h2>3. Proprietate Intelectuală</h2>
+            <p>Întreg conținutul (imagini de proiect, texte descriptive, elemente de design) este proprietatea VAL SOCIAL CONSTRUCT SRL. Copierea sau reproducerea acestora în scopuri comerciale fără acord prealabil este interzisă conform Legii nr. 8/1996.</p>
 
-            <h2>4. Responsabilitățile Clientului</h2>
+            <h2>4. Responsabilitățile Beneficiarului</h2>
             <div class="important-box">
-                <strong>⚠️ Obligație Legală</strong>
-                <p>Clientul este direct responsabil pentru obținerea tuturor autorizațiilor de construcție, avizelor de la utilități (gaz, apă, curent) și a oricăror permise necesare înainte de începerea execuției pe teren.</p>
+                <strong>⚠️ AVIZE ȘI AUTORIZAȚII</strong>
+                <p>Este responsabilitatea exclusivă a beneficiarului să asigure toate autorizațiile necesare, avizele de la companiile de utilități și marcarea corectă a limitelor de proprietate înainte de mobilizarea utilajelor noastre pe teren.</p>
             </div>
             <ul>
-                <li>Asigurarea accesului utilajelor la amplasament.</li>
-                <li>Indicarea corectă a limitelor de proprietate.</li>
-                <li>Semnalarea eventualelor rețele subterane neidentificate în planuri.</li>
+                <li>Asigurarea unei căi de acces adecvate pentru utilajele de mare tonaj.</li>
+                <li>Informarea echipei noastre cu privire la existența rețelelor subterane sensibile.</li>
+                <li>Prezența la recepția lucrărilor sau delegarea unei persoane autorizate.</li>
             </ul>
 
             <h2>5. Limitarea Răspunderii</h2>
-            <p>VAL SOCIAL CONSTRUCT SRL nu va fi responsabilă pentru daunele cauzate de informații furnizate eronat de către beneficiar sau pentru întârzieri cauzate de factori meteorologici extremi sau forță majoră.</p>
+            <p>Nu ne asumăm răspunderea pentru deteriorarea rețelelor subterane care nu au fost semnalate în planurile oficiale predate la începerea lucrării sau pentru tasări ulterioare cauzate de natura instabilă a solului nesemnalată prin studiu geotehnic.</p>
 
-            <h2>6. Confidențialitatea Datelor (GDPR)</h2>
-            <p>Datele colectate prin intermediul formularelor de contact (nume, telefon, email) sunt folosite exclusiv pentru comunicarea comercială legată de solicitările dumneavoastră și nu vor fi înstrăinate către terți.</p>
+            <h2>6. Protecția Datelor (GDPR)</h2>
+            <p>Respectăm confidențialitatea dumneavoastră. Datele trimise prin formularul de contact sunt utilizate strict pentru a vă răspunde la solicitări și pentru a gestiona relația comercială, fiind stocate în siguranță conform normelor europene.</p>
 
-            <h2>7. Modificări ale Termenilor</h2>
-            <p>Ne rezervăm dreptul de a modifica acești termeni în orice moment, fără notificare prealabilă. Continuarea utilizării site-ului reprezintă acceptul dumneavoastră față de noile condiții.</p>
+            <h2>7. Jurisdicție</h2>
+            <p>Orice litigiu apărut în legătură cu utilizarea acestui site sau a serviciilor noastre va fi soluționat pe cale amiabilă, iar în caz contrar, va fi supus instanțelor judecătorești competente din județul Galați.</p>
 
             <h2>8. Contact Legal</h2>
-            <p>Pentru orice neclarități privind acești termeni, ne puteți scrie la <strong>valsocialconstruct@gmail.com</strong>.</p>
+            <p>Pentru întrebări suplimentare legate de aspectele legale, ne puteți contacta la adresa de e-mail: <strong>valsocialconstruct@gmail.com</strong>.</p>
         </article>
     </div>
 
@@ -153,20 +168,22 @@
         <div class="footer-grid">
             <div class="footer-section">
                 <h3>VAL SOCIAL CONSTRUCT</h3>
-                <p>Experți în infrastructură și pregătirea terenului în județul Galați și împrejurimi.</p>
+                <p>Profesionalism și eficiență în lucrări de infrastructură și pregătirea terenului.</p>
             </div>
             <div class="footer-section">
-                <h3>Navigare Rapidă</h3>
+                <h3>Navigare</h3>
                 <ul class="footer-links">
                     <li><a href="index.html">Acasă</a></li>
                     <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                     <li><a href="valsocial contact.html">Contact</a></li>
+                    <li><a href="termeni.html">Termeni și Condiții</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Sediu Social</h3>
-                <p>Str. 1 Decembrie 1918, Nr. 54<br>Nărtești, Galați</p>
+                <h3>Contact</h3>
+                <p>📍 Nărtești, Galați</p>
                 <p>📞 (+40) 749 277 995</p>
+                <p>✉️ valsocialconstruct@gmail.com</p>
             </div>
         </div>
         <div class="footer-bottom">
