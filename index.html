@@ -17,17 +17,34 @@
         .social-links a { color: white; text-decoration: none; transition: 0.3s; }
         .social-links a:hover { color: #ffa500; }
 
-        /* Navigation */
+        /* Navigation - MODIFICAT PENTRU ALINIERE DREAPTA */
         nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; list-style: none; gap: 20px; }
+        nav .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; flex-shrink: 0; }
+        
+        /* Meniul împins la dreapta */
+        .nav-menu { 
+            display: flex; 
+            list-style: none; 
+            gap: 25px; 
+            margin-left: auto; /* Aceasta linie impinge tot meniul la dreapta */
+            margin-right: 25px; /* Spatiu intre meniu si butonul CTA */
+            align-items: center;
+        }
+        
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
-        .cta-nav { background: #ffa500; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .cta-nav { background: #ffa500; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; flex-shrink: 0; }
         .cta-nav:hover { background: #ff8c00; }
 
-        /* HERO - Optimizat după Ciprian */
+        /* HERO */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('CAT.png'); 
             background-size: cover; background-position: center; 
@@ -42,7 +59,7 @@
         section { padding: 80px 0; }
         .section-title { text-align: center; font-size: 2.2em; margin-bottom: 40px; color: #1a1a1a; }
 
-        /* SERVICII - Quick Look */
+        /* SERVICII */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
         .service-card { text-align: center; padding: 30px; background: #f9f9f9; border-radius: 10px; border-bottom: 4px solid #eee; transition: 0.3s; }
         .service-card:hover { border-color: #ffa500; transform: translateY(-5px); }
