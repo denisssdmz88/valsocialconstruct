@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prețuri - VAL SOCIAL CONSTRUCT</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fff; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Meniu (Consistență) */
+        nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; text-decoration: none; }
+        .nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; padding: 25px 0; display: block; }
+        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; }
+
+        .page-header { background: #1a1a1a; color: white; padding: 60px 0; text-align: center; }
+        
+        .price-info { padding: 80px 0; text-align: center; }
+        .price-card { max-width: 700px; margin: 0 auto; padding: 40px; border: 2px solid #ffa500; border-radius: 15px; background: #fff9eb; }
+        .price-value { font-size: 2.5em; font-weight: 800; color: #1a1a1a; margin: 20px 0; }
+        
+        .factors { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
+        .factor-item { background: #f4f4f4; padding: 20px; border-radius: 10px; }
+
+        .cta-box { background: #ffa500; color: white; padding: 50px; border-radius: 15px; margin-top: 60px; }
+        .btn-whatsapp { background: #25d366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: 700; display: inline-block; margin-top: 20px; }
+
+        footer { background: #1a1a1a; color: white; padding: 40px 0; text-align: center; }
+        @media (max-width: 768px) { .nav-menu { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="despre.html">Despre Noi</a></li>
+                <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                <li><a href="preturi.html" style="color: #ffa500;">Prețuri</a></li>
+                <li><a href="valsocial contact.html">Contact</a></li>
+                <li><a href="tel:+40749277995" class="cta-nav">Sună Acum</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Tarife și Ofertare</h1>
+    </header>
+
+    <section class="price-info container">
+        <div class="price-card">
+            <h2>Estimare Costuri</h2>
+            <p>Tarifele noastre sunt calculate corect în funcție de complexitatea lucrării.</p>
+            <div class="price-value">Oferte Personalizate</div>
+            <p><strong>De ce nu avem un preț fix pe oră afișat?</strong><br>Deoarece o oră de nivelare curte diferă ca uzură și consum de o oră de demolare fundație de beton.</p>
+        </div>
+
+        <h3 style="margin-top: 60px;">Ce influențează prețul final:</h3>
+        <div class="factors">
+            <div class="factor-item">📍 <strong>Locația</strong><br>Distanța până la șantier.</div>
+            <div class="factor-item">🛠 <strong>Tipul lucrării</strong><br>Excavare, nivelare sau demolare.</div>
+            <div class="factor-item">⏱ <strong>Durata</strong><br>Numărul estimat de ore/zile.</div>
+        </div>
+
+        <div class="cta-box">
+            <h2>Vrei o ofertă rapidă (în aceeași zi)?</h2>
+            <p>Trimite-ne pe WhatsApp locația și 2-3 poze cu terenul.</p>
+            <a href="https://wa.me/40749277995" class="btn-whatsapp">Cere Ofertă pe WhatsApp</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
+    </footer>
+</body>
+</html>
