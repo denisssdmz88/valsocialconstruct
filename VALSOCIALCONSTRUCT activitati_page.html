@@ -6,6 +6,7 @@
     <title>Activități - VAL SOCIAL CONSTRUCT</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
+        /* CSS UNIFICAT */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
 
@@ -28,6 +29,7 @@
         .nav-menu { display: flex; list-style: none; gap: 20px; }
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; padding: 25px 0; display: block; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
+        .nav-menu a.active { color: #ffa500; border-bottom: 2px solid #ffa500; }
         .cta-nav { background: #ffa500; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: background 0.3s; }
         .cta-nav:hover { background: #e69500; }
 
@@ -66,6 +68,7 @@
 
         /* Controls */
         .arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(26, 26, 26, 0.6); border: none; color: white; font-size: 1.8em; padding: 10px 15px; cursor: pointer; transition: 0.3s; z-index: 10; }
+        .arrow.prev { left: 0; }
         .arrow.next { right: 0; }
         .arrow:hover { background: #ffa500; }
 
@@ -87,22 +90,20 @@
         }
         .whatsapp-float:hover { background-color: #128c7e; transform: scale(1.1); }
 
-        /* FOOTER ACTUALIZAT */
-        footer { background: #1a1a1a !important; color: #ffffff !important; padding: 70px 20px 20px; }
+        /* FOOTER */
+        footer { background: #1a1a1a; color: #ffffff; padding: 70px 20px 20px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .footer-section h3 { color: #ffa500 !important; margin-bottom: 20px; font-size: 1.2em; text-transform: uppercase; }
-        .footer-section p { color: #e0e0e0 !important; line-height: 1.8; font-size: 0.95em; }
+        .footer-section h3 { color: #ffa500; margin-bottom: 20px; font-size: 1.2em; text-transform: uppercase; }
+        .footer-section p { color: #e0e0e0; line-height: 1.8; font-size: 0.95em; }
         .footer-links li { margin-bottom: 12px; }
-        .footer-links a { color: #ffffff !important; text-decoration: none; transition: 0.3s; font-size: 0.95em; }
-        .footer-links a:hover { color: #ffa500 !important; padding-left: 5px; }
-        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; color: #bbbbbb !important; font-size: 0.85em; }
+        .footer-links a { color: #ffffff; text-decoration: none; transition: 0.3s; font-size: 0.95em; }
+        .footer-links a:hover { color: #ffa500; padding-left: 5px; }
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; color: #bbbbbb; font-size: 0.85em; }
 
         @media (max-width: 968px) {
             .slideshows-wrapper { grid-template-columns: 1fr; }
             .slideshow-container { height: 320px; }
-            .hero h1 { font-size: 2.2em; }
             .nav-menu { display: none; }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
@@ -118,9 +119,9 @@
                 <span>✉️ valsocialconstruct@gmail.com</span>
             </div>
             <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
-                <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
             </div>
         </div>
     </div>
@@ -130,11 +131,11 @@
             <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
             <ul class="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
-                <li><a href="index.html">Despre Noi</a></li>
+                <li><a href="despre.html">Despre Noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
-                <li><a href="VALSOCIALCONSTRUCT activitati_page.html" style="color: #ffa500;">Activități</a></li>
+                <li><a href="preturi.html">Prețuri</a></li>
+                <li><a href="VALSOCIALCONSTRUCT activitati_page.html" class="active">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
-                <li><a href="termeni.html">Termeni</a></li>
             </ul>
             <a href="tel:+40749277995" class="cta-nav">Sună Acum</a>
         </div>
@@ -153,7 +154,7 @@
         <div class="project-intro">
             <span class="subtitle">Impact Vizual</span>
             <h2>Proiecte: Înainte și După</h2>
-            <p>Transformăm terenuri brute în amplasamente gata de construit. Calitatea pregătirii terenului garantează succesul construcției tale.</p>
+            <p>Transformăm terenuri brute în amplasamente gata de construit folosind buldoexcavatorul nostru CAT 428.</p>
         </div>
 
         <div class="slideshows-wrapper">
@@ -197,7 +198,7 @@
         <div class="description-section">
             <h3>Detalii Execuție</h3>
             <p class="project-details">
-                Proiectele noastre includ curățarea completă a amplasamentelor, eliminarea vegetației nedorite, nivelarea de precizie și compactarea stratului de fundare. Utilizăm buldoexcavatorul <strong>CAT 428</strong> pentru eficiență maximă, asigurând drenajele necesare și respectând cotele de nivel solicitate pentru proiectele rezidențiale sau industriale din județul Galați.
+                Curățarea completă a amplasamentului, eliminarea vegetației și nivelarea solului. Am asigurat pantele necesare pentru drenaj și am pregătit stratul de fundare pentru viitoarea construcție.
             </p>
         </div>
     </section>
@@ -206,23 +207,15 @@
         <div class="footer-grid">
             <div class="footer-section">
                 <h3>VAL SOCIAL CONSTRUCT</h3>
-                <p>Echipamente profesionale pentru rezultate impecabile în Tecuci și împrejurimi.</p>
+                <p>Echipamente profesionale pentru rezultate impecabile.</p>
             </div>
             <div class="footer-section">
                 <h3>Link-uri Utile</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Despre Noi</a></li>
-                    <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="despre.html">Despre Noi</a></li>
+                    <li><a href="preturi.html">Prețuri</a></li>
                     <li><a href="valsocial contact.html">Contact</a></li>
-                    <li><a href="termeni.html">Termeni și Condiții</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Social Media</h3>
-                <ul class="footer-links">
-                    <li><a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a></li>
-                    <li><a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a></li>
-                    <li><a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -238,10 +231,7 @@
     </footer>
 
     <script>
-        let state = {
-            before: 0,
-            after: 0
-        };
+        let state = { before: 0, after: 0 };
 
         function showSlide(type, index) {
             const container = document.getElementById(type + '-container');
@@ -256,18 +246,12 @@
                 slides[i].classList.remove('active');
                 dots[i].classList.remove('active');
             }
-
             slides[state[type]].classList.add('active');
             dots[state[type]].classList.add('active');
         }
 
-        function changeSlide(type, dir) {
-            showSlide(type, state[type] + dir);
-        }
-
-        function currentSlide(type, index) {
-            showSlide(type, index);
-        }
+        function changeSlide(type, dir) { showSlide(type, state[type] + dir); }
+        function currentSlide(type, index) { showSlide(type, index); }
     </script>
 </body>
 </html>
