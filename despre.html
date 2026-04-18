@@ -14,6 +14,9 @@
         .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
         .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .contact-info { display: flex; gap: 20px; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { color: white; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { color: #ffa500; }
 
         /* Navigation */
         nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
@@ -35,18 +38,18 @@
 
         /* Footer */
         footer { background: #1a1a1a; color: white; padding: 60px 0 20px; margin-top: 50px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
-        .footer-section h3 { color: #ffa500; margin-bottom: 20px; font-size: 1.2em; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; text-align: left; }
+        .footer-section h3 { color: #ffa500; margin-bottom: 20px; font-size: 1.2em; text-transform: uppercase; }
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 10px; }
-        .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; font-size: 0.95em; }
         .footer-links a:hover { color: #ffa500; padding-left: 5px; }
         .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; font-size: 0.9em; color: #888; }
 
         @media (max-width: 768px) { 
             .content-grid { grid-template-columns: 1fr; } 
             .nav-menu { display: none; } 
-            .top-bar .container { justify-content: center; }
+            .top-bar .container { justify-content: center; gap: 10px; }
         }
     </style>
 </head>
@@ -57,6 +60,11 @@
             <div class="contact-info">
                 <span>📞 (+40) 749 277 995</span>
                 <span>✉️ valsocialconstruct@gmail.com</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
             </div>
         </div>
     </div>
@@ -110,8 +118,17 @@
                     <ul class="footer-links">
                         <li><a href="index.html">Acasă</a></li>
                         <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
-                        <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                         <li><a href="preturi.html">Prețuri</a></li>
+                        <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
+                        <li><a href="termeni.html">Termeni și Condiții</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Social Media</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
