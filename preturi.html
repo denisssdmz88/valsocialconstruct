@@ -6,34 +6,80 @@
     <title>Prețuri - VAL SOCIAL CONSTRUCT</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
+        /* RESETARE ȘI BAZĂ */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fff; color: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Meniu (Consistență) */
+
+        /* TOP BAR */
+        .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
+        .top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .contact-info { display: flex; gap: 20px; }
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { color: white; text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { color: #ffa500; }
+
+        /* NAVIGATION */
         nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; text-decoration: none; }
+        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; text-decoration: none; padding: 20px 0; display: inline-block; }
         .nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; }
-        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; padding: 25px 0; display: block; }
-        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; padding: 25px 0; display: block; transition: 0.3s; }
+        .nav-menu a:hover { color: #ffa500; }
+        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; font-weight: 600 !important; }
 
-        .page-header { background: #1a1a1a; color: white; padding: 60px 0; text-align: center; }
-        
+        /* HEADER PAGINA */
+        .page-header { background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('CAT.png'); background-size: cover; background-position: center; color: white; padding: 60px 0; text-align: center; }
+        .page-header h1 { font-size: 2.5em; text-transform: uppercase; }
+
+        /* SECTIUNE PRETURI */
         .price-info { padding: 80px 0; text-align: center; }
-        .price-card { max-width: 700px; margin: 0 auto; padding: 40px; border: 2px solid #ffa500; border-radius: 15px; background: #fff9eb; }
-        .price-value { font-size: 2.5em; font-weight: 800; color: #1a1a1a; margin: 20px 0; }
+        .price-card { max-width: 750px; margin: 0 auto; padding: 40px; border: 2px solid #ffa500; border-radius: 15px; background: #fff9eb; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .price-card h2 { color: #1a1a1a; margin-bottom: 15px; }
+        .price-value { font-size: 2.8em; font-weight: 800; color: #ffa500; margin: 25px 0; text-transform: uppercase; }
         
-        .factors { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 40px; }
-        .factor-item { background: #f4f4f4; padding: 20px; border-radius: 10px; }
+        .factors { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 50px; }
+        .factor-item { background: #f9f9f9; padding: 30px; border-radius: 12px; border-bottom: 4px solid #ffa500; transition: 0.3s; }
+        .factor-item:hover { transform: translateY(-5px); }
+        .factor-item strong { color: #1a1a1a; display: block; margin-bottom: 10px; font-size: 1.2em; }
 
-        .cta-box { background: #ffa500; color: white; padding: 50px; border-radius: 15px; margin-top: 60px; }
-        .btn-whatsapp { background: #25d366; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: 700; display: inline-block; margin-top: 20px; }
+        /* CTA BOX */
+        .cta-box { background: #1a1a1a; color: white; padding: 60px 40px; border-radius: 15px; margin-top: 70px; }
+        .cta-box h2 { color: #ffa500; margin-bottom: 15px; }
+        .btn-whatsapp { background: #25d366; color: white; padding: 18px 35px; text-decoration: none; border-radius: 5px; font-weight: 700; display: inline-block; margin-top: 25px; transition: 0.3s; font-size: 1.1em; }
+        .btn-whatsapp:hover { background: #1eb954; transform: scale(1.05); }
 
-        footer { background: #1a1a1a; color: white; padding: 40px 0; text-align: center; }
-        @media (max-width: 768px) { .nav-menu { display: none; } }
+        /* FOOTER */
+        footer { background: #1a1a1a; color: white; padding: 70px 0 20px; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; text-align: left; }
+        .footer-section h3 { color: #ffa500; margin-bottom: 25px; font-size: 1.2em; text-transform: uppercase; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; }
+        .footer-links a:hover { color: #ffa500; padding-left: 5px; }
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; color: #888; font-size: 0.9em; }
+
+        @media (max-width: 992px) {
+            .nav-menu { display: none; }
+            .top-bar .container { justify-content: center; gap: 10px; }
+        }
     </style>
 </head>
 <body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span>📞 (+40) 749 277 995</span>
+                <span>✉️ valsocialconstruct@gmail.com</span>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct" target="_blank">TikTok</a>
+            </div>
+        </div>
+    </div>
+
     <nav>
         <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
             <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
@@ -42,6 +88,7 @@
                 <li><a href="despre.html">Despre Noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                 <li><a href="preturi.html" style="color: #ffa500;">Prețuri</a></li>
+                <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
                 <li><a href="tel:+40749277995" class="cta-nav">Sună Acum</a></li>
             </ul>
@@ -49,33 +96,79 @@
     </nav>
 
     <header class="page-header">
-        <h1>Tarife și Ofertare</h1>
+        <div class="container">
+            <h1>Tarife și Ofertare</h1>
+        </div>
     </header>
 
     <section class="price-info container">
         <div class="price-card">
             <h2>Estimare Costuri</h2>
-            <p>Tarifele noastre sunt calculate corect în funcție de complexitatea lucrării.</p>
-            <div class="price-value">Oferte Personalizate</div>
-            <p><strong>De ce nu avem un preț fix pe oră afișat?</strong><br>Deoarece o oră de nivelare curte diferă ca uzură și consum de o oră de demolare fundație de beton.</p>
+            <p>Tarifele noastre sunt calculate corect în funcție de specificul fiecărui proiect.</p>
+            <div class="price-value">Ofertă Personalizată</div>
+            <p><strong>De ce nu avem un preț fix afișat?</strong><br>
+            Fiecare lucrare este unică. Costul depinde de tipul de sol, accesibilitate și tipul de cupe sau accesorii necesare utilajului nostru <strong>CAT 428</strong>.</p>
         </div>
 
-        <h3 style="margin-top: 60px;">Ce influențează prețul final:</h3>
+        <h3 style="margin-top: 60px; font-size: 1.8em;">Factori care influențează prețul:</h3>
         <div class="factors">
-            <div class="factor-item">📍 <strong>Locația</strong><br>Distanța până la șantier.</div>
-            <div class="factor-item">🛠 <strong>Tipul lucrării</strong><br>Excavare, nivelare sau demolare.</div>
-            <div class="factor-item">⏱ <strong>Durata</strong><br>Numărul estimat de ore/zile.</div>
+            <div class="factor-item">
+                <strong>📍 Locația</strong>
+                Distanța de deplasare a utilajului din Nărtești către șantierul dumneavoastră.
+            </div>
+            <div class="factor-item">
+                <strong>🛠 Tipul Lucrării</strong>
+                Diferă consumul între o nivelare ușoară și săpătura într-un sol compact sau pietros.
+            </div>
+            <div class="factor-item">
+                <strong>⏱ Durata Proiectului</strong>
+                Pentru lucrări de lungă durată (zile/săptămâni), oferim tarife negociabile per zi.
+            </div>
         </div>
 
         <div class="cta-box">
             <h2>Vrei o ofertă rapidă (în aceeași zi)?</h2>
-            <p>Trimite-ne pe WhatsApp locația și 2-3 poze cu terenul.</p>
+            <p>Cea mai rapidă metodă de evaluare: trimite-ne pe WhatsApp locația și câteva fotografii/video cu terenul.</p>
             <a href="https://wa.me/40749277995" class="btn-whatsapp">Cere Ofertă pe WhatsApp</a>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>VAL SOCIAL CONSTRUCT</h3>
+                    <p>Profesionalism și utilaje performante pentru proiectele tale de infrastructură în tot județul Galați.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link-uri Rapide</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Acasă</a></li>
+                        <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                        <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
+                        <li><a href="despre.html">Despre Noi</a></li>
+                        <li><a href="termeni.html">Termeni și Condiții</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Social Media</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/@valsocialconstruct" target="_blank">TikTok</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📍 Nărtești, Galați</p>
+                    <p>📞 0749 277 995</p>
+                    <p>✉️ valsocialconstruct@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
