@@ -25,8 +25,8 @@
         nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.6em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; gap: 25px; align-items: center; }
-        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; }
+        .nav-menu { display: flex; gap: 20px; align-items: center; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
         
         .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; font-weight: 600 !important; transition: 0.3s; }
@@ -111,6 +111,7 @@
             transition: 0.3s; 
             display: inline-block;
             margin-bottom: 12px;
+            font-size: 0.95em;
         }
         .footer-links a:hover { color: #ffa500 !important; padding-left: 5px; }
 
@@ -121,16 +122,14 @@
             border-top: 1px solid #333; 
         }
         .footer-bottom p {
-            color: #ffffff !important; /* TEXT ALB CURAT */
-            text-align: center !important; /* CENTRAT */
+            color: #ffffff !important;
             font-size: 0.9em;
             margin: 0 auto;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .nav-menu { display: none; }
             .hero h1 { font-size: 2.2em; }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
@@ -158,7 +157,9 @@
             <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
             <ul class="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
+                <li><a href="despre.html">Despre Noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                <li><a href="preturi.html">Prețuri</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
                 <li><a href="termeni.html" style="color: #ffa500;">Termeni</a></li>
@@ -178,30 +179,33 @@
 
     <div class="container">
         <article class="terms-wrapper">
-            <p class="last-updated">Ultima actualizare: 17 Aprilie 2026</p>
+            <p class="last-updated">Ultima actualizare: 18 Aprilie 2026</p>
 
             <h2>1. Acceptarea Termenilor</h2>
-            <p>Prin accesarea și utilizarea acestui site web, sunteți de acord să respectați și să fiți legat de următorii termeni și condiții de utilizare.</p>
+            <p>Prin accesarea și utilizarea acestui site web, sunteți de acord să respectați și să fiți legat de următorii termeni și condiții de utilizare. Acești termeni guvernează relația dintre VAL SOCIAL CONSTRUCT SRL și vizitatorii site-ului.</p>
 
             <h2>2. Servicii Profesionale</h2>
-            <p>VAL SOCIAL CONSTRUCT SRL prestează servicii de excavare, terasamente și construcții drumuri conform standardelor tehnice în vigoare.</p>
+            <p>VAL SOCIAL CONSTRUCT SRL prestează servicii de excavare, terasamente, nivelări de teren și pregătire infrastructură conform standardelor tehnice în vigoare și specificațiilor contractuale stabilite cu beneficiarul.</p>
 
             <h2>3. Proprietate Intelectuală</h2>
-            <p>Întreg conținutul prezentat pe acest site este proprietatea exclusivă a VAL SOCIAL CONSTRUCT SRL.</p>
+            <p>Întreg conținutul prezentat pe acest site (texte, imagini, logo-uri, design) este proprietatea exclusivă a VAL SOCIAL CONSTRUCT SRL și este protejat de legislația privind drepturile de autor.</p>
 
             <h2>4. Responsabilitățile Beneficiarului</h2>
             <div class="important-box">
                 <strong>⚠️ AVIZE ȘI AUTORIZAȚII</strong>
-                <p>Este responsabilitatea exclusivă a beneficiarului să asigure toate autorizațiile necesare și să informeze echipa noastră despre rețelele de utilități subterane.</p>
+                <p>Este responsabilitatea exclusivă a beneficiarului să asigure toate autorizațiile necesare și să informeze echipa noastră în scris despre rețelele de utilități subterane (apă, gaz, curent, fibră optică) înainte de începerea lucrărilor.</p>
             </div>
             <ul class="terms-list">
-                <li>Asigurarea unui acces facil pentru utilaje.</li>
-                <li>Indicarea corectă a limitelor de proprietate.</li>
-                <li>Recepția lucrărilor la finalizare.</li>
+                <li>Asigurarea unui acces facil și sigur pentru utilajele grele.</li>
+                <li>Indicarea corectă și materializarea limitelor de proprietate.</li>
+                <li>Prezența beneficiarului sau a unui delegat pentru recepția etapelor de lucru.</li>
             </ul>
 
             <h2>5. Limitarea Răspunderii</h2>
-            <p>Compania nu răspunde pentru daunele cauzate utilităților subterane nemarcate sau necomunicate anterior începerii lucrărilor.</p>
+            <p>Compania nu răspunde pentru daunele cauzate utilităților subterane nemarcate, neidentificate în planurile puse la dispoziție sau necomunicate anterior începerii execuției.</p>
+            
+            <h2>6. Politica de Confidențialitate</h2>
+            <p>Datele colectate prin intermediul formularelor de contact sunt utilizate exclusiv pentru comunicarea comercială și nu sunt partajate cu terțe părți, respectând normele GDPR în vigoare.</p>
         </article>
     </div>
 
@@ -209,13 +213,15 @@
         <div class="footer-grid">
             <div class="footer-section">
                 <h3>VAL SOCIAL CONSTRUCT</h3>
-                <p>Profesionalism și eficiență în lucrări de infrastructură în județul Galați.</p>
+                <p>Profesionalism și eficiență în lucrări de infrastructură și pregătire teren în județul Galați.</p>
             </div>
             <div class="footer-section">
                 <h3>Navigare</h3>
                 <div class="footer-links">
                     <a href="index.html">Acasă</a><br>
+                    <a href="despre.html">Despre Noi</a><br>
                     <a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a><br>
+                    <a href="preturi.html">Prețuri</a><br>
                     <a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a><br>
                     <a href="valsocial contact.html">Contact</a>
                 </div>
