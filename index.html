@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acasă - VAL SOCIAL CONSTRUCT</title>
+    <title>VAL SOCIAL CONSTRUCT - Excavări și Pregătire Teren în județul Galați</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,11 +27,11 @@
         .cta-nav { background: #ffa500; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .cta-nav:hover { background: #ff8c00; }
 
-        /* HERO */
+        /* HERO - Optimizat după Ciprian */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('CAT.png'); 
             background-size: cover; background-position: center; 
-            color: white; padding: 100px 20px; text-align: center; 
+            color: white; padding: 120px 20px; text-align: center; 
         }
         .hero h1 { font-size: 2.8em; margin-bottom: 15px; text-transform: uppercase; }
         .hero p { font-size: 1.3em; margin-bottom: 30px; color: #ffa500; font-weight: 600; }
@@ -39,34 +39,23 @@
         .btn-main:hover { background: #ff8c00; transform: scale(1.05); }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        section { padding: 60px 0; }
+        section { padding: 80px 0; }
         .section-title { text-align: center; font-size: 2.2em; margin-bottom: 40px; color: #1a1a1a; }
 
-        /* SERVICII */
+        /* SERVICII - Quick Look */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-        .service-card { text-align: center; padding: 30px; background: #f9f9f9; border-radius: 10px; border-bottom: 4px solid #eee; }
+        .service-card { text-align: center; padding: 30px; background: #f9f9f9; border-radius: 10px; border-bottom: 4px solid #eee; transition: 0.3s; }
+        .service-card:hover { border-color: #ffa500; transform: translateY(-5px); }
         .service-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
-
-        /* DE CE NOI */
-        .why-us { background: #1a1a1a; color: white; }
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .why-item { padding: 20px; border-left: 3px solid #ffa500; }
-        .why-item h4 { color: #ffa500; margin-bottom: 10px; }
 
         /* GALERIE */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .gallery-item { background: #fff; border-radius: 8px; overflow: hidden; }
-
-        /* CUM LUCRĂM */
-        .steps { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
-        .step { flex: 1; min-width: 200px; text-align: center; }
-        .step-num { width: 45px; height: 45px; background: #ffa500; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-weight: 700; }
+        .gallery-item img, .gallery-item video { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
 
         /* CTA FINAL */
         .cta-final { background: #ffa500; color: white; text-align: center; padding: 80px 20px; }
         .phone-big { font-size: 2.5em; display: block; color: white; text-decoration: none; font-weight: 800; margin-top: 20px; }
         
-        /* BUTON WHATSAPP FINAL */
         .btn-whatsapp-final { 
             background: #25d366; color: white; padding: 12px 30px; border-radius: 50px; 
             text-decoration: none; font-weight: 700; display: inline-block; margin-top: 25px; 
@@ -74,41 +63,27 @@
         }
         .btn-whatsapp-final:hover { background: #128c7e; transform: translateY(-3px); }
 
-        /* BUTON PLUTITOR WHATSAPP (STICKY) */
+        /* WHATSAPP FLOAT */
         .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: 0.3s;
+            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+            background-color: #25d366; color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999;
+            z-index: 10000; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s;
         }
-        .whatsapp-float:hover { background-color: #128c7e; transform: scale(1.1); }
+
+        footer { background: #1a1a1a; color: white; padding: 40px 0; text-align: center; }
 
         @media (max-width: 1024px) {
             .nav-menu { display: none; }
             .hero h1 { font-size: 2em; }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749277995" class="whatsapp-float" target="_blank" title="Scrie-ne pe WhatsApp">
-        <svg viewBox="0 0 32 32" style="width: 32px; height: 32px; fill: white;">
-            <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.48 2.01 7.788l-2.01 7.212 7.379-1.936c2.204 1.18 4.73 1.85 7.421 1.85 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.394 0-4.634-0.603-6.59-1.657l-0.473-0.254-4.381 1.149 1.192-4.275-0.279-0.443c-1.155-1.838-1.821-4.019-1.821-6.353 0-6.617 5.383-12 12-12s12 5.383 12 12-5.383 12-12 12zM22.617 19.333c-0.363-0.182-2.149-1.060-2.483-1.181s-0.576-0.182-0.819 0.182c-0.243 0.364-0.941 1.181-1.153 1.424s-0.425 0.273-0.789 0.091c-0.364-0.182-1.535-0.566-2.925-1.805-1.082-0.965-1.812-2.156-2.024-2.52s-0.023-0.561 0.159-0.741c0.163-0.162 0.364-0.425 0.546-0.637s0.243-0.364 0.364-0.607-0.061-0.455-0.152-0.637c-0.091-0.182-0.819-1.972-1.123-2.7s-0.593-0.617-0.819-0.627c-0.211-0.009-0.455-0.011-0.7-0.011s-0.637 0.091-0.971 0.455c-0.334 0.364-1.275 1.244-1.275 3.033s1.305 3.52 1.487 3.763c0.182 0.243 2.568 3.921 6.221 5.5s4.321 2.056 5.839 1.912c1.518-0.144 2.149-0.879 2.451-1.729s0.304-1.578 0.212-1.729c-0.091-0.152-0.334-0.243-0.698-0.425z"></path>
-        </svg>
+    <a href="https://wa.me/40749277995" class="whatsapp-float" target="_blank">
+        <svg viewBox="0 0 32 32" style="width: 32px; height: 32px; fill: white;"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825 0.733 5.48 2.01 7.788l-2.01 7.212 7.379-1.936c2.204 1.18 4.73 1.85 7.421 1.85 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.333c-2.394 0-4.634-0.603-6.59-1.657l-0.473-0.254-4.381 1.149 1.192-4.275-0.279-0.443c-1.155-1.838-1.821-4.019-1.821-6.353 0-6.617 5.383-12 12-12s12 5.383 12 12-5.383 12-12 12zM22.617 19.333c-0.363-0.182-2.149-1.060-2.483-1.181s-0.576-0.182-0.819 0.182c-0.243 0.364-0.941 1.181-1.153 1.424s-0.425 0.273-0.789 0.091c-0.364-0.182-1.535-0.566-2.925-1.805-1.082-0.965-1.812-2.156-2.024-2.52s-0.023-0.561 0.159-0.741c0.163-0.162 0.364-0.425 0.546-0.637s0.243-0.364 0.364-0.607-0.061-0.455-0.152-0.637c-0.091-0.182-0.819-1.972-1.123-2.7s-0.593-0.617-0.819-0.627c-0.211-0.009-0.455-0.011-0.7-0.011s-0.637 0.091-0.971 0.455c-0.334 0.364-1.275 1.244-1.275 3.033s1.305 3.52 1.487 3.763c0.182 0.243 2.568 3.921 6.221 5.5s4.321 2.056 5.839 1.912c1.518-0.144 2.149-0.879 2.451-1.729s0.304-1.578 0.212-1.729c-0.091-0.152-0.334-0.243-0.698-0.425z"></path></svg>
     </a>
 
     <div class="top-bar">
@@ -120,7 +95,7 @@
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
-                <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct" target="_blank">TikTok</a>
             </div>
         </div>
     </div>
@@ -129,93 +104,75 @@
         <div class="container">
             <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
             <ul class="nav-menu">
-                <li><a href="index.html">Acasă</a></li>
-                <li><a href="index.html">Despre Noi</a></li>
+                <li><a href="index.html" style="color:#ffa500">Acasă</a></li>
+                <li><a href="despre.html">Despre Noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                <li><a href="preturi.html">Prețuri</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
-                <li><a href="termeni.html">Termeni</a></li>
             </ul>
             <a href="tel:+40749277995" class="cta-nav">Sună Acum</a>
         </div>
     </nav>
 
-    <section class="hero">
+    <header class="hero">
         <div class="container">
-            <h1>Buldoexcavator disponibil în Tecuci și împrejurimi</h1>
-            <p>Săpături, nivelări și lucrări pregătitoare – disponibil imediat</p>
-            <a href="tel:+40749277995" class="btn-main">📞 Sună acum: 0749 277 995</a>
+            <h1>Excavări și Pregătire Teren în județul Galați</h1>
+            <p>Buldoexcavator CAT + operator | Intervenții rapide în 24-48h</p>
+            <a href="tel:+40749277995" class="btn-main">📞 Cere Ofertă: 0749 277 995</a>
         </div>
-    </section>
+    </header>
 
     <section class="container">
-        <h2 class="section-title">Serviciile noastre</h2>
+        <h2 class="section-title">Servicii Principale</h2>
         <div class="services-grid">
-            <div class="service-card"><span class="service-icon">🏗️</span><h3>Săpături fundații</h3></div>
-            <div class="service-card"><span class="service-icon">🚜</span><h3>Nivelări teren</h3></div>
-            <div class="service-card"><span class="service-icon">💧</span><h3>Săpături utilități</h3></div>
-            <div class="service-card"><span class="service-icon">🚧</span><h3>Pregătire construcții</h3></div>
+            <div class="service-card"><span class="service-icon">🏗️</span><h3>Săpături Fundații</h3></div>
+            <div class="service-card"><span class="service-icon">🚜</span><h3>Nivelări Teren</h3></div>
+            <div class="service-card"><span class="service-icon">💧</span><h3>Utilități</h3></div>
+            <div class="service-card"><span class="service-icon">🚧</span><h3>Demolări</h3></div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="VALSOCIALCONSTRUCT servicii_page.html" style="color: #ffa500; font-weight: 700; text-decoration: none;">Vezi toate serviciile →</a>
         </div>
     </section>
 
-    <section class="why-us">
+    <section style="background: #1a1a1a; color: white;">
         <div class="container">
-            <h2 class="section-title" style="color:white">De ce să ne alegi?</h2>
-            <div class="why-grid">
-                <div class="why-item"><h4>Intervenim rapid</h4><p>Chiar și a doua zi de la confirmare.</p></div>
-                <div class="why-item"><h4>Utilaj performant</h4><p>CAT 428 echipat profesional.</p></div>
-                <div class="why-item"><h4>Seriozitate</h4><p>Respectăm termenele stabilite.</p></div>
-                <div class="why-item"><h4>Prețuri corecte</h4><p>Oferte corecte per lucrare.</p></div>
+            <h2 class="section-title" style="color:white">De ce noi?</h2>
+            <div class="services-grid">
+                <div style="text-align: center;"><h4>Utilaj Propriu</h4><p style="font-size: 0.9em; color: #ccc;">Fără costuri de închiriere extra.</p></div>
+                <div style="text-align: center;"><h4>Promptitudine</h4><p style="font-size: 0.9em; color: #ccc;">Intervenim rapid în tot județul.</p></div>
+                <div style="text-align: center;"><h4>Seriozitate</h4><p style="font-size: 0.9em; color: #ccc;">Respectăm proiectul și timpul tău.</p></div>
             </div>
         </div>
     </section>
 
     <section class="container">
-        <h2 class="section-title">Lucrări executate</h2>
+        <h2 class="section-title">Lucrări Recente</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <video width="100%" height="300" controls muted autoplay loop style="border-radius: 8px; object-fit: cover;">
-                    <source src="video1.mp4" type="video/mp4">
-                    Browserul tău nu suportă formatul video.
-                </video>
-            </div>
-            <div class="gallery-item">
-               <!-- <video width="100%" height="300" controls muted autoplay loop style="border-radius: 8px; object-fit: cover;">
-                    <source src="video2.mp4" type="video/mp4">
-                    Browserul tău nu suportă formatul video.
-                </video>-->
-                 <img src="poza2.jpeg" alt="Buldoexcavator finalizat" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
-            </div>
-            <div class="gallery-item">
-                <img src="poza1.jpeg" alt="Buldoexcavator finalizat" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
-            </div>
+            <div class="gallery-item"><video controls muted autoplay loop><source src="video1.mp4" type="video/mp4"></video></div>
+            <div class="gallery-item"><img src="poza1.jpeg" alt="Lucrare 1"></div>
+            <div class="gallery-item"><img src="poza2.jpeg" alt="Lucrare 2"></div>
         </div>
-    </section>
-
-    <section class="container">
-        <h2 class="section-title">Cum colaborăm</h2>
-        <div class="steps">
-            <div class="step"><div class="step-num">1</div><h3>Ne suni</h3><p>Discutăm lucrarea.</p></div>
-            <div class="step"><div class="step-num">2</div><h3>Planificăm</h3><p>Stabilim ziua și costul.</p></div>
-            <div class="step"><div class="step-num">3</div><h3>Executăm</h3><p>Venim rapid la locație.</p></div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="VALSOCIALCONSTRUCT activitati_page.html" style="color: #ffa500; font-weight: 700; text-decoration: none;">Vezi Galerie Video →</a>
         </div>
     </section>
 
     <section class="cta-final">
         <div class="container">
-            <h2>Ai o lucrare? Sună acum și discutăm!</h2>
+            <h2>Ai o lucrare urgentă?</h2>
+            <p>Disponibil pentru intervenții în Tecuci, Galați și localitățile limitrofe.</p>
             <a href="tel:+40749277995" class="phone-big">0749 277 995</a>
-            <br>
             <a href="https://wa.me/40749277995" class="btn-whatsapp-final" target="_blank">Scrie-ne pe WhatsApp</a>
         </div>
     </section>
 
     <footer>
-        <div class="container" style="text-align: center; padding: 40px 0; color: #777; border-top: 1px solid #eee;">
+        <div class="container">
             <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
-            <p style="font-size: 0.8em; margin-top: 10px;">
-                <a href="termeni.html" style="color: #777; text-decoration: none;">GDPR</a> | 
-                <a href="termeni.html" style="color: #777; text-decoration: none;">Termeni și Condiții</a>
+            <p style="font-size: 0.8em; margin-top: 10px; color: #777;">
+                <a href="termeni.html" style="color: #777; text-decoration: none;">Politica de Confidențialitate</a>
             </p>
         </div>
     </footer>
