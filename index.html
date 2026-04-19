@@ -51,11 +51,11 @@
         section { padding: 80px 0; }
         .section-title { text-align: center; font-size: 2.2em; margin-bottom: 40px; color: #1a1a1a; }
 
-        /* SERVICII */
+        /* SERVICII & WHY US */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-        .service-card { text-align: center; padding: 30px; background: #f9f9f9; border-radius: 10px; border-bottom: 4px solid #eee; transition: 0.3s; }
-        .service-card:hover { border-color: #ffa500; transform: translateY(-5px); }
-        .service-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
+        .service-card, .why-card { text-align: center; padding: 30px; background: #f9f9f9; border-radius: 10px; border-bottom: 4px solid #eee; transition: 0.3s; }
+        .service-card:hover, .why-card:hover { border-color: #ffa500; transform: translateY(-5px); background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .service-icon, .why-icon { font-size: 2.5em; margin-bottom: 15px; display: block; }
 
         /* GALERIE */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
@@ -70,7 +70,7 @@
             text-decoration: none; transition: 0.3s;
         }
 
-        /* FOOTER MODERN UNIFICAT */
+        /* FOOTER */
         footer { background: #1a1a1a !important; color: #ffffff !important; padding: 70px 20px 20px; margin-top: 0; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: left; }
         .footer-section h3 { color: #ffa500 !important; margin-bottom: 20px; font-size: 1.2em; text-transform: uppercase; }
@@ -143,7 +143,7 @@
         </div>
     </section>
 
-    <section class="container">
+    <section class="container" style="padding-top: 0;">
         <h2 class="section-title">Lucrări Recente</h2>
         <div class="gallery-grid">
             <div class="gallery-item"><video controls muted autoplay loop><source src="video1.mp4" type="video/mp4"></video></div>
@@ -162,13 +162,25 @@
         </div>
     </section>
 
-    <section style="background: #1a1a1a; color: white;">
+    <section style="background: #f4f4f4; border-top: 1px solid #ddd;">
         <div class="container">
-            <h2 class="section-title" style="color:white">De ce noi?</h2>
+            <h2 class="section-title">De ce să alegi VAL SOCIAL CONSTRUCT?</h2>
             <div class="services-grid">
-                <div style="text-align: center;"><h4>Utilaj Propriu</h4><p style="font-size: 0.9em; color: #ccc;">Fără costuri de închiriere extra.</p></div>
-                <div style="text-align: center;"><h4>Promptitudine</h4><p style="font-size: 0.9em; color: #ccc;">Intervenim rapid în tot județul.</p></div>
-                <div style="text-align: center;"><h4>Seriozitate</h4><p style="font-size: 0.9em; color: #ccc;">Respectăm proiectul și timpul tău.</p></div>
+                <div class="why-card">
+                    <span class="why-icon" style="color:#ffa500">🚜</span>
+                    <h4 style="margin-bottom:10px; color:#1a1a1a;">Utilaj Propriu</h4>
+                    <p style="font-size: 0.95em; color: #555;">Deținem buldoexcavator CAT propriu, eliminând costurile de închiriere intermediare.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon" style="color:#ffa500">⏱️</span>
+                    <h4 style="margin-bottom:10px; color:#1a1a1a;">Promptitudine</h4>
+                    <p style="font-size: 0.95em; color: #555;">Intervenim rapid în tot județul Galați. Timp de răspuns între 24 și 48 de ore.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon" style="color:#ffa500">✅</span>
+                    <h4 style="margin-bottom:10px; color:#1a1a1a;">Seriozitate</h4>
+                    <p style="font-size: 0.95em; color: #555;">Oferim transparență totală, respectăm termenele limită și calitatea execuției.</p>
+                </div>
             </div>
         </div>
     </section>
