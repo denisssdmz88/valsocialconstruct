@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VAL SOCIAL CONSTRUCT - Excavări și Pregătire Teren în județul Galați</title>
     <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://elfsightcdn.com/platform.js" async></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
 
-        /* Top Bar */
+        /* TOP BAR */
         .top-bar { background: #1a1a1a; color: white; padding: 10px 0; font-size: 0.9em; }
         .top-bar .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
         .contact-info { display: flex; gap: 20px; flex-wrap: wrap; }
@@ -17,31 +18,22 @@
         .social-links a { color: white; text-decoration: none; transition: 0.3s; }
         .social-links a:hover { color: #ffa500; }
 
-        /* Navigation - MODIFICAT PENTRU ALINIERE DREAPTA */
+        /* NAVIGATION */
         nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        nav .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
+        nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; flex-shrink: 0; }
         
-        /* Meniul împins la dreapta */
         .nav-menu { 
             display: flex; 
             list-style: none; 
             gap: 25px; 
-            margin-left: auto; /* Aceasta linie impinge tot meniul la dreapta */
-            margin-right: 25px; /* Spatiu intre meniu si butonul CTA */
+            margin-left: auto; 
+            margin-right: 25px; 
             align-items: center;
         }
-        
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
-        .cta-nav { background: #ffa500; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; flex-shrink: 0; }
+        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; transition: 0.3s; flex-shrink: 0; }
         .cta-nav:hover { background: #ff8c00; }
 
         /* HERO */
@@ -69,17 +61,6 @@
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .gallery-item img, .gallery-item video { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
 
-        /* CTA FINAL */
-        .cta-final { background: #ffa500; color: white; text-align: center; padding: 80px 20px; }
-        .phone-big { font-size: 2.5em; display: block; color: white; text-decoration: none; font-weight: 800; margin-top: 20px; }
-        
-        .btn-whatsapp-final { 
-            background: #25d366; color: white; padding: 12px 30px; border-radius: 50px; 
-            text-decoration: none; font-weight: 700; display: inline-block; margin-top: 25px; 
-            font-size: 1.1em; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .btn-whatsapp-final:hover { background: #128c7e; transform: translateY(-3px); }
-
         /* WHATSAPP FLOAT */
         .whatsapp-float {
             position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
@@ -89,7 +70,16 @@
             text-decoration: none; transition: 0.3s;
         }
 
-        footer { background: #1a1a1a; color: white; padding: 40px 0; text-align: center; }
+        /* FOOTER MODERN UNIFICAT */
+        footer { background: #1a1a1a !important; color: #ffffff !important; padding: 70px 20px 20px; margin-top: 0; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: left; }
+        .footer-section h3 { color: #ffa500 !important; margin-bottom: 20px; font-size: 1.2em; text-transform: uppercase; }
+        .footer-section p { color: #e0e0e0 !important; font-size: 0.95em; margin-bottom: 10px; }
+        .footer-links { list-style: none !important; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: #ffffff !important; text-decoration: none; transition: 0.3s; font-size: 0.95em; }
+        .footer-links a:hover { color: #ffa500 !important; padding-left: 5px; }
+        .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; color: #bbbbbb !important; font-size: 0.85em; }
 
         @media (max-width: 1024px) {
             .nav-menu { display: none; }
@@ -153,6 +143,13 @@
         </div>
     </section>
 
+    <section style="background: #fdfdfd; border-top: 1px solid #eee;">
+        <div class="container">
+            <h2 class="section-title">Urmărește-ne pe Instagram</h2>
+            <div class="elfsight-app-1e677f7b-cfae-485f-b613-e69fee40356a" data-elfsight-app-lazy></div>
+        </div>
+    </section>
+
     <section style="background: #1a1a1a; color: white;">
         <div class="container">
             <h2 class="section-title" style="color:white">De ce noi?</h2>
@@ -164,33 +161,32 @@
         </div>
     </section>
 
-    <section class="container">
-        <h2 class="section-title">Lucrări Recente</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><video controls muted autoplay loop><source src="video1.mp4" type="video/mp4"></video></div>
-            <div class="gallery-item"><img src="poza1.jpeg" alt="Lucrare 1"></div>
-            <div class="gallery-item"><img src="poza2.jpeg" alt="Lucrare 2"></div>
-        </div>
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="VALSOCIALCONSTRUCT activitati_page.html" style="color: #ffa500; font-weight: 700; text-decoration: none;">Vezi Galerie Video →</a>
-        </div>
-    </section>
-
-    <section class="cta-final">
-        <div class="container">
-            <h2>Ai o lucrare urgentă?</h2>
-            <p>Disponibil pentru intervenții în Tecuci, Galați și localitățile limitrofe.</p>
-            <a href="tel:+40749277995" class="phone-big">0749 277 995</a>
-            <a href="https://wa.me/40749277995" class="btn-whatsapp-final" target="_blank">Scrie-ne pe WhatsApp</a>
-        </div>
-    </section>
-
     <footer>
-        <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3>VAL SOCIAL CONSTRUCT</h3>
+                <p>Profesionalism și eficiență în lucrări de infrastructură și pregătire teren în județul Galați.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navigare</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="despre.html">Despre Noi</a></li>
+                    <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
+                    <li><a href="preturi.html">Prețuri</a></li>
+                    <li><a href="valsocial contact.html">Contact</a></li>
+                    <li><a href="termeni.html">Termeni și Condiții</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📍 Nărtești, Galați</p>
+                <p>📞 0749 277 995</p>
+                <p>✉️ valsocialconstruct@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <p>© 2026 VAL SOCIAL CONSTRUCT SRL. Toate Drepturile Rezervate.</p>
-            <p style="font-size: 0.8em; margin-top: 10px; color: #777;">
-                <a href="termeni.html" style="color: #777; text-decoration: none;">Politica de Confidențialitate</a>
-            </p>
         </div>
     </footer>
 
