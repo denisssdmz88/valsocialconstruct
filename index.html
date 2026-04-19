@@ -61,12 +61,12 @@
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .gallery-item img, .gallery-item video { width: 100%; height: 450px; object-fit: cover; border-radius: 8px; background: #000; }
 
-        /* WHATSAPP FLOAT - MODIFICAT PENTRU EVITAREA SUPRAPUNERII */
+        /* WHATSAPP FLOAT - Ajustat pentru a sta DEASUPRA widgetului Elfsight */
         .whatsapp-float {
             position: fixed; 
             width: 60px; 
             height: 60px; 
-            bottom: 100px; /* Ridicat pentru a sta deasupra chatbot-ului pe desktop */
+            bottom: 100px; /* Ridicat pentru a nu se suprapune cu Chat-ul */
             right: 20px;
             background-color: #25d366; 
             color: #FFF; 
@@ -74,7 +74,7 @@
             text-align: center; 
             font-size: 30px; 
             box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 99999; 
+            z-index: 999999; 
             display: flex; 
             align-items: center; 
             justify-content: center;
@@ -97,8 +97,7 @@
         @media (max-width: 1024px) {
             .nav-menu { display: none; }
             .hero h1 { font-size: 2em; }
-            /* Pe mobil, chatbot-ul ocupă mult spațiu, ridicăm WhatsApp-ul și mai mult */
-            .whatsapp-float { bottom: 110px; } 
+            .whatsapp-float { bottom: 110px; } /* Mai sus pe mobil */
         }
     </style>
 </head>
@@ -157,6 +156,48 @@
         </div>
         <div style="text-align: center; margin-top: 30px;">
             <a href="VALSOCIALCONSTRUCT servicii_page.html" style="color: #ffa500; font-weight: 700; text-decoration: none;">Vezi toate serviciile →</a>
+        </div>
+    </section>
+
+    <section class="container" style="padding-top: 0;">
+        <h2 class="section-title">Lucrări Recente</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><video controls muted autoplay loop><source src="video1.mp4" type="video/mp4"></video></div>
+            <div class="gallery-item"><img src="poza1.jpeg" alt="Lucrare 1"></div>
+            <div class="gallery-item"><video controls muted autoplay loop><source src="video3.mp4" type="video/mp4"></video></div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="VALSOCIALCONSTRUCT activitati_page.html" style="color: #ffa500; font-weight: 700; text-decoration: none;">Vezi Galerie Video →</a>
+        </div>
+    </section>
+
+    <section style="background: #fdfdfd; border-top: 1px solid #eee; padding: 80px 0;">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+            <h2 class="section-title">Urmărește-ne pe Instagram</h2>
+            <div class="elfsight-app-1e677f7b-cfae-485f-b613-e69fee40356a" data-elfsight-app-lazy></div>
+        </div>
+    </section>
+
+    <section style="background: #f4f4f4; border-top: 1px solid #ddd;">
+        <div class="container">
+            <h2 class="section-title">De ce să alegi VAL SOCIAL CONSTRUCT?</h2>
+            <div class="services-grid">
+                <div class="why-card">
+                    <span class="why-icon" style="color:#ffa500">🚜</span>
+                    <h4 style="margin-bottom:10px; color:#1a1a1a;">Utilaj Propriu</h4>
+                    <p style="font-size: 0.95em; color: #555;">Deținem buldoexcavator CAT propriu, eliminând costurile de închiriere intermediare.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon" style="color:#ffa500">⏱️</span>
+                    <h4 style="margin-bottom:10px; color:#1a1a1a;">Promptitudine</h4>
+                    <p style="font-size: 0.95em; color: #555;">Intervenim rapid în tot județul Galați. Timp de răspuns între 24 și 48 de ore.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon" style="color:#ffa500">✅</span>
+                    <h4 style="margin-bottom:10px; color:#1a1a1a;">Seriozitate</h4>
+                    <p style="font-size: 0.95em; color: #555;">Oferim transparență totală, respectăm termenele limită și calitatea execuției.</p>
+                </div>
+            </div>
         </div>
     </section>
 
