@@ -61,12 +61,54 @@
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
         .gallery-item img, .gallery-item video { width: 100%; height: 450px; object-fit: cover; border-radius: 8px; background: #000; }
 
-        /* WHATSAPP FLOAT - Ajustat pentru a sta DEASUPRA widgetului Elfsight */
+        /* NOUA SECTIUNE CTA PORTOCALIE */
+        .cta-orange-section {
+            background: #ffa500;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            border-top: 5px solid #ff8c00;
+        }
+        .cta-orange-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+        .cta-orange-section p {
+            font-size: 1.2em;
+            margin-bottom: 35px;
+            font-weight: 500;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-cta-white {
+            background: #1a1a1a;
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.4em;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .btn-cta-white:hover {
+            background: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        /* WHATSAPP FLOAT */
         .whatsapp-float {
             position: fixed; 
             width: 60px; 
             height: 60px; 
-            bottom: 100px; /* Ridicat pentru a nu se suprapune cu Chat-ul */
+            bottom: 100px; 
             right: 20px;
             background-color: #25d366; 
             color: #FFF; 
@@ -84,7 +126,7 @@
         .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
 
         /* FOOTER */
-        footer { background: #1a1a1a !important; color: #ffffff !important; padding: 70px 20px 20px; margin-top: 0; }
+        footer { background: #1a1a1a !important; color: #ffffff !important; padding: 70px 20px 20px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; text-align: left; }
         .footer-section h3 { color: #ffa500 !important; margin-bottom: 20px; font-size: 1.2em; text-transform: uppercase; }
         .footer-section p { color: #e0e0e0 !important; font-size: 0.95em; margin-bottom: 10px; }
@@ -97,7 +139,8 @@
         @media (max-width: 1024px) {
             .nav-menu { display: none; }
             .hero h1 { font-size: 2em; }
-            .whatsapp-float { bottom: 110px; } /* Mai sus pe mobil */
+            .cta-orange-section h2 { font-size: 1.8em; }
+            .btn-cta-white { font-size: 1.1em; width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -171,10 +214,20 @@
         </div>
     </section>
 
-    <section style="background: #fdfdfd; border-top: 1px solid #eee; padding: 80px 0;">
+    <section style="background: #fdfdfd; border-top: 1px solid #eee; padding-bottom: 0;">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
             <h2 class="section-title">Urmărește-ne pe Instagram</h2>
             <div class="elfsight-app-1e677f7b-cfae-485f-b613-e69fee40356a" data-elfsight-app-lazy></div>
+        </div>
+    </section>
+
+    <section class="cta-orange-section">
+        <div class="container">
+            <h2>Ai nevoie de o ofertă rapidă?</h2>
+            <p>Suntem disponibili pentru lucrări în tot județul Galați. Sună-ne acum pentru a rezerva utilajul!</p>
+            <a href="tel:+40749277995" class="btn-cta-white">
+                <span>📞</span> SUNĂ ACUM: 0749 277 995
+            </a>
         </div>
     </section>
 
