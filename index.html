@@ -21,7 +21,10 @@
         /* NAVIGATION */
         nav { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; flex-shrink: 0; }
+        
+        /* LOGO STYLING */
+        .logo-container { display: flex; align-items: center; text-decoration: none; padding: 10px 0; }
+        .logo-img { height: 80px; width: auto; transition: 0.3s; }
         
         .nav-menu { 
             display: flex; 
@@ -141,6 +144,7 @@
             .hero h1 { font-size: 2em; }
             .cta-orange-section h2 { font-size: 1.8em; }
             .btn-cta-white { font-size: 1.1em; width: 100%; justify-content: center; }
+            .logo-img { height: 60px; }
         }
     </style>
 </head>
@@ -168,7 +172,9 @@
 
     <nav>
         <div class="container">
-            <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
+            <a href="index.html" class="logo-container">
+                <img src="ValSocial Construct LOGO.jpg" alt="VAL SOCIAL CONSTRUCT Logo" class="logo-img">
+            </a>
             <ul class="nav-menu">
                 <li><a href="index.html" style="color:#ffa500">Acasă</a></li>
                 <li><a href="despre.html">Despre noi</a></li>
