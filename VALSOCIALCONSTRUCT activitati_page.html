@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activități - VAL SOCIAL CONSTRUCT</title>
+    
     <link rel="icon" type="image/png" href="favicon.png">
+    
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <style>
         /* CSS UNIFICAT */
@@ -22,15 +24,20 @@
         .social-links a { color: white; text-decoration: none; transition: 0.3s; }
         .social-links a:hover { color: #ffa500; }
 
-        /* Navigation */
+        /* Navigation cu LOGO */
         nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; }
-        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; padding: 25px 0; display: block; transition: 0.3s; }
+        
+        .logo-container { display: flex; align-items: center; text-decoration: none; padding: 5px 0; }
+        .logo-img { height: 80px; width: auto; transition: 0.3s; display: block; }
+        
+        .nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; margin-left: auto; margin-right: 25px; }
+        .nav-menu a { text-decoration: none; color: #333; font-weight: 500; padding: 25px 0; display: block; transition: 0.3s; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
-        .nav-menu a.active { color: #ffa500; }
-        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; font-weight: 600; text-decoration: none; }
+        .nav-menu a.active { color: #ffa500; font-weight: 700; }
+        
+        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        .cta-nav:hover { background: #e69500; transform: translateY(-2px); }
 
         /* Hero Banner */
         .hero { 
@@ -82,21 +89,11 @@
 
         /* WHATSAPP FLOAT */
         .whatsapp-float {
-            position: fixed; 
-            width: 60px; height: 60px; 
-            bottom: 100px; right: 20px;
-            background-color: #25d366; 
-            color: #FFF; 
-            border-radius: 50px;
-            text-align: center; 
-            font-size: 30px; 
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 999999; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            text-decoration: none; 
-            transition: 0.3s;
+            position: fixed; width: 60px; height: 60px; bottom: 100px; right: 20px;
+            background-color: #25d366; color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 999999; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s;
         }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
 
@@ -104,16 +101,15 @@
         footer { background: #1a1a1a; color: white; padding: 70px 0 20px; margin-top: 50px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; text-align: left; }
         .footer-section h3 { color: #ffa500; margin-bottom: 25px; font-size: 1.2em; text-transform: uppercase; }
-        .footer-links li { margin-bottom: 12px; }
         .footer-links a { color: #ccc; text-decoration: none; transition: 0.3s; }
         .footer-links a:hover { color: #ffa500; padding-left: 5px; }
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; color: #888; font-size: 0.9em; }
 
-        @media (max-width: 968px) {
+        @media (max-width: 1024px) {
+            .nav-menu { display: none; }
+            .logo-img { height: 65px; }
             .slideshows-wrapper { grid-template-columns: 1fr; }
             .slideshow-container { height: 320px; }
-            .nav-menu { display: none; }
-            .top-bar .container { justify-content: center; gap: 10px; }
             .whatsapp-float { bottom: 110px; }
         }
     </style>
@@ -142,7 +138,9 @@
 
     <nav>
         <div class="container">
-            <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
+            <a href="index.html" class="logo-container">
+                <img src="favicon.png" alt="VAL SOCIAL CONSTRUCT" class="logo-img">
+            </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
                 <li><a href="despre.html">Despre noi</a></li>
@@ -150,8 +148,8 @@
                 <li><a href="preturi.html">Prețuri</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html" class="active">Activități</a></li>
                 <li><a href="valsocial contact.html">Contact</a></li>
-                <li><a href="tel:+40749277995" class="cta-nav">Sună acum</a></li>
             </ul>
+            <a href="tel:+40749277995" class="cta-nav">Sună acum</a>
         </div>
     </nav>
 
@@ -260,6 +258,7 @@
 
         function showSlide(type, index) {
             const container = document.getElementById(type + '-container');
+            if(!container) return;
             const slides = container.getElementsByClassName('slide');
             const dots = container.getElementsByClassName('dot');
 
