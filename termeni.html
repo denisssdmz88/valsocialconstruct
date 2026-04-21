@@ -25,7 +25,10 @@
         /* NAVIGATION */
         nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.6em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; flex-shrink: 0; }
+        
+        /* LOGO STYLING */
+        .logo-container { display: flex; align-items: center; text-decoration: none; padding: 10px 0; }
+        .logo-img { height: 75px; width: auto; transition: 0.3s; }
         
         .nav-menu { 
             display: flex; 
@@ -71,7 +74,7 @@
         
         p { margin-bottom: 20px; text-align: justify; color: #444; font-size: 1.05em; }
         
-        .terms-list li { margin-bottom: 12px; color: #444; position: relative; padding-left: 20px; }
+        .terms-list li { margin-bottom: 12px; color: #444; position: relative; padding-left: 25px; }
         .terms-list li::before { content: "●"; position: absolute; left: 0; color: #ffa500; font-size: 0.8em; }
 
         .important-box { 
@@ -85,7 +88,7 @@
         .important-box strong { color: #856404; display: block; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
         .important-box p { color: #856404; margin-bottom: 0; font-weight: 500; text-align: left; }
 
-        /* WHATSAPP FLOAT - Poziționat mai sus pentru a nu bloca chatbot-ul */
+        /* WHATSAPP FLOAT */
         .whatsapp-float {
             position: fixed; 
             width: 60px; height: 60px; 
@@ -119,7 +122,7 @@
             .nav-menu { display: none; }
             .hero h1 { font-size: 2.2em; }
             .terms-wrapper { padding: 30px; }
-            .whatsapp-float { bottom: 110px; }
+            .logo-img { height: 60px; }
         }
     </style>
 </head>
@@ -147,7 +150,9 @@
 
     <nav>
         <div class="container">
-            <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
+            <a href="index.html" class="logo-container">
+                <img src="favicon.png" alt="VAL SOCIAL CONSTRUCT" class="logo-img">
+            </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
                 <li><a href="despre.html">Despre noi</a></li>
@@ -230,7 +235,7 @@
                     <h3>Legal</h3>
                     <ul class="footer-links">
                         <li><a href="termeni.html">Termeni și condiții</a></li>
-                        <li><a href="termeni.html">Politică cookies</a></li>
+                        <li><a href="#">Politică cookies</a></li>
                     </ul>
                 </div>
             </div>
