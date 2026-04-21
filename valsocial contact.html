@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - VAL SOCIAL CONSTRUCT</title>
+    
     <link rel="icon" type="image/png" href="favicon.png">
+    
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <style>
+        /* CSS UNIFICAT */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #fff; }
 
@@ -21,15 +24,18 @@
         .social-links a { color: white; text-decoration: none; transition: 0.3s; }
         .social-links a:hover { color: #ffa500; }
 
-        /* Navigation */
+        /* Navigation cu LOGO */
         nav { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
         nav .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.5em; font-weight: 700; color: #ffa500; padding: 20px 0; text-decoration: none; }
-        .nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; }
+        
+        .logo-container { display: flex; align-items: center; text-decoration: none; padding: 5px 0; }
+        .logo-img { height: 80px; width: auto; transition: 0.3s; display: block; }
+        
+        .nav-menu { display: flex; list-style: none; gap: 20px; align-items: center; margin-left: auto; margin-right: 25px; }
         .nav-menu a { text-decoration: none; color: #333; font-weight: 500; transition: 0.3s; padding: 25px 0; display: block; font-size: 0.95em; }
         .nav-menu a:hover { color: #ffa500; }
         
-        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; font-weight: 600 !important; transition: 0.3s; }
+        .cta-nav { background: #ffa500; color: white !important; padding: 10px 20px !important; border-radius: 5px; font-weight: 600 !important; transition: 0.3s; text-decoration: none; }
         .cta-nav:hover { background: #e69500; transform: translateY(-2px); }
 
         /* Hero Section */
@@ -78,21 +84,11 @@
 
         /* Floating WhatsApp */
         .whatsapp-float {
-            position: fixed; 
-            width: 60px; height: 60px; 
-            bottom: 100px; right: 20px;
-            background-color: #25d366; 
-            color: #FFF; 
-            border-radius: 50px;
-            text-align: center; 
-            font-size: 30px; 
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 999999; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            text-decoration: none; 
-            transition: 0.3s;
+            position: fixed; width: 60px; height: 60px; bottom: 100px; right: 20px;
+            background-color: #25d366; color: #FFF; border-radius: 50px;
+            text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 999999; display: flex; align-items: center; justify-content: center;
+            text-decoration: none; transition: 0.3s;
         }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
 
@@ -104,9 +100,10 @@
         .footer-links a:hover { color: #ffa500 !important; padding-left: 5px; }
         .footer-bottom { text-align: center; margin-top: 50px; padding-top: 25px; border-top: 1px solid #333; }
 
-        @media (max-width: 968px) {
-            .contact-grid { grid-template-columns: 1fr; }
+        @media (max-width: 1024px) {
             .nav-menu { display: none; }
+            .logo-img { height: 65px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
             .whatsapp-float { bottom: 110px; }
         }
     </style>
@@ -129,23 +126,25 @@
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a>
                 <a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a>
-                <a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a>
+                <a href="https://www.tiktok.com/@valsocialconstruct" target="_blank">TikTok</a>
             </div>
         </div>
     </div>
 
     <nav>
         <div class="container">
-            <a href="index.html" class="logo">VAL SOCIAL CONSTRUCT</a>
+            <a href="index.html" class="logo-container">
+                <img src="favicon.png" alt="VAL SOCIAL CONSTRUCT" class="logo-img">
+            </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Acasă</a></li>
                 <li><a href="despre.html">Despre noi</a></li>
                 <li><a href="VALSOCIALCONSTRUCT servicii_page.html">Servicii</a></li>
                 <li><a href="preturi.html">Prețuri</a></li>
                 <li><a href="VALSOCIALCONSTRUCT activitati_page.html">Activități</a></li>
-                <li><a href="valsocial contact.html" style="color: #ffa500;">Contact</a></li>
-                <li><a href="tel:+40749277995" class="cta-nav">Sună acum</a></li>
+                <li><a href="valsocial contact.html" style="color: #ffa500; font-weight: 700;">Contact</a></li>
             </ul>
+            <a href="tel:+40749277995" class="cta-nav">Sună acum</a>
         </div>
     </nav>
 
@@ -176,7 +175,7 @@
                         <input type="tel" name="telefon" placeholder="07xx xxx xxx">
                     </div>
                     <div class="form-group">
-                        <label>Serviciu</label>
+                        <label>Serviciu interesat</label>
                         <select name="serviciu">
                             <option value="excavari">Excavări și Nivelări</option>
                             <option value="drenaj">Lucrări de Drenaj</option>
@@ -187,7 +186,7 @@
                     </div>
                     <div class="form-group">
                         <label>Mesaj *</label>
-                        <textarea name="mesaj" rows="5" placeholder="Detaliați proiectul dumneavoastră..." required></textarea>
+                        <textarea name="mesaj" rows="5" placeholder="Detaliați proiectul dumneavoastră (locație, dimensiuni teren)..." required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">TRIMITE MESAJUL</button>
                 </form>
@@ -196,13 +195,13 @@
             <div class="contact-info-column">
                 <h2 class="info-title">Detalii de contact</h2>
                 <div class="contact-card">
-                    <h3>📍 Adresă</h3>
-                    <p>Nărtești, Galați</p>
+                    <h3>📍 Locație Sediu</h3>
+                    <p>Nărtești, Județul Galați</p>
                 </div>
                 <div class="contact-card">
                     <h3>📞 Telefon direct</h3>
-                    <p><a href="tel:+40749277995">(+40) 749 277 995</a></p>
-                    <a href="https://wa.me/40749277995" class="whatsapp-btn-inline" target="_blank">WhatsApp Chat</a>
+                    <p><a href="tel:+40749277995">0749 277 995</a></p>
+                    <a href="https://wa.me/40749277995" class="whatsapp-btn-inline" target="_blank">Chat pe WhatsApp</a>
                 </div>
                 <div class="contact-card">
                     <h3>✉️ E-mail proiecte</h3>
@@ -211,7 +210,7 @@
                 <div class="contact-card">
                     <h3>⏰ Program lucru</h3>
                     <p>Luni - Vineri: 08:00 - 18:00</p>
-                    <p style="color: #777; font-size: 0.9em; margin-top: 5px;">Sâmbătă: Doar programări confirmate</p>
+                    <p style="color: #777; font-size: 0.85em; margin-top: 5px;">Sâmbătă: Lucrări programate în prealabil</p>
                 </div>
             </div>
         </section>
@@ -239,7 +238,7 @@
                     <ul class="footer-links">
                         <li><a href="https://www.facebook.com/profile.php?id=61583601997212" target="_blank">Facebook</a></li>
                         <li><a href="https://www.instagram.com/valsocialconstruct" target="_blank">Instagram</a></li>
-                        <li><a href="https://www.tiktok.com/@valsocialconstruct?lang=en" target="_blank">TikTok</a></li>
+                        <li><a href="https://www.tiktok.com/@valsocialconstruct" target="_blank">TikTok</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
