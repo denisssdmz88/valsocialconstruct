@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarife - Val Social Construct</title>
+    <style>
+        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --bg: #f0f2f5; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
+        nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; }
+        nav a { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; }
+        nav a.active { background: var(--primary); font-weight: bold; }
+        .container { padding: 20px; max-width: 500px; margin: 20px auto; background: white; border-radius: 15px; }
+        h1 { color: var(--primary); text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: var(--dark); color: white; padding: 10px; text-align: left; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; }
+        input { width: 70px; padding: 5px; border: 1px solid #d35400; border-radius: 4px; text-align: center; font-weight: bold; }
+        .btn-save { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="calculator.html">Calculator</a>
+        <a href="istoric.html">Istoric Lucrări</a>
+        <a href="tarife.html" class="active">Tarife de Referință</a>
+    </nav>
+    <div class="container">
+        <h1>📌 TARIFE REFERINȚĂ</h1>
+        <table>
+            <thead><tr><th>Serviciu</th><th>Tarif</th><th>UM</th></tr></thead>
+            <tbody id="tbodyTarife"></tbody>
+        </table>
+        <button class="btn-save" onclick="salveaza()">ACTUALIZEAZĂ PREȚURI</button>
+    </div>
+
+    <script>
+        const tarifeDefault = [{id:'t1',nume:'Demolare chirpici',pret:250,um:'lei/ora'},{id:'t2',nume:'Smuls cioate',pret:250,um:'lei/ora'},{id:'t3',nume:'Săpături fundație',pret:250,um:'lei/ora'},{id:'t4',nume:'Nivelare teren',pret:200,um:'lei/ora'},{id:'t5',nume:'Încărcare moloz',pret:200,um:'lei/ora'},{id:'t6',nume:'Șanțuri utilități',pret:200,um:'lei/ora'},{id:'t7',nume:'Tarif minim',pret:500,um:'lei'},{id:'t8',nume:'Operator',pret:400,um:'lei/zi'},{id:'t9',nume:'Motorină',pret:9.6,um:'lei/L'},{id:'t10',nume:'Consum',pret:10,um:'L/h'}];
+        let tarife = JSON.parse(localStorage.getItem('vsc_tarife')) || tarifeDefault;
+        const tbody = document.getElementById('tbodyTarife');
+        tbody.innerHTML = tarife.map(t => `<tr><td><b>${t.nume}</b></td><td><input type="number" id="p-${t.id}" value="${t.pret}"></td><td>${t.um}</td></tr>`).join('');
+
+        function salveaza() {
+            tarife.forEach(t => { t.pret = parseFloat(document.getElementById('p-' + t.id).value); });
+            localStorage.setItem('vsc_tarife', JSON.stringify(tarife));
+            alert("Salvat!");
+        }
+    </script>
+</body>
+</html>
