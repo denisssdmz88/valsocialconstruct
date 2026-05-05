@@ -10,13 +10,14 @@
         nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; }
         nav a { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; }
         nav a.active { background: var(--primary); font-weight: bold; }
-        .container { padding: 20px; max-width: 500px; margin: 20px auto; background: white; border-radius: 15px; }
+        .container { padding: 20px; max-width: 500px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { color: var(--primary); text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
         table { width: 100%; border-collapse: collapse; }
-        th { background: var(--dark); color: white; padding: 10px; text-align: left; }
+        th { background: var(--dark); color: white; padding: 10px; text-align: left; font-size: 0.8em; }
         td { padding: 10px; border-bottom: 1px solid #ddd; }
-        input { width: 70px; padding: 5px; border: 1px solid #d35400; border-radius: 4px; text-align: center; font-weight: bold; }
-        .btn-save { width: 100%; padding: 14px; background: var(--primary); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 20px; }
+        input { width: 80px; padding: 8px; border: 1px solid #d35400; border-radius: 4px; text-align: center; font-weight: bold; font-size: 1em; }
+        .btn-save { width: 100%; padding: 14px; background: var(--success); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 20px; font-size: 1.1em; }
+        .loading-text { text-align: center; color: #7f8c8d; font-style: italic; }
     </style>
 </head>
 <body>
@@ -29,22 +30,83 @@
         <h1>📌 TARIFE REFERINȚĂ</h1>
         <table>
             <thead><tr><th>Serviciu</th><th>Tarif</th><th>UM</th></tr></thead>
-            <tbody id="tbodyTarife"></tbody>
+            <tbody id="tbodyTarife">
+                <tr><td colspan="3" class="loading-text">Se încarcă tarifele din cloud...</td></tr>
+            </tbody>
         </table>
-        <button class="btn-save" onclick="salveaza()">ACTUALIZEAZĂ PREȚURI</button>
+        <button class="btn-save" onclick="window.salveaza()">ACTUALIZEAZĂ PREȚURI (CLOUD)</button>
     </div>
 
-    <script>
-        const tarifeDefault = [{id:'t1',nume:'Demolare chirpici',pret:250,um:'lei/ora'},{id:'t2',nume:'Smuls cioate',pret:250,um:'lei/ora'},{id:'t3',nume:'Săpături fundație',pret:250,um:'lei/ora'},{id:'t4',nume:'Nivelare teren',pret:200,um:'lei/ora'},{id:'t5',nume:'Încărcare moloz',pret:200,um:'lei/ora'},{id:'t6',nume:'Șanțuri utilități',pret:200,um:'lei/ora'},{id:'t7',nume:'Tarif minim',pret:500,um:'lei'},{id:'t8',nume:'Operator',pret:400,um:'lei/zi'},{id:'t9',nume:'Motorină',pret:9.6,um:'lei/L'},{id:'t10',nume:'Consum',pret:10,um:'L/h'}];
-        let tarife = JSON.parse(localStorage.getItem('vsc_tarife')) || tarifeDefault;
-        const tbody = document.getElementById('tbodyTarife');
-        tbody.innerHTML = tarife.map(t => `<tr><td><b>${t.nume}</b></td><td><input type="number" id="p-${t.id}" value="${t.pret}"></td><td>${t.um}</td></tr>`).join('');
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-        function salveaza() {
-            tarife.forEach(t => { t.pret = parseFloat(document.getElementById('p-' + t.id).value); });
-            localStorage.setItem('vsc_tarife', JSON.stringify(tarife));
-            alert("Salvat!");
+        const firebaseConfig = {
+            apiKey: "AIzaSyApPbIf1cir53tQm01fBZYKTNsuTQXH7H4",
+            authDomain: "valsocialconstruct-calculator.firebaseapp.com",
+            databaseURL: "https://valsocialconstruct-calculator-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "valsocialconstruct-calculator",
+            storageBucket: "valsocialconstruct-calculator.firebasestorage.app",
+            messagingSenderId: "612758921733",
+            appId: "1:612758921733:web:33c3dfe5b4e8d3b121326c"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const tarifeRef = ref(db, 'tarife');
+
+        const tarifeDefault = [
+            {id:'t1',nume:'Demolare chirpici',pret:250,um:'lei/ora'},
+            {id:'t2',nume:'Smuls cioate',pret:250,um:'lei/ora'},
+            {id:'t3',nume:'Săpături fundație',pret:250,um:'lei/ora'},
+            {id:'t4',nume:'Nivelare teren',pret:200,um:'lei/ora'},
+            {id:'t5',nume:'Încărcare moloz',pret:200,um:'lei/ora'},
+            {id:'t6',nume:'Șanțuri utilități',pret:200,um:'lei/ora'},
+            {id:'t7',nume:'Tarif minim',pret:500,um:'lei'},
+            {id:'t8',nume:'Operator',pret:400,um:'lei/zi'},
+            {id:'t9',nume:'Motorină',pret:9.6,um:'lei/L'},
+            {id:'t10',nume:'Consum',pret:10,um:'L/h'}
+        ];
+
+        let tarifeCurente = [];
+
+        // Citim tarifele din Firebase
+        onValue(tarifeRef, (snapshot) => {
+            const data = snapshot.val();
+            
+            // Dacă nu există date în Firebase (primul setup), le punem pe cele default
+            if (!data) {
+                set(tarifeRef, tarifeDefault);
+                tarifeCurente = tarifeDefault;
+            } else {
+                tarifeCurente = data;
+            }
+            renderTable(tarifeCurente);
+        });
+
+        function renderTable(lista) {
+            const tbody = document.getElementById('tbodyTarife');
+            tbody.innerHTML = lista.map(t => `
+                <tr>
+                    <td><b>${t.nume}</b></td>
+                    <td><input type="number" step="0.1" id="p-${t.id}" value="${t.pret}"></td>
+                    <td><small>${t.um}</small></td>
+                </tr>
+            `).join('');
         }
+
+        window.salveaza = function() {
+            const noiTarife = tarifeCurente.map(t => {
+                return {
+                    ...t,
+                    pret: parseFloat(document.getElementById('p-' + t.id).value)
+                };
+            });
+
+            set(tarifeRef, noiTarife)
+                .then(() => alert("✅ Tarifele au fost actualizate cu succes pentru toată echipa!"))
+                .catch((error) => alert("Eroare la salvare: " + error.message));
+        };
     </script>
 </body>
 </html>
