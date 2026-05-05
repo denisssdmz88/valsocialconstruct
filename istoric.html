@@ -3,82 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator - Val Social Construct</title>
+    <title>Istoric Lucrări - Val Social Construct</title>
     <style>
-        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --bg: #f0f2f5; --accent: #f1c40f; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; }
-        nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 100; }
-        nav a { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; font-size: 0.9em; }
-        nav a.active { background: var(--primary); border-color: var(--primary); font-weight: bold; }
-        .container { padding: 20px; max-width: 500px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { color: var(--primary); text-align: center; font-size: 1.4em; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-top: 0; }
-        .section-title { font-weight: bold; margin: 15px 0 10px; color: var(--dark); font-size: 0.8em; text-transform: uppercase; border-left: 4px solid var(--primary); padding-left: 8px; }
-        .input-group { margin-bottom: 12px; }
-        label { display: block; margin-bottom: 4px; font-size: 0.75em; color: #555; font-weight: 600; }
-        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 1em; }
-        .row { display: flex; gap: 10px; }
-        .row > div { flex: 1; }
-        .result-box { background: var(--dark); color: white; padding: 15px; border-radius: 10px; margin-top: 15px; }
-        .result-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9em; }
-        .total { color: var(--accent); font-size: 1.3em; font-weight: bold; }
-        .btn-main { width: 100%; padding: 14px; background: var(--success); color: white; border: none; border-radius: 8px; font-size: 1.1em; cursor: pointer; font-weight: bold; }
-        .negociat-input { border: 2px solid var(--accent) !important; background: #fffdf0; }
-        .edit-mode-notice { background: #fff3cd; color: #856404; padding: 10px; border-radius: 8px; margin-bottom: 15px; font-size: 0.85em; text-align: center; display: none; }
+        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --danger: #e74c3c; --bg: #f0f2f5; --warning: #f39c12; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
+        nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; }
+        nav a { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; }
+        nav a.active { background: var(--primary); font-weight: bold; }
+        .container { padding: 20px; max-width: 1200px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: var(--primary); text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { background: var(--dark); color: white; padding: 10px; text-align: left; font-size: 0.75em; text-transform: uppercase; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; font-size: 0.85em; }
+        
+        /* Rând clicabil */
+        .clickable-row { cursor: pointer; transition: background 0.2s; }
+        .clickable-row:hover { background: #fef5ef; }
+        
+        .status-select { padding: 5px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold; position: relative; z-index: 10; }
+        .status-confirm { color: var(--success); border-color: var(--success); }
+        .status-pending { color: var(--warning); border-color: var(--warning); }
+        .profit-pozitiv { color: var(--success); font-weight: bold; }
+        .profit-negativ { color: var(--danger); font-weight: bold; }
+        .btn-delete-item { background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; position: relative; z-index: 10; }
+        .tip-badge { background: #eee; padding: 2px 5px; border-radius: 3px; font-size: 0.9em; color: #333; display: inline-block; margin-top: 4px; }
     </style>
 </head>
 <body>
     <nav>
-        <a href="calculator.html" class="active">Calculator</a>
-        <a href="istoric.html">Istoric Lucrări</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="istoric.html" class="active">Istoric Lucrări</a>
         <a href="tarife.html">Tarife de Referință</a>
     </nav>
     <div class="container">
-        <div id="editNotice" class="edit-mode-notice">⚠️ Modifici o lucrare existentă din istoric</div>
-        <h1>VAL SOCIAL CONSTRUCT</h1>
-        
-        <div class="section-title">Identificare Lucrare</div>
-        <div class="input-group">
-            <label>Nume Client</label>
-            <input type="text" id="client" placeholder="Ex: Tudorel Obreja">
+        <h1>📋 ISTORIC LUCRĂRI</h1>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Client / Detalii</th>
+                        <th>Tip Lucrare</th>
+                        <th>Recomandat</th>
+                        <th>Negociat</th>
+                        <th>Profit Est.</th>
+                        <th>Status</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyIstoric"></tbody>
+            </table>
         </div>
-        <div class="row">
-            <div class="input-group"><label>Locație</label><input type="text" id="locatie" placeholder="Ex: Balasesti"></div>
-            <div class="input-group"><label>Data</label><input type="date" id="data"></div>
-        </div>
-
-        <div class="section-title">Detalii Tehnice</div>
-        <div class="input-group">
-            <label>Tip Serviciu</label>
-            <select id="tipLucrare" onchange="window.calculare()"></select>
-        </div>
-        
-        <div class="row">
-            <div class="input-group"><label>Zile (8h)</label><input type="number" id="zile" value="0" oninput="window.calculare()"></div>
-            <div class="input-group"><label>Ore Extra</label><input type="number" id="ore" value="0" oninput="window.calculare()"></div>
-        </div>
-        
-        <div class="row">
-            <div class="input-group"><label>KM Parcurși</label><input type="number" id="km" value="0" oninput="window.calculare()"></div>
-            <div class="input-group"><label>Salariu Operator (lei/zi)</label><input type="number" id="salariu" oninput="window.calculare()"></div>
-        </div>
-
-        <div class="input-group">
-            <label>Preț Negociat Total (Suma finală stabilită)</label>
-            <input type="number" id="pretNegociat" class="negociat-input" placeholder="Introdu suma dacă ai negociat altfel" oninput="window.calculare()">
-        </div>
-
-        <div class="result-box">
-            <div class="result-row"><span>Timp Total:</span><span id="resOre">0 h</span></div>
-            <div class="result-row total"><span>TOTAL ESTIMAT:</span><span id="resTotal">0 lei</span></div>
-        </div>
-        
-        <button class="btn-main" id="btnSalvare" style="margin-top:20px" onclick="window.salveazaInIstoric()">SALVEAZĂ LUCRARE NOUĂ</button>
-        <button class="btn-main" id="btnUpdate" style="margin-top:10px; background: var(--primary); display:none;" onclick="window.actualizeazaLucrare()">ACTUALIZEAZĂ ÎN ISTORIC</button>
     </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getDatabase, ref, get, set, push, onValue, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getDatabase, ref, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyApPbIf1cir53tQm01fBZYKTNsuTQXH7H4",
@@ -92,99 +72,58 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
+        
         let tarife = [];
-        let editId = new URLSearchParams(window.location.search).get('edit');
+        onValue(ref(db, 'tarife'), (s) => { tarife = s.val() || []; });
 
-        // Încărcăm tarifele și apoi verificăm dacă suntem în mod Edit
-        onValue(ref(db, 'tarife'), (snapshot) => {
+        onValue(ref(db, 'lucrari'), (snapshot) => {
             const data = snapshot.val();
-            if(data) {
-                tarife = data;
-                refreshDropdown();
-                if(editId) incarcaDateLucrare(editId);
+            const tbody = document.getElementById('tbodyIstoric');
+            let rows = "";
+            
+            if (data) {
+                const lista = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+                lista.sort((a, b) => b.timestamp - a.timestamp);
+
+                lista.forEach(l => {
+                    // Calcul profit rapid pentru afișare
+                    const motorina = tarife.find(t => t.id === 't9')?.pret || 9.6;
+                    const consum = tarife.find(t => t.id === 't10')?.pret || 10;
+                    const oreT = (parseFloat(l.zile || 0) * 8) + parseFloat(l.oreE || 0);
+                    const costuri = Math.round((oreT * consum * motorina) + (parseFloat(l.zile || 0) * parseFloat(l.sal || 400)));
+                    const neg = l.negociat ? parseFloat(l.negociat) : parseFloat(l.total.replace(/[^0-9]/g, ''));
+                    const profit = neg - costuri;
+
+                    rows += `
+                        <tr class="clickable-row" onclick="window.deschideInCalculator('${l.id}')">
+                            <td>${l.data}</td>
+                            <td><b>${l.client}</b><br><small>${l.locatie}</small></td>
+                            <td><span class="tip-badge">${l.tip || 'Nespecificat'}</span></td>
+                            <td>${l.total}</td>
+                            <td style="color:#d35400; font-weight:bold;">${l.negociat || '-'} lei</td>
+                            <td class="${profit >= 0 ? 'profit-pozitiv' : 'profit-negativ'}">${profit} lei</td>
+                            <td onclick="event.stopPropagation()">
+                                <select class="status-select ${l.status === 'Confirmat' ? 'status-confirm' : 'status-pending'}" 
+                                        onchange="window.schimbaStatus('${l.id}', this.value)">
+                                    <option value="In asteptare" ${l.status === 'In asteptare' ? 'selected' : ''}>⏳ Așteptare</option>
+                                    <option value="Confirmat" ${l.status === 'Confirmat' ? 'selected' : ''}>✅ Confirmat</option>
+                                </select>
+                            </td>
+                            <td onclick="event.stopPropagation()">
+                                <button class="btn-delete-item" onclick="window.sterge('${l.id}')">X</button>
+                            </td>
+                        </tr>`;
+                });
             }
+            tbody.innerHTML = rows;
         });
 
-        function refreshDropdown() {
-            const select = document.getElementById('tipLucrare');
-            select.innerHTML = tarife.filter(t => t.um === 'lei/ora').map(s => `<option value="${s.pret}">${s.nume} (${s.pret} lei/h)</option>`).join('');
-            document.getElementById('salariu').value = tarife.find(t => t.id === 't8')?.pret || 400;
-            window.calculare();
-        }
+        window.deschideInCalculator = (id) => {
+            window.location.href = `calculator.html?edit=${id}`;
+        };
 
-        async function incarcaDateLucrare(id) {
-            const snap = await get(ref(db, `lucrari/${id}`));
-            if(snap.exists()) {
-                const d = snap.val();
-                document.getElementById('editNotice').style.display = 'block';
-                document.getElementById('btnUpdate').style.display = 'block';
-                document.getElementById('btnSalvare').innerText = "SALVEAZĂ CA LUCRARE NOUĂ (COPIE)";
-                
-                document.getElementById('client').value = d.client;
-                document.getElementById('locatie').value = d.locatie;
-                document.getElementById('data').value = d.data;
-                document.getElementById('zile').value = d.zile;
-                document.getElementById('ore').value = d.oreE;
-                document.getElementById('km').value = d.km;
-                document.getElementById('salariu').value = d.sal;
-                document.getElementById('pretNegociat').value = d.negociat || "";
-                
-                // Selectare tip lucrare corect în dropdown
-                const options = document.getElementById('tipLucrare').options;
-                for(let i=0; i<options.length; i++) {
-                    if(options[i].text.includes(d.tip)) {
-                        document.getElementById('tipLucrare').selectedIndex = i;
-                        break;
-                    }
-                }
-                window.calculare();
-            }
-        }
-
-        window.calculare = function() {
-            const selectElement = document.getElementById('tipLucrare');
-            if(!selectElement.value) return;
-
-            const tarifOra = parseFloat(selectElement.value);
-            const oreT = (parseFloat(document.getElementById('zile').value || 0) * 8) + parseFloat(document.getElementById('ore').value || 0);
-            const km = parseFloat(document.getElementById('km').value || 0);
-            const minim = tarife.find(t => t.id === 't7')?.pret || 500;
-            const negociat = parseFloat(document.getElementById('pretNegociat').value || 0);
-
-            let total = (oreT * tarifOra) + (km * 2.5);
-            if(total < minim && oreT > 0) total = minim;
-
-            document.getElementById('resOre').innerText = oreT + " h";
-            document.getElementById('resTotal').innerText = Math.round(total) + " lei";
-        }
-
-        function getFormData() {
-            return {
-                data: document.getElementById('data').value,
-                client: document.getElementById('client').value || 'Anonim',
-                locatie: document.getElementById('locatie').value || '-',
-                tip: document.getElementById('tipLucrare').options[document.getElementById('tipLucrare').selectedIndex].text.split(' (')[0],
-                zile: document.getElementById('zile').value,
-                oreE: document.getElementById('ore').value,
-                km: document.getElementById('km').value,
-                sal: document.getElementById('salariu').value,
-                negociat: document.getElementById('pretNegociat').value,
-                total: document.getElementById('resTotal').innerText,
-                status: 'In asteptare',
-                timestamp: Date.now()
-            };
-        }
-
-        window.salveazaInIstoric = function() {
-            push(ref(db, 'lucrari'), getFormData()).then(() => window.location.href = 'istoric.html');
-        }
-
-        window.actualizeazaLucrare = function() {
-            if(!editId) return;
-            update(ref(db, `lucrari/${editId}`), getFormData()).then(() => window.location.href = 'istoric.html');
-        }
-
-        if(!editId) document.getElementById('data').valueAsDate = new Date();
+        window.schimbaStatus = (id, val) => update(ref(db, 'lucrari/' + id), { status: val });
+        window.sterge = (id) => confirm("Ștergi lucrarea?") && remove(ref(db, 'lucrari/' + id));
     </script>
 </body>
 </html>
