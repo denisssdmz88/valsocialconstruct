@@ -1,66 +1,152 @@
-<!-- Păstrează tot HTML-ul tău până la începutul tag-ului <script> -->
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator - Val Social Construct</title>
+    <style>
+        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --bg: #f0f2f5; --accent: #f1c40f; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 0; }
+        nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 100; }
+        nav a { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; font-size: 0.9em; }
+        nav a.active { background: var(--primary); border-color: var(--primary); font-weight: bold; }
+        .container { padding: 20px; max-width: 500px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: var(--primary); text-align: center; font-size: 1.4em; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-top: 0; }
+        .section-title { font-weight: bold; margin: 15px 0 10px; color: var(--dark); font-size: 0.8em; text-transform: uppercase; border-left: 4px solid var(--primary); padding-left: 8px; }
+        .input-group { margin-bottom: 12px; }
+        label { display: block; margin-bottom: 4px; font-size: 0.75em; color: #555; font-weight: 600; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 1em; }
+        .row { display: flex; gap: 10px; }
+        .row > div { flex: 1; }
+        .result-box { background: var(--dark); color: white; padding: 15px; border-radius: 10px; margin-top: 15px; }
+        .result-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9em; }
+        .total { color: var(--accent); font-size: 1.3em; font-weight: bold; }
+        .btn-main { width: 100%; padding: 14px; background: var(--success); color: white; border: none; border-radius: 8px; font-size: 1.1em; cursor: pointer; font-weight: bold; }
+        .negociat-input { border: 2px solid var(--accent) !important; background: #fffdf0; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="calculator.html" class="active">Calculator</a>
+        <a href="istoric.html">Istoric Lucrări</a>
+        <a href="tarife.html">Tarife de Referință</a>
+    </nav>
+    <div class="container">
+        <h1>VAL SOCIAL CONSTRUCT</h1>
+        
+        <div class="section-title">Identificare Lucrare</div>
+        <div class="input-group">
+            <label>Nume Client</label>
+            <input type="text" id="client" placeholder="Ex: Tudorel Obreja">
+        </div>
+        <div class="row">
+            <div class="input-group"><label>Locație</label><input type="text" id="locatie" placeholder="Ex: Balasesti"></div>
+            <div class="input-group"><label>Data</label><input type="date" id="data"></div>
+        </div>
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyApPbIf1cir53tQm01fBZYKTNsuTQXH7H4",
-        authDomain: "valsocialconstruct-calculator.firebaseapp.com",
-        databaseURL: "https://valsocialconstruct-calculator-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "valsocialconstruct-calculator",
-        storageBucket: "valsocialconstruct-calculator.firebasestorage.app",
-        messagingSenderId: "612758921733",
-        appId: "1:612758921733:web:33c3dfe5b4e8d3b121326c"
-    };
+        <div class="section-title">Detalii Tehnice</div>
+        <div class="input-group">
+            <label>Tip Serviciu</label>
+            <select id="tipLucrare" onchange="window.calculare()"></select>
+        </div>
+        
+        <div class="row">
+            <div class="input-group"><label>Zile (8h)</label><input type="number" id="zile" value="0" oninput="window.calculare()"></div>
+            <div class="input-group"><label>Ore Extra</label><input type="number" id="ore" value="0" oninput="window.calculare()"></div>
+        </div>
+        
+        <div class="row">
+            <div class="input-group"><label>KM Parcurși</label><input type="number" id="km" value="0" oninput="window.calculare()"></div>
+            <div class="input-group"><label>Salariu Operator (lei/zi)</label><input type="number" id="salariu" oninput="window.calculare()"></div>
+        </div>
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
+        <div class="input-group">
+            <label>Preț Negociat Total (Suma finală stabilită)</label>
+            <input type="number" id="pretNegociat" class="negociat-input" placeholder="Introdu suma dacă ai negociat altfel" oninput="window.calculare()">
+        </div>
 
-    // Datele tale de referință
-    const tarifeDefault = [{id:'t1',nume:'Demolare chirpici',pret:250,um:'lei/ora'},{id:'t2',nume:'Smuls cioate',pret:250,um:'lei/ora'},{id:'t3',nume:'Săpături fundație',pret:250,um:'lei/ora'},{id:'t4',nume:'Nivelare teren',pret:200,um:'lei/ora'},{id:'t5',nume:'Încărcare moloz',pret:200,um:'lei/ora'},{id:'t6',nume:'Șanțuri utilități',pret:200,um:'lei/ora'},{id:'t7',nume:'Tarif minim',pret:500,um:'lei'},{id:'t8',nume:'Operator',pret:400,um:'lei/zi'},{id:'t9',nume:'Motorină',pret:9.6,um:'lei/L'},{id:'t10',nume:'Consum',pret:10,um:'L/h'}];
-    let tarife = JSON.parse(localStorage.getItem('vsc_tarife')) || tarifeDefault;
+        <div class="result-box">
+            <div class="result-row"><span>Timp Total:</span><span id="resOre">0 h</span></div>
+            <div class="result-row total"><span>TOTAL ESTIMAT:</span><span id="resTotal">0 lei</span></div>
+        </div>
+        
+        <button class="btn-main" style="margin-top:20px" onclick="window.salveazaInIstoric()">SALVEAZĂ LUCRARE</button>
+    </div>
 
-    window.calculare = function() {
-        const tarifOra = parseFloat(document.getElementById('tipLucrare').value);
-        const oreT = (parseFloat(document.getElementById('zile').value || 0) * 8) + parseFloat(document.getElementById('ore').value || 0);
-        const km = parseFloat(document.getElementById('km').value || 0);
-        const minim = tarife.find(t => t.id === 't7').pret;
-        const negociat = parseFloat(document.getElementById('pretNegociat').value || 0);
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, set, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-        let total = negociat > 0 ? negociat : (oreT * tarifOra) + (km * 2.5);
-        if(total < minim && oreT > 0 && negociat == 0) total = minim;
-
-        document.getElementById('resOre').innerText = oreT + " h";
-        document.getElementById('resTotal').innerText = Math.round(total) + " lei";
-    }
-
-    window.salveazaInIstoric = function() {
-        const item = { 
-            data: document.getElementById('data').value, 
-            client: document.getElementById('client').value || 'Anonim', 
-            locatie: document.getElementById('locatie').value || '-', 
-            tip: document.getElementById('tipLucrare').options[document.getElementById('tipLucrare').selectedIndex].text, 
-            zile: document.getElementById('zile').value, 
-            oreE: document.getElementById('ore').value, 
-            km: document.getElementById('km').value, 
-            sal: document.getElementById('salariu').value,
-            negociat: document.getElementById('pretNegociat').value,
-            total: document.getElementById('resTotal').innerText,
-            status: 'In asteptare',
-            timestamp: Date.now()
+        const firebaseConfig = {
+            apiKey: "AIzaSyApPbIf1cir53tQm01fBZYKTNsuTQXH7H4",
+            authDomain: "valsocialconstruct-calculator.firebaseapp.com",
+            databaseURL: "https://valsocialconstruct-calculator-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "valsocialconstruct-calculator",
+            storageBucket: "valsocialconstruct-calculator.firebasestorage.app",
+            messagingSenderId: "612758921733",
+            appId: "1:612758921733:web:33c3dfe5b4e8d3b121326c",
+            measurementId: "G-NHCWCNKR5D"
         };
 
-        const dbRef = ref(db, 'lucrari');
-        const nouaLucrare = push(dbRef);
-        set(nouaLucrare, item).then(() => {
-            window.location.href = 'istoric.html';
-        });
-    }
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        let tarife = [];
 
-    // Inițializare dropdown
-    const select = document.getElementById('tipLucrare');
-    select.innerHTML = tarife.filter(t => t.um === 'lei/ora').map(s => `<option value="${s.pret}">${s.nume} (${s.pret} lei/h)</option>`).join('');
-    document.getElementById('salariu').value = tarife.find(t => t.id === 't8').pret;
-    document.getElementById('data').valueAsDate = new Date();
-    window.calculare();
-</script>
+        // Încărcăm tarifele din Firebase
+        onValue(ref(db, 'tarife'), (snapshot) => {
+            const data = snapshot.val();
+            if(data) {
+                tarife = data;
+                refreshDropdown();
+            }
+        });
+
+        function refreshDropdown() {
+            const select = document.getElementById('tipLucrare');
+            select.innerHTML = tarife.filter(t => t.um === 'lei/ora').map(s => `<option value="${s.pret}">${s.nume} (${s.pret} lei/h)</option>`).join('');
+            document.getElementById('salariu').value = tarife.find(t => t.id === 't8')?.pret || 400;
+            window.calculare();
+        }
+
+        window.calculare = function() {
+            const selectElement = document.getElementById('tipLucrare');
+            if(!selectElement.value) return;
+
+            const tarifOra = parseFloat(selectElement.value);
+            const oreT = (parseFloat(document.getElementById('zile').value || 0) * 8) + parseFloat(document.getElementById('ore').value || 0);
+            const km = parseFloat(document.getElementById('km').value || 0);
+            const minim = tarife.find(t => t.id === 't7')?.pret || 500;
+            const negociat = parseFloat(document.getElementById('pretNegociat').value || 0);
+
+            let total = negociat > 0 ? negociat : (oreT * tarifOra) + (km * 2.5);
+            if(total < minim && oreT > 0 && negociat == 0) total = minim;
+
+            document.getElementById('resOre').innerText = oreT + " h";
+            document.getElementById('resTotal').innerText = Math.round(total) + " lei";
+        }
+
+        window.salveazaInIstoric = function() {
+            const item = { 
+                data: document.getElementById('data').value, 
+                client: document.getElementById('client').value || 'Anonim', 
+                locatie: document.getElementById('locatie').value || '-', 
+                tip: document.getElementById('tipLucrare').options[document.getElementById('tipLucrare').selectedIndex].text, 
+                zile: document.getElementById('zile').value, 
+                oreE: document.getElementById('ore').value, 
+                km: document.getElementById('km').value, 
+                sal: document.getElementById('salariu').value,
+                negociat: document.getElementById('pretNegociat').value,
+                total: document.getElementById('resTotal').innerText,
+                status: 'In asteptare',
+                timestamp: Date.now()
+            };
+
+            push(ref(db, 'lucrari'), item).then(() => {
+                window.location.href = 'istoric.html';
+            });
+        }
+
+        document.getElementById('data').valueAsDate = new Date();
+    </script>
+</body>
+</html>
