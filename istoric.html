@@ -3,27 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Istoric - Val Social Construct</title>
+    <title>Istoric Lucrări - Val Social Construct</title>
     <style>
-        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --danger: #e74c3c; --bg: #f0f2f5; }
+        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --danger: #e74c3c; --bg: #f0f2f5; --warning: #f39c12; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
         nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; }
         nav a { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; }
         nav a.active { background: var(--primary); font-weight: bold; }
         
-        .container { padding: 20px; max-width: 1000px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .container { padding: 20px; max-width: 1200px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { color: var(--primary); text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
         
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { background: var(--dark); color: white; padding: 12px; text-align: left; font-size: 0.8em; text-transform: uppercase; }
-        td { padding: 12px; border-bottom: 1px solid #ddd; font-size: 0.9em; cursor: pointer; }
+        th { background: var(--dark); color: white; padding: 10px; text-align: left; font-size: 0.75em; text-transform: uppercase; }
+        td { padding: 10px; border-bottom: 1px solid #ddd; font-size: 0.85em; }
         tr:hover { background: #f9f9f9; }
         
+        .status-select { padding: 5px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold; }
+        .status-confirm { color: var(--success); border-color: var(--success); }
+        .status-pending { color: var(--warning); border-color: var(--warning); }
+        
+        .val-cheltuieli { color: #7f8c8d; font-style: italic; }
         .profit-pozitiv { color: var(--success); font-weight: bold; }
         .profit-negativ { color: var(--danger); font-weight: bold; }
         
-        .btn-delete-item { background: var(--danger); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-delete-item { background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
         .btn-del-all { background: #7f8c8d; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; width: 100%; margin-top: 25px; font-weight: bold; }
+        .clickable { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -33,16 +39,18 @@
         <a href="tarife.html">Tarife de Referință</a>
     </nav>
     <div class="container">
-        <h1>📋 ISTORIC & PROFITABILITATE</h1>
+        <h1>📋 ISTORIC LUCRĂRI</h1>
         <div style="overflow-x: auto;">
             <table>
                 <thead>
                     <tr>
                         <th>Data</th>
                         <th>Client / Locație</th>
-                        <th>Serviciu</th>
-                        <th>Încasat</th>
+                        <th>Preț Recomandat</th>
+                        <th>Preț Negociat</th>
+                        <th>Cheltuieli</th>
                         <th>Profit Net</th>
+                        <th>Status</th>
                         <th>Acțiuni</th>
                     </tr>
                 </thead>
@@ -57,42 +65,60 @@
         let tarife = JSON.parse(localStorage.getItem('vsc_tarife')) || [];
         const tbody = document.getElementById('tbodyIstoric');
 
-        function calculeazaProfit(lucrare) {
-            // Extragere variabile din tarife (motorina si consum)
+        function calculeazaDate(l) {
             const pretMotorina = tarife.find(t => t.id === 't9')?.pret || 9.6;
             const consumOra = tarife.find(t => t.id === 't10')?.pret || 10;
+            const oreTotale = (parseFloat(l.zile || 0) * 8) + parseFloat(l.oreE || 0);
             
-            // Calcul ore totale
-            const oreTotale = (parseFloat(lucrare.zile || 0) * 8) + parseFloat(lucrare.oreE || 0);
-            
-            // Cheltuieli: (Consum motorina) + (Salariu operator pe zile)
             const costMotorina = oreTotale * consumOra * pretMotorina;
-            const costOperator = parseFloat(lucrare.zile || 0) * parseFloat(lucrare.sal || 400);
+            const costOperator = parseFloat(l.zile || 0) * parseFloat(l.sal || 400);
+            const totalCheltuieli = Math.round(costMotorina + costOperator);
             
-            const totalCheltuieli = costMotorina + costOperator;
-            const pretIncasat = parseFloat(lucrare.total.replace(/[^0-9]/g, ''));
+            // Calculăm Recomandat (fără km pentru simplitate sau din total dacă nu e negociat)
+            let recomandat = parseFloat(l.total.replace(/[^0-9]/g, ''));
+            let negociat = l.negociat ? parseFloat(l.negociat) : recomandat;
             
-            return Math.round(pretIncasat - totalCheltuieli);
+            const profit = negociat - totalCheltuieli;
+            
+            return { recomandat, negociat, totalCheltuieli, profit };
         }
 
         function afiseazaTabel() {
             tbody.innerHTML = istoric.slice().reverse().map(l => {
-                const profit = calculeazaProfit(l);
-                const clasaProfit = profit >= 0 ? 'profit-pozitiv' : 'profit-negativ';
+                const date = calculeazaDate(l);
+                const clasaProfit = date.profit >= 0 ? 'profit-pozitiv' : 'profit-negativ';
+                const currentStatus = l.status || 'In asteptare';
                 
                 return `
-                    <tr onclick="editeaza(${l.id})">
-                        <td>${l.data}</td>
-                        <td><b>${l.client}</b><br><small>${l.locatie}</small></td>
-                        <td>${l.tip.split('(')[0]}</td>
-                        <td>${l.total}</td>
-                        <td class="${clasaProfit}">${profit} lei</td>
+                    <tr>
+                        <td class="clickable" onclick="editeaza(${l.id})">${l.data}</td>
+                        <td class="clickable" onclick="editeaza(${l.id})"><b>${l.client}</b><br><small>${l.locatie}</small></td>
+                        <td>${date.recomandat} lei</td>
+                        <td style="color:var(--primary); font-weight:bold;">${date.negociat} lei</td>
+                        <td class="val-cheltuieli">${date.totalCheltuieli} lei</td>
+                        <td class="${clasaProfit}">${date.profit} lei</td>
                         <td>
-                            <button class="btn-delete-item" onclick="stergeRand(event, ${l.id})">Șterge</button>
+                            <select class="status-select ${currentStatus === 'Confirmat' ? 'status-confirm' : 'status-pending'}" 
+                                    onchange="schimbaStatus(event, ${l.id}, this.value)">
+                                <option value="In asteptare" ${currentStatus === 'In asteptare' ? 'selected' : ''}>⏳ În așteptare</option>
+                                <option value="Confirmat" ${currentStatus === 'Confirmat' ? 'selected' : ''}>✅ Confirmat</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn-delete-item" onclick="stergeRand(event, ${l.id})">X</button>
                         </td>
                     </tr>
                 `;
             }).join('');
+        }
+
+        function schimbaStatus(event, id, val) {
+            const index = istoric.findIndex(i => i.id === id);
+            if(index !== -1) {
+                istoric[index].status = val;
+                localStorage.setItem('vsc_istoric', JSON.stringify(istoric));
+                afiseazaTabel(); // Refresh pentru culori
+            }
         }
 
         function editeaza(id) { 
