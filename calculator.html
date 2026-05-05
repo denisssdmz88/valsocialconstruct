@@ -21,8 +21,10 @@
         .result-box { background: var(--dark); color: white; padding: 15px; border-radius: 10px; margin-top: 15px; }
         .result-row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9em; }
         .total { color: var(--accent); font-size: 1.3em; font-weight: bold; }
+        .profit-line { border-top: 1px solid #444; margin-top: 8px; padding-top: 8px; color: var(--success); font-weight: bold; }
         .btn-main { width: 100%; padding: 14px; background: var(--success); color: white; border: none; border-radius: 8px; font-size: 1.1em; cursor: pointer; font-weight: bold; }
         .negociat-input { border: 2px solid var(--accent) !important; background: #fffdf0; }
+        .percent-badge { background: var(--primary); color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.8em; }
     </style>
 </head>
 <body>
@@ -44,7 +46,7 @@
             <div class="input-group"><label>Data</label><input type="date" id="data"></div>
         </div>
 
-        <div class="section-title">Detalii Tehnice</div>
+        <div class="section-title">Detalii Tehnice & Marjă</div>
         <div class="input-group">
             <label>Tip Serviciu</label>
             <select id="tipLucrare" onchange="window.calculare()"></select>
@@ -54,20 +56,31 @@
             <div class="input-group"><label>Zile (8h)</label><input type="number" id="zile" value="0" oninput="window.calculare()"></div>
             <div class="input-group"><label>Ore Extra</label><input type="number" id="ore" value="0" oninput="window.calculare()"></div>
         </div>
-        
+
         <div class="row">
+            <div class="input-group">
+                <label>Adaos Profit (%)</label>
+                <input type="number" id="procentAdaos" value="20" oninput="window.calculare()">
+            </div>
             <div class="input-group"><label>KM Parcurși</label><input type="number" id="km" value="0" oninput="window.calculare()"></div>
-            <div class="input-group"><label>Salariu Operator (lei/zi)</label><input type="number" id="salariu" oninput="window.calculare()"></div>
+        </div>
+        
+        <div class="input-group">
+            <label>Salariu Operator (lei/zi)</label>
+            <input type="number" id="salariu" oninput="window.calculare()">
         </div>
 
+        <div class="section-title">Finalizare</div>
         <div class="input-group">
-            <label>Preț Negociat Total (Suma finală stabilită)</label>
-            <input type="number" id="pretNegociat" class="negociat-input" placeholder="Introdu suma dacă ai negociat altfel" oninput="window.calculare()">
+            <label>Preț Negociat Total (Manual)</label>
+            <input type="number" id="pretNegociat" class="negociat-input" placeholder="Dacă ai stabilit altă sumă cu clientul" oninput="window.calculare()">
         </div>
 
         <div class="result-box">
             <div class="result-row"><span>Timp Total:</span><span id="resOre">0 h</span></div>
-            <div class="result-row total"><span>TOTAL ESTIMAT:</span><span id="resTotal">0 lei</span></div>
+            <div class="result-row"><span>Cost Operare (Estimat):</span><span id="resCost">0 lei</span></div>
+            <div class="result-row total"><span>RECOMANDAT (+Adaos):</span><span id="resTotal">0 lei</span></div>
+            <div class="result-row profit-line"><span>PROFIT NET ESTIMAT:</span><span id="resProfit">0 lei</span></div>
         </div>
         
         <button class="btn-main" style="margin-top:20px" onclick="window.salveazaInIstoric()">SALVEAZĂ LUCRARE</button>
@@ -92,7 +105,6 @@
         const db = getDatabase(app);
         let tarife = [];
 
-        // Încărcăm tarifele din Firebase
         onValue(ref(db, 'tarife'), (snapshot) => {
             const data = snapshot.val();
             if(data) {
@@ -110,19 +122,45 @@
 
         window.calculare = function() {
             const selectElement = document.getElementById('tipLucrare');
-            if(!selectElement.value) return;
+            if(!selectElement.value || tarife.length === 0) return;
 
-            const tarifOra = parseFloat(selectElement.value);
-            const oreT = (parseFloat(document.getElementById('zile').value || 0) * 8) + parseFloat(document.getElementById('ore').value || 0);
+            // Date de bază
+            const tarifOraBase = parseFloat(selectElement.value);
+            const zile = parseFloat(document.getElementById('zile').value || 0);
+            const oreExtra = parseFloat(document.getElementById('ore').value || 0);
+            const oreT = (zile * 8) + oreExtra;
             const km = parseFloat(document.getElementById('km').value || 0);
+            const procentAdaos = parseFloat(document.getElementById('procentAdaos').value || 0) / 100;
+            
+            // Cheltuieli (Motorina + Salariu)
+            const pretMotorina = tarife.find(t => t.id === 't9')?.pret || 9.6;
+            const consumOra = tarife.find(t => t.id === 't10')?.pret || 10;
+            const salariuZi = parseFloat(document.getElementById('salariu').value || 0);
+            
+            const costMotorina = oreT * consumOra * pretMotorina;
+            const costSalariu = zile * salariuZi;
+            const costOperareTotal = costMotorina + costSalariu;
+
+            // Calcul Preț Recomandat cu Adaos
+            const pretBaza = (oreT * tarifOraBase) + (km * 2.5);
+            let recomandatCuAdaos = pretBaza * (1 + procentAdaos);
+            
+            // Verificare Tarif Minim
             const minim = tarife.find(t => t.id === 't7')?.pret || 500;
+            if(recomandatCuAdaos < minim && oreT > 0) recomandatCuAdaos = minim;
+
+            // Preț Final (Negociat sau Recomandat)
             const negociat = parseFloat(document.getElementById('pretNegociat').value || 0);
+            const pretFinal = negociat > 0 ? negociat : recomandatCuAdaos;
 
-            let total = negociat > 0 ? negociat : (oreT * tarifOra) + (km * 2.5);
-            if(total < minim && oreT > 0 && negociat == 0) total = minim;
+            // Profit Net (Pret Final - Motorina - Salariu)
+            const profitNet = pretFinal - costOperareTotal;
 
+            // Afișare rezultate
             document.getElementById('resOre').innerText = oreT + " h";
-            document.getElementById('resTotal').innerText = Math.round(total) + " lei";
+            document.getElementById('resCost').innerText = Math.round(costOperareTotal) + " lei";
+            document.getElementById('resTotal').innerText = Math.round(recomandatCuAdaos) + " lei";
+            document.getElementById('resProfit').innerText = Math.round(profitNet) + " lei";
         }
 
         window.salveazaInIstoric = function() {
@@ -135,8 +173,10 @@
                 oreE: document.getElementById('ore').value, 
                 km: document.getElementById('km').value, 
                 sal: document.getElementById('salariu').value,
+                adaos: document.getElementById('procentAdaos').value,
                 negociat: document.getElementById('pretNegociat').value,
                 total: document.getElementById('resTotal').innerText,
+                profit: document.getElementById('resProfit').innerText,
                 status: 'In asteptare',
                 timestamp: Date.now()
             };
