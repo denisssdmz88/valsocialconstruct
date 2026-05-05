@@ -1,7 +1,7 @@
-<!-- Păstrează tot HTML-ul tău până la începutul tag-ului <script> -->
+<!-- Păstrează tot stilul și tabelul HTML, apoi înlocuiește scriptul cu acesta -->
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getDatabase, ref, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyApPbIf1cir53tQm01fBZYKTNsuTQXH7H4",
@@ -15,52 +15,64 @@
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
+    let tarife = [{id:'t9', pret: 9.6}, {id:'t10', pret: 10}]; // De preferat să le iei din Firebase și pe acestea ulterior
 
-    // Datele tale de referință
-    const tarifeDefault = [{id:'t1',nume:'Demolare chirpici',pret:250,um:'lei/ora'},{id:'t2',nume:'Smuls cioate',pret:250,um:'lei/ora'},{id:'t3',nume:'Săpături fundație',pret:250,um:'lei/ora'},{id:'t4',nume:'Nivelare teren',pret:200,um:'lei/ora'},{id:'t5',nume:'Încărcare moloz',pret:200,um:'lei/ora'},{id:'t6',nume:'Șanțuri utilități',pret:200,um:'lei/ora'},{id:'t7',nume:'Tarif minim',pret:500,um:'lei'},{id:'t8',nume:'Operator',pret:400,um:'lei/zi'},{id:'t9',nume:'Motorină',pret:9.6,um:'lei/L'},{id:'t10',nume:'Consum',pret:10,um:'L/h'}];
-    let tarife = JSON.parse(localStorage.getItem('vsc_tarife')) || tarifeDefault;
+    const tbody = document.getElementById('tbodyIstoric');
 
-    window.calculare = function() {
-        const tarifOra = parseFloat(document.getElementById('tipLucrare').value);
-        const oreT = (parseFloat(document.getElementById('zile').value || 0) * 8) + parseFloat(document.getElementById('ore').value || 0);
-        const km = parseFloat(document.getElementById('km').value || 0);
-        const minim = tarife.find(t => t.id === 't7').pret;
-        const negociat = parseFloat(document.getElementById('pretNegociat').value || 0);
-
-        let total = negociat > 0 ? negociat : (oreT * tarifOra) + (km * 2.5);
-        if(total < minim && oreT > 0 && negociat == 0) total = minim;
-
-        document.getElementById('resOre').innerText = oreT + " h";
-        document.getElementById('resTotal').innerText = Math.round(total) + " lei";
+    // Funcția de calcul rămâne la fel
+    function calculeazaDate(l) {
+        const oreTotale = (parseFloat(l.zile || 0) * 8) + parseFloat(l.oreE || 0);
+        const costMotorina = oreTotale * 10 * 9.6; 
+        const costOperator = parseFloat(l.zile || 0) * parseFloat(l.sal || 400);
+        const totalCheltuieli = Math.round(costMotorina + costOperator);
+        const recomandat = parseFloat(l.total.replace(/[^0-9]/g, ''));
+        const negociat = l.negociat ? parseFloat(l.negociat) : recomandat;
+        return { recomandat, negociat, totalCheltuieli, profit: negociat - totalCheltuieli };
     }
 
-    window.salveazaInIstoric = function() {
-        const item = { 
-            data: document.getElementById('data').value, 
-            client: document.getElementById('client').value || 'Anonim', 
-            locatie: document.getElementById('locatie').value || '-', 
-            tip: document.getElementById('tipLucrare').options[document.getElementById('tipLucrare').selectedIndex].text, 
-            zile: document.getElementById('zile').value, 
-            oreE: document.getElementById('ore').value, 
-            km: document.getElementById('km').value, 
-            sal: document.getElementById('salariu').value,
-            negociat: document.getElementById('pretNegociat').value,
-            total: document.getElementById('resTotal').innerText,
-            status: 'In asteptare',
-            timestamp: Date.now()
-        };
+    // Ascultăm datele din Firebase în timp real
+    const dbRef = ref(db, 'lucrari');
+    onValue(dbRef, (snapshot) => {
+        const data = snapshot.val();
+        let rows = "";
+        
+        if (data) {
+            // Transformăm obiectul Firebase în listă și îl sortăm (cele mai noi sus)
+            const lista = Object.keys(data).map(key => ({ id: key, ...data[key] }));
+            lista.sort((a, b) => b.timestamp - a.timestamp);
 
-        const dbRef = ref(db, 'lucrari');
-        const nouaLucrare = push(dbRef);
-        set(nouaLucrare, item).then(() => {
-            window.location.href = 'istoric.html';
-        });
-    }
+            lista.forEach(l => {
+                const d = calculeazaDate(l);
+                const currentStatus = l.status || 'In asteptare';
+                rows += `
+                    <tr>
+                        <td>${l.data}</td>
+                        <td><b>${l.client}</b><br><small>${l.locatie}</small></td>
+                        <td>${d.recomandat} lei</td>
+                        <td style="color:#d35400; font-weight:bold;">${d.negociat} lei</td>
+                        <td style="color:#7f8c8d; font-style:italic;">${d.totalCheltuieli} lei</td>
+                        <td style="font-weight:bold; color:${d.profit >= 0 ? '#27ae60' : '#e74c3c'}">${d.profit} lei</td>
+                        <td>
+                            <select class="status-select ${currentStatus === 'Confirmat' ? 'status-confirm' : 'status-pending'}" 
+                                    onchange="window.schimbaStatus('${l.id}', this.value)">
+                                <option value="In asteptare" ${currentStatus === 'In asteptare' ? 'selected' : ''}>⏳ În așteptare</option>
+                                <option value="Confirmat" ${currentStatus === 'Confirmat' ? 'selected' : ''}>✅ Confirmat</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-delete-item" onclick="window.stergeRand('${l.id}')">X</button></td>
+                    </tr>`;
+            });
+        }
+        tbody.innerHTML = rows;
+    });
 
-    // Inițializare dropdown
-    const select = document.getElementById('tipLucrare');
-    select.innerHTML = tarife.filter(t => t.um === 'lei/ora').map(s => `<option value="${s.pret}">${s.nume} (${s.pret} lei/h)</option>`).join('');
-    document.getElementById('salariu').value = tarife.find(t => t.id === 't8').pret;
-    document.getElementById('data').valueAsDate = new Date();
-    window.calculare();
+    window.schimbaStatus = function(id, val) {
+        update(ref(db, 'lucrari/' + id), { status: val });
+    };
+
+    window.stergeRand = function(id) {
+        if(confirm("Ștergi definitiv lucrarea pentru toți utilizatorii?")) {
+            remove(ref(db, 'lucrari/' + id));
+        }
+    };
 </script>
