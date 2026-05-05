@@ -1,149 +1,66 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Istoric Lucrări - Val Social Construct</title>
-    <style>
-        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --danger: #e74c3c; --bg: #f0f2f5; --warning: #f39c12; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
-        nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; }
-        nav a { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; }
-        nav a.active { background: var(--primary); font-weight: bold; }
-        
-        .container { padding: 20px; max-width: 1200px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { color: var(--primary); text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
-        
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th { background: var(--dark); color: white; padding: 10px; text-align: left; font-size: 0.75em; text-transform: uppercase; }
-        td { padding: 10px; border-bottom: 1px solid #ddd; font-size: 0.85em; }
-        tr:hover { background: #f9f9f9; }
-        
-        .status-select { padding: 5px; border-radius: 4px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold; }
-        .status-confirm { color: var(--success); border-color: var(--success); }
-        .status-pending { color: var(--warning); border-color: var(--warning); }
-        
-        .val-cheltuieli { color: #7f8c8d; font-style: italic; }
-        .profit-pozitiv { color: var(--success); font-weight: bold; }
-        .profit-negativ { color: var(--danger); font-weight: bold; }
-        
-        .btn-delete-item { background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
-        .btn-del-all { background: #7f8c8d; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; width: 100%; margin-top: 25px; font-weight: bold; }
-        .clickable { cursor: pointer; }
-    </style>
-</head>
-<body>
-    <nav>
-        <a href="calculator.html">Calculator</a>
-        <a href="istoric.html" class="active">Istoric Lucrări</a>
-        <a href="tarife.html">Tarife de Referință</a>
-    </nav>
-    <div class="container">
-        <h1>📋 ISTORIC LUCRĂRI</h1>
-        <div style="overflow-x: auto;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Data</th>
-                        <th>Client / Locație</th>
-                        <th>Preț Recomandat</th>
-                        <th>Preț Negociat</th>
-                        <th>Cheltuieli</th>
-                        <th>Profit Net</th>
-                        <th>Status</th>
-                        <th>Acțiuni</th>
-                    </tr>
-                </thead>
-                <tbody id="tbodyIstoric"></tbody>
-            </table>
-        </div>
-        <button class="btn-del-all" onclick="stergeTot()">GOLEȘTE TOT ISTORICUL</button>
-    </div>
+<!-- Păstrează tot HTML-ul tău până la începutul tag-ului <script> -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    <script>
-        let istoric = JSON.parse(localStorage.getItem('vsc_istoric')) || [];
-        let tarife = JSON.parse(localStorage.getItem('vsc_tarife')) || [];
-        const tbody = document.getElementById('tbodyIstoric');
+    const firebaseConfig = {
+        apiKey: "AIzaSyApPbIf1cir53tQm01fBZYKTNsuTQXH7H4",
+        authDomain: "valsocialconstruct-calculator.firebaseapp.com",
+        databaseURL: "https://valsocialconstruct-calculator-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "valsocialconstruct-calculator",
+        storageBucket: "valsocialconstruct-calculator.firebasestorage.app",
+        messagingSenderId: "612758921733",
+        appId: "1:612758921733:web:33c3dfe5b4e8d3b121326c"
+    };
 
-        function calculeazaDate(l) {
-            const pretMotorina = tarife.find(t => t.id === 't9')?.pret || 9.6;
-            const consumOra = tarife.find(t => t.id === 't10')?.pret || 10;
-            const oreTotale = (parseFloat(l.zile || 0) * 8) + parseFloat(l.oreE || 0);
-            
-            const costMotorina = oreTotale * consumOra * pretMotorina;
-            const costOperator = parseFloat(l.zile || 0) * parseFloat(l.sal || 400);
-            const totalCheltuieli = Math.round(costMotorina + costOperator);
-            
-            // Calculăm Recomandat (fără km pentru simplitate sau din total dacă nu e negociat)
-            let recomandat = parseFloat(l.total.replace(/[^0-9]/g, ''));
-            let negociat = l.negociat ? parseFloat(l.negociat) : recomandat;
-            
-            const profit = negociat - totalCheltuieli;
-            
-            return { recomandat, negociat, totalCheltuieli, profit };
-        }
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
-        function afiseazaTabel() {
-            tbody.innerHTML = istoric.slice().reverse().map(l => {
-                const date = calculeazaDate(l);
-                const clasaProfit = date.profit >= 0 ? 'profit-pozitiv' : 'profit-negativ';
-                const currentStatus = l.status || 'In asteptare';
-                
-                return `
-                    <tr>
-                        <td class="clickable" onclick="editeaza(${l.id})">${l.data}</td>
-                        <td class="clickable" onclick="editeaza(${l.id})"><b>${l.client}</b><br><small>${l.locatie}</small></td>
-                        <td>${date.recomandat} lei</td>
-                        <td style="color:var(--primary); font-weight:bold;">${date.negociat} lei</td>
-                        <td class="val-cheltuieli">${date.totalCheltuieli} lei</td>
-                        <td class="${clasaProfit}">${date.profit} lei</td>
-                        <td>
-                            <select class="status-select ${currentStatus === 'Confirmat' ? 'status-confirm' : 'status-pending'}" 
-                                    onchange="schimbaStatus(event, ${l.id}, this.value)">
-                                <option value="In asteptare" ${currentStatus === 'In asteptare' ? 'selected' : ''}>⏳ În așteptare</option>
-                                <option value="Confirmat" ${currentStatus === 'Confirmat' ? 'selected' : ''}>✅ Confirmat</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button class="btn-delete-item" onclick="stergeRand(event, ${l.id})">X</button>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-        }
+    // Datele tale de referință
+    const tarifeDefault = [{id:'t1',nume:'Demolare chirpici',pret:250,um:'lei/ora'},{id:'t2',nume:'Smuls cioate',pret:250,um:'lei/ora'},{id:'t3',nume:'Săpături fundație',pret:250,um:'lei/ora'},{id:'t4',nume:'Nivelare teren',pret:200,um:'lei/ora'},{id:'t5',nume:'Încărcare moloz',pret:200,um:'lei/ora'},{id:'t6',nume:'Șanțuri utilități',pret:200,um:'lei/ora'},{id:'t7',nume:'Tarif minim',pret:500,um:'lei'},{id:'t8',nume:'Operator',pret:400,um:'lei/zi'},{id:'t9',nume:'Motorină',pret:9.6,um:'lei/L'},{id:'t10',nume:'Consum',pret:10,um:'L/h'}];
+    let tarife = JSON.parse(localStorage.getItem('vsc_tarife')) || tarifeDefault;
 
-        function schimbaStatus(event, id, val) {
-            const index = istoric.findIndex(i => i.id === id);
-            if(index !== -1) {
-                istoric[index].status = val;
-                localStorage.setItem('vsc_istoric', JSON.stringify(istoric));
-                afiseazaTabel(); // Refresh pentru culori
-            }
-        }
+    window.calculare = function() {
+        const tarifOra = parseFloat(document.getElementById('tipLucrare').value);
+        const oreT = (parseFloat(document.getElementById('zile').value || 0) * 8) + parseFloat(document.getElementById('ore').value || 0);
+        const km = parseFloat(document.getElementById('km').value || 0);
+        const minim = tarife.find(t => t.id === 't7').pret;
+        const negociat = parseFloat(document.getElementById('pretNegociat').value || 0);
 
-        function editeaza(id) { 
-            localStorage.setItem('vsc_edit_id', id); 
-            window.location.href = 'calculator.html'; 
-        }
+        let total = negociat > 0 ? negociat : (oreT * tarifOra) + (km * 2.5);
+        if(total < minim && oreT > 0 && negociat == 0) total = minim;
 
-        function stergeRand(event, id) {
-            event.stopPropagation();
-            if(confirm("Ștergi această înregistrare?")) {
-                istoric = istoric.filter(item => item.id !== id);
-                localStorage.setItem('vsc_istoric', JSON.stringify(istoric));
-                afiseazaTabel();
-            }
-        }
+        document.getElementById('resOre').innerText = oreT + " h";
+        document.getElementById('resTotal').innerText = Math.round(total) + " lei";
+    }
 
-        function stergeTot() { 
-            if(confirm("Ștergi tot istoricul?")) { 
-                localStorage.removeItem('vsc_istoric'); 
-                istoric = [];
-                afiseazaTabel(); 
-            } 
-        }
+    window.salveazaInIstoric = function() {
+        const item = { 
+            data: document.getElementById('data').value, 
+            client: document.getElementById('client').value || 'Anonim', 
+            locatie: document.getElementById('locatie').value || '-', 
+            tip: document.getElementById('tipLucrare').options[document.getElementById('tipLucrare').selectedIndex].text, 
+            zile: document.getElementById('zile').value, 
+            oreE: document.getElementById('ore').value, 
+            km: document.getElementById('km').value, 
+            sal: document.getElementById('salariu').value,
+            negociat: document.getElementById('pretNegociat').value,
+            total: document.getElementById('resTotal').innerText,
+            status: 'In asteptare',
+            timestamp: Date.now()
+        };
 
-        afiseazaTabel();
-    </script>
-</body>
-</html>
+        const dbRef = ref(db, 'lucrari');
+        const nouaLucrare = push(dbRef);
+        set(nouaLucrare, item).then(() => {
+            window.location.href = 'istoric.html';
+        });
+    }
+
+    // Inițializare dropdown
+    const select = document.getElementById('tipLucrare');
+    select.innerHTML = tarife.filter(t => t.um === 'lei/ora').map(s => `<option value="${s.pret}">${s.nume} (${s.pret} lei/h)</option>`).join('');
+    document.getElementById('salariu').value = tarife.find(t => t.id === 't8').pret;
+    document.getElementById('data').valueAsDate = new Date();
+    window.calculare();
+</script>
