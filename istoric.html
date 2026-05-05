@@ -5,18 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Istoric - Val Social Construct</title>
     <style>
-        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --bg: #f0f2f5; }
+        :root { --primary: #d35400; --dark: #1a252f; --success: #27ae60; --bg: #f0f2f5; --danger: #e74c3c; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; }
         nav { background: var(--dark); padding: 15px; display: flex; justify-content: center; gap: 10px; }
         nav a { color: white; text-decoration: none; padding: 8px 15px; border: 1px solid rgba(255,255,255,0.3); border-radius: 5px; }
         nav a.active { background: var(--primary); font-weight: bold; }
-        .container { padding: 20px; max-width: 800px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .container { padding: 20px; max-width: 850px; margin: 20px auto; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         h1 { color: var(--primary); text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
         table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         th { background: var(--dark); color: white; padding: 12px; text-align: left; font-size: 0.85em; }
         td { padding: 12px; border-bottom: 1px solid #ddd; font-size: 0.9em; cursor: pointer; }
         tr:hover { background: #f9f9f9; }
-        .btn-del { background: #7f8c8d; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 20px; font-weight: bold; }
+        
+        /* Stil buton ștergere individuală */
+        .btn-delete-item { 
+            background: var(--danger); 
+            color: white; 
+            border: none; 
+            padding: 5px 10px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .btn-delete-item:hover { background: #c0392b; }
+
+        .btn-del-all { background: #7f8c8d; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 20px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -28,26 +42,67 @@
     <div class="container">
         <h1>📋 ISTORIC LUCRĂRI</h1>
         <table>
-            <thead><tr><th>Data</th><th>Client / Locație</th><th>Serviciu</th><th>Total</th></tr></thead>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Client / Locație</th>
+                    <th>Serviciu</th>
+                    <th>Total</th>
+                    <th style="width: 50px;">Acțiuni</th>
+                </tr>
+            </thead>
             <tbody id="tbodyIstoric"></tbody>
         </table>
-        <button class="btn-del" onclick="stergeTot()">GOLEȘTE TOT ISTORICUL</button>
+        <button class="btn-del-all" onclick="stergeTot()">GOLEȘTE TOT ISTORICUL</button>
     </div>
 
     <script>
         let istoric = JSON.parse(localStorage.getItem('vsc_istoric')) || [];
         const tbody = document.getElementById('tbodyIstoric');
-        tbody.innerHTML = istoric.slice().reverse().map(l => `
-            <tr onclick="editeaza(${l.id})">
-                <td>${l.data}</td>
-                <td><b>${l.client}</b><br><small>${l.locatie}</small></td>
-                <td>${l.tip}</td>
-                <td style="color:#27ae60; font-weight:bold">${l.total}</td>
-            </tr>
-        `).join('');
 
-        function editeaza(id) { localStorage.setItem('vsc_edit_id', id); window.location.href = 'calculator.html'; }
-        function stergeTot() { if(confirm("Ștergi tot?")) { localStorage.removeItem('vsc_istoric'); location.reload(); } }
+        function afiseazaTabel() {
+            tbody.innerHTML = istoric.slice().reverse().map(l => `
+                <tr onclick="editeaza(${l.id})">
+                    <td>${l.data}</td>
+                    <td><b>${l.client}</b><br><small>${l.locatie}</small></td>
+                    <td>${l.tip}</td>
+                    <td style="color:#27ae60; font-weight:bold">${l.total}</td>
+                    <td>
+                        <button class="btn-delete-item" onclick="stergeRand(event, ${l.id})">Șterge</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function editeaza(id) { 
+            localStorage.setItem('vsc_edit_id', id); 
+            window.location.href = 'calculator.html'; 
+        }
+
+        function stergeRand(event, id) {
+            // Prevenim deschiderea calculatorului când apăsăm pe ștergere
+            event.stopPropagation();
+            
+            if(confirm("Sigur vrei să ștergi această înregistrare?")) {
+                // Filtrăm istoricul pentru a scoate elementul cu ID-ul respectiv
+                istoric = istoric.filter(item => item.id !== id);
+                // Salvăm noul istoric în localStorage
+                localStorage.setItem('vsc_istoric', JSON.stringify(istoric));
+                // Reîmprospătăm tabelul vizual
+                afiseazaTabel();
+            }
+        }
+
+        function stergeTot() { 
+            if(confirm("Ștergi tot istoricul?")) { 
+                localStorage.removeItem('vsc_istoric'); 
+                istoric = [];
+                afiseazaTabel(); 
+            } 
+        }
+
+        // Inițializare tabel la încărcarea paginii
+        afiseazaTabel();
     </script>
 </body>
 </html>
